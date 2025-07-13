@@ -14,14 +14,20 @@ function App() {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
-    // Get the current session (Supabase v2)
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Always check for session on mount
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
-    });
-    // Listen for changes
+      console.log('Initial session:', session);
+    };
+    getSession();
+
+    // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session?.session ?? null);
+      setSession(session);
+      console.log('Auth state changed. New session:', session);
     });
+
     return () => {
       subscription?.unsubscribe();
     };
