@@ -1,404 +1,208 @@
+// Projects.js - Projects/portfolio section
+// Displays a list or grid of project cards
+
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 
-function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [showForm, setShowForm] = useState(false);
-  const [editingProject, setEditingProject] = useState(null);
-  const [imageFile, setImageFile] = useState(null);
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    client: '',
-    duration: '',
-    link: '',
-    image_url: '',
-    category: 'Web Development'
-  });
-
-  // Fetch projects from Supabase (only tech projects, not photography/image artistry)
-  const fetchProjects = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .not('category', 'eq', 'Photography')
-        .not('category', 'eq', 'Image Artistry')
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        setError(error.message);
-      } else {
-        setProjects(data || []);
-      }
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'image' && files && files[0]) {
-      setImageFile(files[0]);
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    }
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    try {
-      let imageUrl = formData.image_url;
-      
-      // Upload image if provided
-      if (imageFile) {
-        const fileName = `project-${Date.now()}-${imageFile.name}`;
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from('project-images')
-          .upload(fileName, imageFile);
-
-        if (uploadError) throw uploadError;
-        
-        // Get public URL
-        const { data: urlData } = supabase.storage
-          .from('project-images')
-          .getPublicUrl(fileName);
-        
-        imageUrl = urlData.publicUrl;
-      }
-
-      const projectData = {
-        title: formData.title,
-        description: formData.description,
-        client: formData.client,
-        duration: formData.duration,
-        link: formData.link,
-        image_url: imageUrl,
-        category: formData.category
-      };
-
-      if (editingProject) {
-        // Update existing project
-        const { error } = await supabase
-          .from('projects')
-          .update({
-            ...projectData,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', editingProject.id);
-
-        if (error) throw error;
-      } else {
-        // Create new project
-        const { error } = await supabase
-          .from('projects')
-          .insert([projectData]);
-
-        if (error) throw error;
-      }
-
-      // Reset form and refresh data
-      setFormData({
-        title: '',
-        description: '',
-        client: '',
-        duration: '',
-        link: '',
-        image_url: '',
-        category: 'Web Development'
-      });
-      setImageFile(null);
-      setShowForm(false);
-      setEditingProject(null);
-      fetchProjects();
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  // Handle edit
-  const handleEdit = (project) => {
-    setEditingProject(project);
-          setFormData({
-        title: project.title,
-        description: project.description,
-        client: project.client,
-        duration: project.duration,
-        link: project.link,
-        image_url: project.image_url || '',
-        category: project.category || 'Web Development'
-      });
-    setImageFile(null);
-    setShowForm(true);
-  };
-
-  // Handle delete
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this project?')) {
-      try {
-        const { error } = await supabase
-          .from('projects')
-          .delete()
-          .eq('id', id);
-
-        if (error) throw error;
-        fetchProjects();
-      } catch (err) {
-        setError(err.message);
-      }
-    }
-  };
-
-  // Cancel form
-  const handleCancel = () => {
-          setFormData({
-        title: '',
-        description: '',
-        client: '',
-        duration: '',
-        link: '',
-        image_url: '',
-        category: 'Web Development'
-      });
-    setImageFile(null);
-    setShowForm(false);
-    setEditingProject(null);
-  };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="text-lg text-gray-600">Loading projects...</div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Project Management</h1>
-        <button
-          onClick={() => setShowForm(true)}
-          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
-        >
-          Add New Project
-        </button>
-      </div>
-
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          {error}
+// Modal component for project details
+const ProjectModal = ({ project, onClose }) => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-fade-in">
+    <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+      <button onClick={onClose} className="absolute top-3 right-3 text-2xl text-purple-700 hover:text-purple-900">&times;</button>
+      <div className="flex flex-col items-center">
+        {/* Project image placeholder */}
+        <div className="w-28 h-28 bg-purple-200 rounded-full mb-4 flex items-center justify-center">
+          <svg className="w-14 h-14 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
         </div>
-      )}
-
-      {/* Project Form */}
-      {showForm && (
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">
-            {editingProject ? 'Edit Project' : 'Add New Project'}
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Title *
-                </label>
-                <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Category *
-                </label>
-                <select
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  <option value="Web Development">Web Development</option>
-                  <option value="Data Analytics">Data Analytics</option>
-                  <option value="Mobile Development">Mobile Development</option>
-                  <option value="DevOps">DevOps</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Client
-                </label>
-                <input
-                  type="text"
-                  name="client"
-                  value={formData.client}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Description *
-                </label>
-                <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  required
-                  rows="3"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Duration
-                </label>
-                <input
-                  type="text"
-                  name="duration"
-                  value={formData.duration}
-                  onChange={handleInputChange}
-                  placeholder="e.g., 3 months"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Project Link
-                </label>
-                <input
-                  type="url"
-                  name="link"
-                  value={formData.link}
-                  onChange={handleInputChange}
-                  placeholder="https://..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Project Image (optional)
-              </label>
-              <input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
-              {imageFile && (
-                <p className="text-sm text-green-600 mt-1">Selected: {imageFile.name}</p>
-              )}
-            </div>
-            <div className="flex gap-2">
-              <button
-                type="submit"
-                className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
-              >
-                {editingProject ? 'Update' : 'Create'}
-              </button>
-              <button
-                type="button"
-                onClick={handleCancel}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-
-      {/* Projects List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.length === 0 ? (
-          <div className="col-span-full text-center py-8 text-gray-500">
-            No projects found. Create your first project!
-          </div>
-        ) : (
-          projects.map((project) => (
-            <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              {project.image_url && (
-                <div className="mb-4">
-                  <img 
-                    src={project.image_url} 
-                    alt={project.title}
-                    className="w-full h-48 object-cover rounded-lg"
-                    onError={e => { e.target.onerror = null; e.target.src = '/img_logo.png'; }}
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-gray-800">{project.title}</h3>
-                  <div className="flex gap-1">
-                    <button
-                      onClick={() => handleEdit(project)}
-                      className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(project.id)}
-                      className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-                <p className="text-gray-600 mb-3 line-clamp-3">{project.description}</p>
-                <div className="space-y-1 text-sm text-gray-500">
-                  {project.client && (
-                    <div><strong>Client:</strong> {project.client}</div>
-                  )}
-                  {project.duration && (
-                    <div><strong>Duration:</strong> {project.duration}</div>
-                  )}
-                  {project.link && (
-                    <div>
-                      <strong>Link:</strong> 
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline ml-1">
-                        View Project
-                      </a>
-                    </div>
-                  )}
-                </div>
-                <div className="text-xs text-gray-400 mt-3">
-                  Created: {new Date(project.created_at).toLocaleDateString()}
-                </div>
-              </div>
-            </div>
-          ))
-        )}
+        <h3 className="text-2xl font-bold text-purple-800 mb-2">{project.title}</h3>
+        <p className="text-gray-700 mb-4 text-center">{project.description}</p>
+        <a href={project.link} className="text-blue-600 hover:underline font-medium" target="_blank" rel="noopener noreferrer">View Project</a>
       </div>
     </div>
+  </div>
+);
+
+// Lightbox Modal component for full image viewing
+const LightboxModal = ({ image, onClose, imageType }) => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 animate-fade-in px-2" onClick={onClose}>
+    <div className="relative w-full max-w-lg md:max-w-3xl max-h-[80vh] flex items-center justify-center p-2 md:p-4">
+      <button 
+        onClick={onClose} 
+        className="absolute top-2 right-2 md:top-4 md:right-4 text-white text-3xl md:text-4xl hover:text-gray-300 transition z-10 bg-black/50 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center"
+      >
+        &times;
+      </button>
+      <img
+        src={process.env.PUBLIC_URL + `/${imageType === 'photography' ? 'Photography' : 'image-artistry'}/` + image}
+        alt="Full view"
+        className="max-w-full max-h-[60vh] md:max-h-[70vh] object-contain rounded-lg shadow-2xl mx-auto"
+        onClick={e => e.stopPropagation()}
+      />
+    </div>
+  </div>
+);
+
+const BackToTopButton = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      aria-label="Back to top"
+      className={`fixed z-50 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition-opacity duration-300 bottom-80 right-6 bg-white border-2 border-purple-700 hover:bg-purple-50 text-purple-700 hover:text-purple-900 rounded-full shadow-lg w-12 h-12 md:w-14 md:h-14 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-purple-400`}
+      style={{ boxShadow: '0 4px 24px 0 rgba(80,0,200,0.10)' }}
+    >
+      <svg width="24" height="24" className="md:w-7 md:h-7 w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <path d="M5 15l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
   );
-}
+};
+
+const Projects = () => {
+  const [activeTab, setActiveTab] = useState('web');
+  const [modalProject, setModalProject] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxType, setLightboxType] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [photographyImages, setPhotographyImages] = useState([]);
+  const [artistryImages, setArtistryImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      // Fetch projects
+      const { data: projectsData, error: projectsError } = await supabase.from('projects').select('*').order('id', { ascending: false });
+      setProjects(projectsError ? [] : (projectsData || []));
+      console.log('Fetched projects:', projectsData);
+      // Fetch media for photography
+      const { data: photoData, error: photoError } = await supabase.from('media').select('*').eq('category', 'Photography');
+      setPhotographyImages(photoError ? [] : (photoData || []));
+      // Fetch media for image artistry
+      const { data: artistryData, error: artistryError } = await supabase.from('media').select('*').eq('category', 'Image Artistry');
+      setArtistryImages(artistryError ? [] : (artistryData || []));
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  const openLightbox = (image, type) => {
+    setLightboxImage(image);
+    setLightboxType(type);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxType(null);
+  };
+
+  return (
+    <section id="projects" className="py-10 md:py-20 px-2 sm:px-4 md:px-8 bg-gradient-to-br from-purple-900 via-black to-black">
+      <h2 className="text-3xl font-bold text-white mb-8">Projects</h2>
+      <div className="mb-8 flex gap-4">
+        <button
+          className={`px-4 py-2 rounded font-semibold transition border-b-2 ${activeTab === 'web' ? 'border-purple-400 text-purple-400' : 'border-transparent text-gray-400 hover:text-purple-400'}`}
+          onClick={() => setActiveTab('web')}
+        >
+          Web Dev
+        </button>
+        <button
+          className={`px-4 py-2 rounded font-semibold transition border-b-2 ${activeTab === 'photo' ? 'border-purple-400 text-purple-400' : 'border-transparent text-gray-400 hover:text-purple-400'}`}
+          onClick={() => setActiveTab('photo')}
+        >
+          Photography
+        </button>
+        <button
+          className={`px-4 py-2 rounded font-semibold transition border-b-2 ${activeTab === 'artistry' ? 'border-purple-400 text-purple-400' : 'border-transparent text-gray-400 hover:text-purple-400'}`}
+          onClick={() => setActiveTab('artistry')}
+        >
+          Image Artistry
+        </button>
+      </div>
+      {loading ? (
+        <div className="text-center text-gray-400">Loading...</div>
+      ) : activeTab === 'web' ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
+          {projects.map((project, idx) => (
+            <div key={project.id || idx} className="bg-gray-800 rounded shadow p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center animate-fade-in-up">
+              {/* Project image from Supabase with fallback */}
+              <img
+                src={project.image_url || 'https://via.placeholder.com/80x80?text=No+Image'}
+                alt={project.title}
+                className="w-20 h-20 object-cover rounded-full mb-4"
+                onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/80x80?text=No+Image'; }}
+              />
+              <h4 className="font-bold mb-2 text-white">{project.title}</h4>
+              <p className="text-gray-300 mb-4 flex-1">{project.description}</p>
+              <a href={project.link} className="text-blue-400 hover:underline font-medium mb-2" target="_blank" rel="noopener noreferrer">View Project</a>
+              <button
+                className="mt-2 px-4 py-2 bg-purple-700 text-white rounded-lg shadow hover:bg-purple-800 transition"
+                onClick={() => setModalProject(project)}
+              >
+                View Details
+              </button>
+            </div>
+          ))}
+        </div>
+      ) : activeTab === 'photo' ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
+          {photographyImages.map((img, idx) => (
+            <div key={img.id || idx} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
+              <img
+                src={img.image_url || img.url || img.file_url || ''}
+                alt={img.title || `Photography ${idx + 1}`}
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 group-hover:scale-110"
+                loading="lazy"
+                onClick={() => openLightbox(img.image_url || img.url || img.file_url, 'photography')}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-lg font-semibold">
+                  Click to view
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
+          {artistryImages.map((img, idx) => (
+            <div key={img.id || idx} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
+              <img
+                src={img.image_url || img.url || img.file_url || ''}
+                alt={img.title || `Image Artistry ${idx + 1}`}
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 group-hover:scale-110"
+                loading="lazy"
+                onClick={() => openLightbox(img.image_url || img.url || img.file_url, 'artistry')}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-lg font-semibold">
+                  Click to view
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Project details modal */}
+      {modalProject && <ProjectModal project={modalProject} onClose={() => setModalProject(null)} />}
+      {/* Lightbox modal */}
+      {lightboxImage && <LightboxModal image={lightboxImage} onClose={closeLightbox} imageType={lightboxType} />}
+      <BackToTopButton />
+    </section>
+  );
+};
 
 export default Projects; 

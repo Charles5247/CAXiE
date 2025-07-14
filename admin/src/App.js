@@ -1,69 +1,66 @@
-import React, { useEffect, useState } from 'react';
-import { supabase } from './supabaseClient';
-import Login from './components/Login';
-import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard';
-import Blogs from './components/Blogs';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Media from './components/Media';
-import Settings from './components/Settings';
-import { Routes, Route } from 'react-router-dom';
+// App.js - Main entry point for the React portfolio
+// Sets up the overall layout, sidebar, and all main sections
+
+import './App.css'; // Global styles and custom CSS
+import React, { useState } from 'react';
+import Sidebar from './components/Sidebar'; // Sidebar navigation
+import Hero from './components/Hero'; // Hero/landing section
+import About from './components/About'; // About section
+import Skills from './components/Skills'; // Skills section
+import Projects from './components/Projects'; // Projects/portfolio section
+import Certifications from './components/Certifications'; // Certifications section
+import Blog from './components/Blog'; // Blog/updates section
+import Contact from './components/Contact'; // Contact form/section
+import AIChatbot from './components/AIChatbot';
+import { trackVisit } from './services/visitTracking';
 
 function App() {
-  const [session, setSession] = useState(null);
+  // State to track if the sidebar is collapsed (for responsive layout)
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  // State to track sidebar/header visibility (for seamless margin adjustment)
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
-  useEffect(() => {
-    // Always check for session on mount
-    const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setSession(session);
-      console.log('Initial session:', session);
-    };
-    getSession();
+  // Pass a callback to Sidebar to update visibility state
+  const handleSidebarVisibility = (visible) => {
+    setIsSidebarVisible(visible);
+  };
 
-    // Listen for auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      console.log('Auth state changed. New session:', session);
-    });
-
-    return () => {
-      subscription?.unsubscribe();
-    };
+  React.useEffect(() => {
+    trackVisit();
   }, []);
 
-  if (!session) {
-    return <Login onLogin={() => {
-      supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
-    }} />;
-  }
-
   return (
-    <div className="flex min-h-screen bg-gradient-to-b from-purple-800 via-purple-900 to-black">
-      <Sidebar />
-      <div className="flex-1 p-8 bg-gray-50 min-h-screen rounded-br-3xl shadow-xl">
-        {/* Global Header */}
-        <div className="w-full bg-white shadow-md rounded-t-lg px-8 py-4 mb-8 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-purple-800">Admin Dashboard</h1>
-          <img src={process.env.PUBLIC_URL + '/profile.JPG'} alt="Profile" className="w-12 h-12 rounded-full object-cover border-2 border-purple-300 shadow" />
-        </div>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-        <button
-          onClick={() => supabase.auth.signOut()}
-          className="fixed bottom-4 right-4 bg-gray-700 text-white px-4 py-2 rounded"
+    <>
+      {/* Main flex container for sidebar + content */}
+      <div className="flex min-h-screen bg-gradient-to-b from-purple-800 via-purple-900 to-black">
+        {/* Sidebar navigation (collapsible) */}
+        <Sidebar onCollapse={setIsSidebarCollapsed} onVisibilityChange={handleSidebarVisibility} />
+        {/* Main content area, margin adjusts based on sidebar/header visibility and state */}
+        <div
+          className={`flex-1 transition-all duration-300
+            ${isSidebarVisible ? (isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64') : 'ml-0'}
+            ${isSidebarVisible ? 'mt-0' : 'mt-0'}
+          `}
         >
-          Logout
-        </button>
-      </div>
+          {/* Hero/landing section */}
+          <Hero />
+          {/* About section */}
+          <About />
+          {/* Skills section */}
+          <Skills />
+          {/* Projects section */}
+          <Projects />
+          {/* Certifications section */}
+          <Certifications />
+          {/* Blog section */}
+          <Blog />
+          {/* Contact section */}
+          <Contact />
+        </div>
     </div>
+      {/* Floating AI Assistant Chatbot */}
+      <AIChatbot />
+    </>
   );
 }
 
