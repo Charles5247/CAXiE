@@ -28,7 +28,7 @@ const BlogModal = ({ post, onClose }) => (
 function unescapeContent(str) {
   if (!str) return '';
   try {
-    return JSON.parse('"' + str.replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/\"/g, '\\"') + '"');
+    return JSON.parse('"' + str.replace(/\\/g, '\\').replace(/\n/g, '\n').replace(/"/g, '"') + '"');
   } catch {
     return str;
   }
