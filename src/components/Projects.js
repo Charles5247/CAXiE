@@ -2,6 +2,7 @@
 // Displays a list or grid of project cards
 
 import React, { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
 
 // Modal component for project details
 const ProjectModal = ({ project, onClose }) => (
@@ -75,53 +76,28 @@ const Projects = () => {
   const [modalProject, setModalProject] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [lightboxType, setLightboxType] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [photographyImages, setPhotographyImages] = useState([]);
+  const [artistryImages, setArtistryImages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Example projects (replace with data-driven approach if needed)
-  const projects = [
-    {
-      title: 'Portfolio Website',
-      description: 'A modern personal portfolio built with React and Tailwind CSS.',
-      link: '#',
-    },
-    {
-      title: 'E-commerce Store',
-      description: 'A full-stack MERN e-commerce application.',
-      link: '#',
-    },
-    {
-      title: 'Data Dashboard',
-      description: 'A data analytics dashboard using Python and Power BI.',
-      link: '#',
-    },
-  ];
-
-  // List of images for Photography and Image Artistry
-  const photographyImages = [
-    'anita.jpg',
-    'nana-cx.JPG',
-    'solo-md.JPG',
-    'IMG_2423.JPG',
-    'ihoutu-cx.JPG',
-    'IMG_2156.JPG',
-    'friends.JPG',
-    '7A5FF9D6-97C6-49D4-A0AB-0ADE1A23735D.JPG',
-    'fam.JPG',
-    'happy.JPG',
-    'ihoutu-bd.JPG',
-  ];
-  const artistryImages = [
-    'IMG_4516.JPG',
-    'IMG_4343.JPG',
-    'IMG_7636.JPG',
-    'IMG_4513.JPG',
-    'IMG_4517.JPG',
-    'IMG_7633.JPG',
-    'IMG_4336.JPG',
-    'IMG_1134.JPG',
-    'IMG_1138.JPG',
-    'IMG_1136.JPG',
-    'IMG-20210619-WA0079.jpg',
-  ];
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      // Fetch projects
+      const { data: projectsData, error: projectsError } = await supabase.from('projects').select('*').order('id', { ascending: false });
+      setProjects(projectsError ? [] : (projectsData || []));
+      console.log('Fetched projects:', projectsData);
+      // Fetch media for photography
+      const { data: photoData, error: photoError } = await supabase.from('media').select('*').eq('category', 'Photography');
+      setPhotographyImages(photoError ? [] : (photoData || []));
+      // Fetch media for image artistry
+      const { data: artistryData, error: artistryError } = await supabase.from('media').select('*').eq('category', 'Image Artistry');
+      setArtistryImages(artistryError ? [] : (artistryData || []));
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const openLightbox = (image, type) => {
     setLightboxImage(image);
@@ -156,14 +132,19 @@ const Projects = () => {
           Image Artistry
         </button>
       </div>
-      {activeTab === 'web' && (
+      {loading ? (
+        <div className="text-center text-gray-400">Loading...</div>
+      ) : activeTab === 'web' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
           {projects.map((project, idx) => (
-            <div key={idx} className="bg-gray-800 rounded shadow p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center animate-fade-in-up">
-              {/* Project image placeholder */}
-              <div className="w-20 h-20 bg-purple-200 rounded-full mb-4 flex items-center justify-center">
-                <svg className="w-10 h-10 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
-              </div>
+            <div key={project.id || idx} className="bg-gray-800 rounded shadow p-6 text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center animate-fade-in-up">
+              {/* Project image from Supabase with fallback */}
+              <img
+                src={project.image_url || 'https://via.placeholder.com/80x80?text=No+Image'}
+                alt={project.title}
+                className="w-20 h-20 object-cover rounded-full mb-4"
+                onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/80x80?text=No+Image'; }}
+              />
               <h4 className="font-bold mb-2 text-white">{project.title}</h4>
               <p className="text-gray-300 mb-4 flex-1">{project.description}</p>
               <a href={project.link} className="text-blue-400 hover:underline font-medium mb-2" target="_blank" rel="noopener noreferrer">View Project</a>
@@ -176,17 +157,16 @@ const Projects = () => {
             </div>
           ))}
         </div>
-      )}
-      {activeTab === 'photo' && (
+      ) : activeTab === 'photo' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
           {photographyImages.map((img, idx) => (
-            <div key={img} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
+            <div key={img.id || idx} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
               <img
-                src={process.env.PUBLIC_URL + '/Photography/' + img}
-                alt={`Photography ${idx + 1}`.replace(/(image|photo|picture)/gi, '').trim()}
+                src={img.image_url || img.url || img.file_url || ''}
+                alt={img.title || `Photography ${idx + 1}`}
                 className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
-                onClick={() => openLightbox(img, 'photography')}
+                onClick={() => openLightbox(img.image_url || img.url || img.file_url, 'photography')}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-lg font-semibold">
@@ -196,17 +176,16 @@ const Projects = () => {
             </div>
           ))}
         </div>
-      )}
-      {activeTab === 'artistry' && (
+      ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
           {artistryImages.map((img, idx) => (
-            <div key={img} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
+            <div key={img.id || idx} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
               <img
-                src={process.env.PUBLIC_URL + '/image-artistry/' + img}
-                alt={`Image Artistry ${idx + 1}`.replace(/(image|photo|picture)/gi, '').trim()}
+                src={img.image_url || img.url || img.file_url || ''}
+                alt={img.title || `Image Artistry ${idx + 1}`}
                 className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
-                onClick={() => openLightbox(img, 'artistry')}
+                onClick={() => openLightbox(img.image_url || img.url || img.file_url, 'artistry')}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-lg font-semibold">

@@ -12,6 +12,7 @@ import Certifications from './components/Certifications'; // Certifications sect
 import Blog from './components/Blog'; // Blog/updates section
 import Contact from './components/Contact'; // Contact form/section
 import AIChatbot from './components/AIChatbot';
+import { trackVisit } from './services/visitTracking';
 
 function App() {
   // State to track if the sidebar is collapsed (for responsive layout)
@@ -23,6 +24,10 @@ function App() {
   const handleSidebarVisibility = (visible) => {
     setIsSidebarVisible(visible);
   };
+
+  React.useEffect(() => {
+    trackVisit();
+  }, []);
 
   return (
     <>
