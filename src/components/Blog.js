@@ -3,50 +3,36 @@
 
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
+import ReactMarkdown from 'react-markdown';
 
-// Modal component for blog post details
+// Modern Blog Modal with scrollable content and markdown support
 const BlogModal = ({ post, onClose }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-fade-in">
-    <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
-      <button onClick={onClose} className="absolute top-3 right-3 text-2xl text-purple-700 hover:text-purple-900">&times;</button>
-      <div className="flex flex-col items-center">
-        {/* Post image */}
-        {post.image_url ? (
-          <img src={post.image_url} alt={post.title} className="w-full h-40 object-cover rounded-xl mb-3" onError={e => { e.target.onerror = null; e.target.style.display='none'; }} />
-        ) : (
-          <div className="w-full h-40 flex items-center justify-center bg-purple-100 rounded-xl mb-3">
-            <svg className="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
-          </div>
-        )}
-        {/* Post image/avatar placeholder */}
-        <div className="w-16 h-16 bg-purple-100 rounded-full mb-3 flex items-center justify-center self-center -mt-12 border-4 border-white shadow-lg">
-          <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
+    <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-0 relative flex flex-col">
+      <button onClick={onClose} className="absolute top-4 right-4 text-3xl text-purple-700 hover:text-purple-900 bg-white rounded-full shadow p-1 z-10">&times;</button>
+      {/* Banner image */}
+      {post.image_url && (
+        <img src={post.image_url} alt={post.title} className="w-full h-56 object-cover rounded-t-2xl" />
+      )}
+      <div className="p-8 pt-6 flex flex-col flex-1 max-h-[70vh] overflow-y-auto">
+        <h3 className="text-2xl md:text-3xl font-bold text-purple-800 mb-2">{post.title}</h3>
+        <span className="text-xs text-gray-400 mb-4 block">{post.date}</span>
+        <div className="prose prose-purple max-w-none text-gray-800 text-base leading-relaxed">
+          <ReactMarkdown>{post.full_text || post.content || post.excerpt || ''}</ReactMarkdown>
         </div>
-        <h3 className="text-2xl font-bold text-purple-800 mb-2">{post.title}</h3>
-        <span className="text-xs text-gray-400 mb-2">{post.date}</span>
-        <p className="text-gray-700 mb-4 text-center whitespace-pre-line">{post.full_text || post.excerpt}</p>
       </div>
     </div>
   </div>
 );
 
-// Utility to unescape content
-function unescapeContent(str) {
-  if (!str) return '';
-  try {
-    return JSON.parse('"' + str.replace(/\\/g, '\\').replace(/\n/g, '\n').replace(/"/g, '"') + '"');
-  } catch {
-    return str;
-  }
-}
+// Utility to unescape content (no longer needed for markdown)
+// function unescapeContent(str) { ... }
 
 const Blog = () => {
   const [modalPost, setModalPost] = useState(null);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  // Set this to true only for the owner (e.g., via env, auth, or hardcoded for now)
   const isOwner = true; // Adjust as needed
-  // State for add post modal
   const [showAddModal, setShowAddModal] = useState(false);
   const [newPost, setNewPost] = useState({
     title: '',
@@ -113,7 +99,9 @@ const Blog = () => {
               {/* Post date */}
               <span className="text-xs text-gray-400 mb-2">{post.date}</span>
               {/* Post excerpt */}
-              <p className="text-gray-700 mb-4 flex-1">{unescapeContent(post.content || post.excerpt)}</p>
+              <div className="text-gray-700 mb-4 flex-1 prose prose-purple max-w-none">
+                <ReactMarkdown>{post.excerpt || ''}</ReactMarkdown>
+              </div>
               {/* Read more button */}
               <button
                 className="bg-purple-700 text-white font-semibold rounded-lg px-6 py-2 shadow hover:bg-purple-800 hover:scale-105 transition-transform duration-300 mt-auto"
@@ -159,14 +147,14 @@ const Blog = () => {
             <input
               type="text"
               className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              placeholder="Excerpt"
+              placeholder="Excerpt (Markdown supported)"
               value={newPost.excerpt}
               onChange={e => setNewPost({ ...newPost, excerpt: e.target.value })}
               required
             />
             <textarea
               className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              placeholder="Full Text"
+              placeholder="Full Text (Markdown supported)"
               value={newPost.full_text}
               onChange={e => setNewPost({ ...newPost, full_text: e.target.value })}
               rows={5}
