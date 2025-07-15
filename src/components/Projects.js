@@ -189,12 +189,12 @@ function Projects() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Project Management</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Project Management</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+          className="bg-purple-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded hover:bg-purple-700 w-full sm:w-auto"
         >
           Add New Project
         </button>
@@ -370,8 +370,8 @@ function Projects() {
                     >
                       Delete
                     </button>
-                  </div>
-                </div>
+              </div>
+            </div>
                 <p className="text-gray-600 mb-3 line-clamp-3">{project.description}</p>
                 <div className="space-y-1 text-sm text-gray-500">
                   {project.client && (
@@ -388,7 +388,7 @@ function Projects() {
                       </a>
                     </div>
                   )}
-                </div>
+        </div>
                 <div className="text-xs text-gray-400 mt-3">
                   Created: {new Date(project.created_at).toLocaleDateString()}
                 </div>
@@ -397,7 +397,7 @@ function Projects() {
           ))
         )}
       </div>
-    </div>
+        </div>
   );
 }
 

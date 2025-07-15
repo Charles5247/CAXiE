@@ -30,42 +30,43 @@ const Sidebar = () => {
       <aside
         className={`
           bg-gradient-to-b from-purple-800 via-purple-900 to-black bg-opacity-80 glass shadow-xl z-40
-          w-64 h-full
+          w-4/5 max-w-xs h-full
           fixed top-0 left-0 transform transition-transform duration-300
           ${open ? 'translate-x-0' : '-translate-x-full'}
-          md:static md:translate-x-0 md:block md:h-auto
+          md:w-64 md:static md:translate-x-0 md:block md:h-auto
         `}
+        style={{ minWidth: '220px' }}
       >
         <div className="flex flex-col h-full">
           {/* Logo at the top */}
-          <div className="sidebar-header flex items-center justify-center h-20 px-6 border-b border-purple-700">
+          <div className="sidebar-header flex items-center justify-center h-16 px-4 border-b border-purple-700">
             <a href="/" className="flex items-center gap-2">
-              <img src={logoUrl} alt="Logo" className="h-12 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src={logoUrl} alt="Logo" className="h-10 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
             </a>
           </div>
           {/* Navigation */}
-          <nav className="flex-1 py-6 px-4">
-            <ul className="menu flex flex-col gap-10">
+          <nav className="flex-1 py-4 px-2">
+            <ul className="menu flex flex-col gap-6">
             {navLinks.map(link => (
                 <li key={link.name} className="sidebar-item">
                   <Link
                     to={link.path}
-                    className={`sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-white transition font-medium ${
+                    className={`sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg text-white transition font-medium ${
                       location.pathname === link.path 
                         ? 'bg-purple-700/80' 
                         : 'hover:bg-purple-700/80'
                     }`}
                     onClick={() => setOpen(false)}
               >
-                <span className="text-xl">{link.icon}</span>
-                <span>{link.name}</span>
+                <span className="text-lg">{link.icon}</span>
+                <span className="text-base">{link.name}</span>
                   </Link>
                 </li>
             ))}
             </ul>
           </nav>
           {/* Footer at the very bottom */}
-          <div className="mt-auto p-4 text-xs text-purple-200 text-center border-t border-purple-700">
+          <div className="mt-auto p-2 text-xs text-purple-200 text-center border-t border-purple-700">
             &copy; 2025 Caxie Admin
           </div>
         </div>
@@ -73,8 +74,9 @@ const Sidebar = () => {
       {/* Overlay for mobile */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/40 z-30 md:hidden"
+          className="fixed inset-0 bg-black/60 z-30 md:hidden"
           onClick={() => setOpen(false)}
+          style={{ touchAction: 'none' }}
         />
       )}
     </>

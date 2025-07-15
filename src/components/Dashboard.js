@@ -252,27 +252,27 @@ const Dashboard = () => {
         </button>
       </div>
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         {statsConfig.map((stat) => (
           <button
             key={stat.key}
             onClick={() => navigate(stat.route)}
-            className="bg-white rounded-xl shadow p-6 flex flex-col items-center w-full cursor-pointer hover:shadow-lg transition border-2 border-transparent hover:border-purple-300 focus:outline-none"
+            className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col items-center w-full max-w-xs mx-auto cursor-pointer hover:shadow-lg transition border-2 border-transparent hover:border-purple-300 focus:outline-none"
             disabled={loading}
           >
-            <div className="text-3xl font-bold text-purple-700">
+            <div className="text-2xl sm:text-3xl font-bold text-purple-700">
               {loading ? '...' : error ? '!' : stats[stat.key]}
             </div>
-            <div className="text-gray-500 mt-2">{stat.label}</div>
+            <div className="text-gray-500 mt-2 text-sm sm:text-base">{stat.label}</div>
           </button>
         ))}
       </div>
       {/* Daily Visits Chart */}
-      <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center min-h-[70px] w-full">
+      <div className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col items-center justify-center min-h-[70px] w-full overflow-x-auto">
         {dailyVisits.length > 0 ? (
           <Line data={chartData} options={chartOptions} height={70} />
         ) : (
-          <div className="text-lg text-gray-400">No visit data yet</div>
+          <div className="text-base sm:text-lg text-gray-400">No visit data yet</div>
         )}
       </div>
       {/* More Widgets */}

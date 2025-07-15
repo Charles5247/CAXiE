@@ -304,12 +304,12 @@ function Media() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Media Management</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Media Management</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+          className="bg-purple-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded hover:bg-purple-700 w-full sm:w-auto"
         >
           Upload Media
         </button>

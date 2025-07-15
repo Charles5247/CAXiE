@@ -42,11 +42,11 @@ function App() {
   return (
     <div className="flex min-h-screen bg-gradient-to-b from-purple-800 via-purple-900 to-black">
       <Sidebar />
-      <div className="flex-1 p-8 bg-gray-50 min-h-screen rounded-br-3xl shadow-xl">
+      <div className="flex-1 p-2 sm:p-4 md:p-8 bg-gray-50 min-h-screen rounded-none sm:rounded-br-2xl md:rounded-br-3xl shadow-none sm:shadow-xl">
         {/* Global Header */}
-        <div className="w-full bg-white shadow-md rounded-t-lg px-8 py-4 mb-8 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-purple-800">Admin Dashboard</h1>
-          <img src={process.env.PUBLIC_URL + '/profile.JPG'} alt="Profile" className="w-12 h-12 rounded-full object-cover border-2 border-purple-300 shadow" />
+        <div className="w-full bg-white shadow-md rounded-t-lg px-3 sm:px-6 md:px-8 py-2 sm:py-4 mb-4 sm:mb-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <h1 className="text-lg sm:text-2xl font-bold text-purple-800 text-center sm:text-left">Admin Dashboard</h1>
+          <img src={process.env.PUBLIC_URL + '/profile.JPG'} alt="Profile" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-purple-300 shadow" />
         </div>
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -58,7 +58,7 @@ function App() {
         </Routes>
         <button
           onClick={() => supabase.auth.signOut()}
-          className="fixed bottom-4 right-4 bg-gray-700 text-white px-4 py-2 rounded"
+          className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 bg-gray-700 text-white px-3 py-2 sm:px-4 sm:py-2 rounded text-sm sm:text-base"
         >
           Logout
         </button>

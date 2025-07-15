@@ -107,8 +107,8 @@ function Settings() {
   };
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Settings</h1>
+    <div className="space-y-4 sm:space-y-6 max-w-2xl mx-auto p-2 sm:p-4">
+      <h1 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2 sm:mb-4 text-center">Settings</h1>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
@@ -136,7 +136,7 @@ function Settings() {
                 name="name"
                 value={profileData.name}
                 onChange={handleProfileChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
             </div>
             <div>
@@ -148,7 +148,7 @@ function Settings() {
                 name="email"
                 value={profileData.email}
                 onChange={handleProfileChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ function Settings() {
               value={profileData.bio}
               onChange={handleProfileChange}
               rows="3"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
             />
           </div>
           <div>
@@ -174,7 +174,7 @@ function Settings() {
               value={profileData.website}
               onChange={handleProfileChange}
               placeholder="https://..."
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
             />
           </div>
           
@@ -190,7 +190,7 @@ function Settings() {
                 value={profileData.social_links.linkedin}
                 onChange={handleProfileChange}
                 placeholder="LinkedIn URL"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
               <input
                 type="url"
@@ -198,7 +198,7 @@ function Settings() {
                 value={profileData.social_links.github}
                 onChange={handleProfileChange}
                 placeholder="GitHub URL"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
               <input
                 type="url"
@@ -206,7 +206,7 @@ function Settings() {
                 value={profileData.social_links.twitter}
                 onChange={handleProfileChange}
                 placeholder="Twitter URL"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
               <input
                 type="url"
@@ -214,7 +214,7 @@ function Settings() {
                 value={profileData.social_links.instagram}
                 onChange={handleProfileChange}
                 placeholder="Instagram URL"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
             </div>
           </div>
@@ -222,7 +222,7 @@ function Settings() {
           <button
             onClick={saveProfile}
             disabled={loading}
-            className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 disabled:opacity-50"
+            className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 disabled:opacity-50 text-sm"
           >
             {loading ? 'Saving...' : 'Save Profile'}
           </button>
@@ -243,7 +243,7 @@ function Settings() {
                 name="site_title"
                 value={systemSettings.site_title}
                 onChange={handleSystemChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
             </div>
             <div>
@@ -255,7 +255,7 @@ function Settings() {
                 name="site_description"
                 value={systemSettings.site_description}
                 onChange={handleSystemChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               />
             </div>
           </div>
@@ -267,7 +267,7 @@ function Settings() {
                 name="maintenance_mode"
                 checked={systemSettings.maintenance_mode}
                 onChange={handleSystemChange}
-                className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded text-sm"
               />
               <label className="ml-2 block text-sm text-gray-700">
                 Maintenance Mode
@@ -279,7 +279,7 @@ function Settings() {
                 name="analytics_enabled"
                 checked={systemSettings.analytics_enabled}
                 onChange={handleSystemChange}
-                className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded text-sm"
               />
               <label className="ml-2 block text-sm text-gray-700">
                 Enable Analytics
@@ -290,7 +290,7 @@ function Settings() {
           <button
             onClick={saveSystemSettings}
             disabled={loading}
-            className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 disabled:opacity-50"
+            className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 disabled:opacity-50 text-sm"
           >
             {loading ? 'Saving...' : 'Save System Settings'}
           </button>
@@ -303,7 +303,7 @@ function Settings() {
         <div className="space-y-4">
           <button
             onClick={changePassword}
-            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm"
           >
             Change Password
           </button>
