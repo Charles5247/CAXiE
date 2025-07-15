@@ -57,7 +57,7 @@ function Certifications() {
       // Upload file if provided
       if (formData.file) {
         const fileName = `certifications/${Date.now()}-${formData.file.name}`;
-        const { data: uploadData, error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabase.storage
           .from('media')
           .upload(fileName, formData.file);
         if (uploadError) throw uploadError;
