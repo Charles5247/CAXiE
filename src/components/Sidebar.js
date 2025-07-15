@@ -161,7 +161,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
       {/* Mobile menu button (hamburger) */}
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className={`fixed top-2 left-2 z-50 lg:hidden bg-purple-600 text-white p-2 rounded-lg shadow-lg hover:bg-purple-700 transition ${isSidebarVisible ? '' : 'hidden'}`}
+        className={`fixed top-2 left-2 z-50 lg:hidden bg-purple-600 text-white p-3 rounded-lg shadow-lg hover:bg-purple-700 transition ${isSidebarVisible ? '' : 'hidden'}`}
         aria-label="Open navigation menu"
       >
         {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -175,7 +175,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
             return next;
           });
         }}
-        className={`fixed top-8 left-4 z-50 hidden lg:block bg-white text-purple-700 p-2 rounded-lg shadow-lg hover:bg-purple-100 transition border border-purple-200 ${isSidebarVisible ? '' : 'hidden'}`}
+        className={`fixed top-8 left-4 z-50 hidden lg:block bg-white text-purple-700 p-3 rounded-lg shadow-lg hover:bg-purple-100 transition border border-purple-200 ${isSidebarVisible ? '' : 'hidden'}`}
         style={{ zIndex: 60 }}
         aria-label="Toggle sidebar"
       >
@@ -183,7 +183,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
       </button>
       {/* Sidebar navigation (desktop) */}
       <nav className={`fixed top-0 left-0 h-full bg-gradient-to-b from-purple-900 via-black to-black shadow-2xl flex flex-col z-50 transition-all duration-300 ${
-        isCollapsed ? 'w-12 sm:w-16' : 'w-48 sm:w-64'
+        isCollapsed ? 'w-12 sm:w-16' : 'w-16 sm:w-48 md:w-64'
       } ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       }`} style={{ display: isSidebarVisible ? 'flex' : 'none' }}>

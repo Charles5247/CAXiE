@@ -59,11 +59,11 @@ const orbitPositions = [
 
 const About = () => {
   return (
-    <section id="about" className="w-full py-16 px-0 bg-gradient-to-b from-purple-900/80 to-black/80">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12 px-4 md:px-12">
+    <section id="about" className="w-full py-12 sm:py-16 px-2 sm:px-0 bg-gradient-to-b from-purple-900/80 to-black/80">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-12 px-2 sm:px-4 md:px-12">
         {/* Profile Image with Orbiting Icons */}
-        <div className="relative flex-shrink-0 flex flex-col items-center w-full md:w-auto md:mr-12 mb-8 md:mb-0" style={{ width: 300, height: 300 }}>
-          <ProfileImage src={aboutData.profileImage} alt="Profile" size={300} />
+        <div className="relative flex-shrink-0 flex flex-col items-center w-full md:w-auto md:mr-12 mb-8 md:mb-0" style={{ width: 'min(90vw, 300px)', height: 'min(90vw, 300px)' }}>
+          <ProfileImage src={aboutData.profileImage} alt="Profile" size={180} />
           <div className="absolute inset-0 orbit-animate pointer-events-none">
             {orbitIcons.map((icon, idx) => (
               <span
@@ -78,13 +78,13 @@ const About = () => {
         </div>
         {/* Content */}
         <div className="flex-1 flex flex-col justify-center items-start w-full">
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-          <div className="flex flex-wrap gap-4 mb-6">
+          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
+          <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
             {aboutData.quickFacts.map((fact, idx) => (
               <QuickFact key={idx} icon={iconMap[fact.icon]} label={fact.label} />
             ))}
           </div>
-          <p className="text-gray-200 text-lg mb-8 max-w-2xl">
+          <p className="text-gray-200 text-base sm:text-lg mb-8 max-w-2xl">
             {aboutData.bio}
           </p>
           <QuoteBlock>{aboutData.motto}</QuoteBlock>

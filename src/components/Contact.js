@@ -57,15 +57,15 @@ const Contact = () => {
     <>
       <section
         id="contact"
-        className="py-8 px-4 font-sans flex justify-center w-full bg-gradient-to-b from-purple-800 via-purple-900 to-black"
+        className="py-8 px-2 sm:px-4 font-sans flex justify-center w-full bg-gradient-to-b from-purple-800 via-purple-900 to-black"
       >
         <div
-          className="w-full md:w-[70%] mx-auto rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch bg-white font-sans p-0 md:p-0 overflow-hidden"
+          className="w-full max-w-2xl md:w-[70%] mx-auto rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch bg-white font-sans p-0 md:p-0 overflow-hidden"
         >
           {/* Left: Contact Info */}
-          <div className="flex-1 flex flex-col justify-between p-3 md:p-4 text-gray-800 min-w-[260px] bg-white font-sans rounded-none md:rounded-l-3xl">
-            <h3 className="text-3xl font-bold text-purple-700 mb-4 tracking-tight leading-tight">Get in touch</h3>
-            <p className="text-gray-500 text-xl font-normal mb-8 leading-snug">Thank you for looking me up today, trust I could be of help. For more info use any of the links below to connect with me.</p>
+          <div className="flex-1 flex flex-col justify-between p-3 md:p-4 text-gray-800 min-w-[180px] sm:min-w-[260px] bg-white font-sans rounded-none md:rounded-l-3xl">
+            <h3 className="text-2xl sm:text-3xl font-bold text-purple-700 mb-4 tracking-tight leading-tight">Get in touch</h3>
+            <p className="text-gray-500 text-base sm:text-xl font-normal mb-8 leading-snug">Thank you for looking me up today, trust I could be of help. For more info use any of the links below to connect with me.</p>
             <div className="flex flex-col gap-4 text-xl mb-8">
               <div className="flex items-center gap-4">
                 <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-700">

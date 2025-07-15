@@ -41,13 +41,13 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-start px-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 overflow-hidden"
       style={{ position: 'relative', ...fontFamily }}
     >
       <img
         src={process.env.PUBLIC_URL + '/profile.JPG'}
         alt="Charles Xavier Ekechukwuemeka"
-        className="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-100"
+        className="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-100 max-h-screen"
         style={{ filter: 'brightness(0.85)' }}
       />
       <div className="absolute inset-0 bg-black/50 z-10" />
@@ -55,25 +55,25 @@ const Hero = () => {
         href="https://wa.me/2349014921243"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute top-8 right-8 flex items-center gap-2 bg-black/80 hover:bg-black text-white font-semibold py-2 px-5 rounded-full shadow-lg transition z-20 backdrop-blur"
+        className="absolute top-4 right-2 sm:top-8 sm:right-8 flex items-center gap-2 bg-black/80 hover:bg-black text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-lg transition z-20 backdrop-blur text-sm sm:text-base"
         style={{ fontSize: '1rem' }}
       >
         Let's chat now
       </a>
       <div className="relative z-20 flex flex-col items-start text-left w-full max-w-2xl">
-        <h1 className="text-lg sm:text-xl font-extrabold text-gray-100 mb-4" style={fontFamily}>
+        <h1 className="text-sm sm:text-base md:text-lg font-extrabold text-gray-100 mb-3" style={fontFamily}>
           Hi, I'm{' '}
           <span className="text-purple-400">
             {displayedName}
             <span className="animate-pulse">|</span>
           </span>
         </h1>
-        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-200 mb-6 max-w-2xl leading-relaxed" style={fontFamily}>
+        <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-200 mb-4 max-w-2xl leading-relaxed" style={fontFamily}>
           IT Consultant | Network & Systems Engineer | Project Manager | Full Stack Developer | Data Analyst | Photographer & Media Tech
         </h3>
-        <div className="mb-4 text-gray-300 space-y-2" style={fontFamily}>
+        <div className="mb-3 text-gray-300 space-y-2" style={fontFamily}>
           <div className="flex gap-4 items-center mt-2">
-            <div className="flex gap-6 mt-8">
+            <div className="flex gap-4 sm:gap-6 mt-4 sm:mt-8">
               <a
                 href="https://github.com/Charles5247"
                 target="_blank"
@@ -113,7 +113,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <a href="#contact" className="inline-block px-8 py-4 bg-purple-700 text-white font-semibold rounded-full shadow-lg hover:bg-purple-800 transition text-lg" style={fontFamily}>
+        <a href="#contact" className="inline-block px-6 py-3 bg-purple-700 text-white font-semibold rounded-full shadow-lg hover:bg-purple-800 transition text-base" style={fontFamily}>
           Contact Me
         </a>
       </div>
