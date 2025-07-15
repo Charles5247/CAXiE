@@ -11,7 +11,13 @@ const BlogModal = ({ post, onClose }) => (
       <button onClick={onClose} className="absolute top-3 right-3 text-2xl text-purple-700 hover:text-purple-900">&times;</button>
       <div className="flex flex-col items-center">
         {/* Post image */}
-        <img src={post.image_url || 'https://via.placeholder.com/400x160?text=No+Image'} alt={post.title} className="w-full h-40 object-cover rounded-xl mb-3" />
+        {post.image_url ? (
+          <img src={post.image_url} alt={post.title} className="w-full h-40 object-cover rounded-xl mb-3" onError={e => { e.target.onerror = null; e.target.style.display='none'; }} />
+        ) : (
+          <div className="w-full h-40 flex items-center justify-center bg-purple-100 rounded-xl mb-3">
+            <svg className="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
+          </div>
+        )}
         {/* Post image/avatar placeholder */}
         <div className="w-16 h-16 bg-purple-100 rounded-full mb-3 flex items-center justify-center self-center -mt-12 border-4 border-white shadow-lg">
           <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
@@ -86,12 +92,18 @@ const Blog = () => {
           {posts.map((post, idx) => (
             <div key={idx} className="bg-white rounded-2xl shadow p-6 flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl animate-fade-in-up">
               {/* Post image */}
-              <img
-                src={post.image_url || 'https://via.placeholder.com/400x160?text=No+Image'}
-                alt={post.title}
-                className="w-full h-40 object-cover rounded-xl mb-3"
-                onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/400x160?text=No+Image'; }}
-              />
+              {post.image_url ? (
+                <img
+                  src={post.image_url}
+                  alt={post.title}
+                  className="w-full h-40 object-cover rounded-xl mb-3"
+                  onError={e => { e.target.onerror = null; e.target.style.display='none'; }}
+                />
+              ) : (
+                <div className="w-full h-40 flex items-center justify-center bg-purple-100 rounded-xl mb-3">
+                  <svg className="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
+                </div>
+              )}
               {/* Post image/avatar placeholder */}
               <div className="w-16 h-16 bg-purple-100 rounded-full mb-3 flex items-center justify-center self-center -mt-12 border-4 border-white shadow-lg">
                 <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 21l4-4 4 4" /></svg>
