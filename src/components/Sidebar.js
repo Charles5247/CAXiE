@@ -39,7 +39,7 @@ const Sidebar = () => {
         <div className="flex flex-col h-full">
           {/* Logo at the top */}
           <div className="sidebar-header flex items-center justify-center h-20 px-6 border-b border-purple-700">
-            <a href="#" className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <img src={logoUrl} alt="Logo" className="h-12 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
             </a>
           </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient';
 
 function Settings() {
   const [loading, setLoading] = useState(false);

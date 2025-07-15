@@ -62,7 +62,7 @@ function Blogs() {
       // Upload image if provided
       if (imageFile) {
         const fileName = `blog-${Date.now()}-${imageFile.name}`;
-        const { data: uploadData, error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabase.storage
           .from('blog-images')
           .upload(fileName, imageFile);
 
