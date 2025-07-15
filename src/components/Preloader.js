@@ -10,7 +10,7 @@ const Preloader = () => (
       loop
       muted
       playsInline
-      className="absolute inset-0 w-full h-full object-cover"
+      className="absolute inset-0 w-full h-full object-contain bg-black"
       style={{ zIndex: 1, opacity: 0.85 }}
     />
     <div className="relative z-10 flex flex-col items-center">

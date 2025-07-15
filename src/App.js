@@ -31,7 +31,7 @@ function App() {
   React.useEffect(() => {
     trackVisit();
     // Preloader timeout
-    const timer = setTimeout(() => setLoading(false), 1500);
+    const timer = setTimeout(() => setLoading(false), 3500);
     return () => clearTimeout(timer);
   }, []);
 
