@@ -158,7 +158,7 @@ function Media() {
 
       // Upload file to Supabase Storage
       const fileName = `${formData.category}/${Date.now()}-${selectedFile.name}`;
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('media')
         .upload(fileName, selectedFile);
 

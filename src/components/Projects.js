@@ -68,7 +68,7 @@ function Projects() {
       // Upload image if provided
       if (imageFile) {
         const fileName = `project-${Date.now()}-${imageFile.name}`;
-        const { data: uploadData, error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabase.storage
           .from('project-images')
           .upload(fileName, imageFile);
 
