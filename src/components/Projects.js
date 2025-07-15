@@ -33,7 +33,7 @@ const LightboxModal = ({ image, onClose, imageType }) => (
         &times;
       </button>
       <img
-        src={process.env.PUBLIC_URL + `/${imageType === 'photography' ? 'Photography' : 'image-artistry'}/` + image}
+        src={image && image.startsWith('http') ? image : image}
         alt="Full view"
         className="max-w-full max-h-[60vh] md:max-h-[70vh] object-contain rounded-lg shadow-2xl mx-auto"
         onClick={e => e.stopPropagation()}
@@ -168,11 +168,11 @@ const Projects = () => {
           {photographyImages.map((img, idx) => (
             <div key={img.id || idx} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
               <img
-                src={img.image_url || img.url || img.file_url || ''}
+                src={img.image_url && img.image_url.startsWith('http') ? img.image_url : img.image_url || img.url || img.file_url || ''}
                 alt={img.title || `Photography ${idx + 1}`}
                 className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
-                onClick={() => openLightbox(img.image_url || img.url || img.file_url, 'photography')}
+                onClick={() => openLightbox(img.image_url && img.image_url.startsWith('http') ? img.image_url : img.image_url || img.url || img.file_url, 'photography')}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-lg font-semibold">
@@ -187,11 +187,11 @@ const Projects = () => {
           {artistryImages.map((img, idx) => (
             <div key={img.id || idx} className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-black/20 group">
               <img
-                src={img.image_url || img.url || img.file_url || ''}
+                src={img.image_url && img.image_url.startsWith('http') ? img.image_url : img.image_url || img.url || img.file_url || ''}
                 alt={img.title || `Image Artistry ${idx + 1}`}
                 className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
-                onClick={() => openLightbox(img.image_url || img.url || img.file_url, 'artistry')}
+                onClick={() => openLightbox(img.image_url && img.image_url.startsWith('http') ? img.image_url : img.image_url || img.url || img.file_url, 'artistry')}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-lg font-semibold">
