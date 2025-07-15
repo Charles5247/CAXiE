@@ -1,9 +1,21 @@
 import React from 'react';
 
+const VIDEO_URL = "https://ubylrjabxpanqacvbhpc.supabase.co/storage/v1/object/public/preloader//Turquoise%20and%20Monochrome%20Photo%20Heading%20Website%20Facebook%20Cover.mp4";
+
 const Preloader = () => (
-  <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-90">
-    <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-    <span className="text-white text-lg font-semibold tracking-wide">Loading...</span>
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+    <video
+      src={VIDEO_URL}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover"
+      style={{ zIndex: 1, opacity: 0.85 }}
+    />
+    <div className="relative z-10 flex flex-col items-center">
+      <span className="text-white text-2xl font-bold drop-shadow-lg">Loading...</span>
+    </div>
   </div>
 );
 
