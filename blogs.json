@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to My Blog",
+    "content": "This is the first blog post!",
+    "author": "Admin",
+    "date": "2024-06-01"
+  },
+  {
+    "id": 2,
+    "title": "Second Post",
+    "content": "Here is another post.",
+    "author": "Admin",
+    "date": "2024-06-02"
+  }
+] 
