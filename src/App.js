@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Media from './components/Media';
 import Settings from './components/Settings';
+import Certifications from './components/Certifications';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path="/skills" element={<Skills />} />
           <Route path="/media" element={<Media />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/certifications" element={<Certifications />} />
         </Routes>
         <button
           onClick={() => supabase.auth.signOut()}

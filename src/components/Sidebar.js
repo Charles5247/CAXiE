@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaTachometerAlt, FaBlog, FaProjectDiagram, FaTools, FaImages, FaCog, FaBars } from 'react-icons/fa';
+import { FaTachometerAlt, FaBlog, FaProjectDiagram, FaTools, FaImages, FaCog, FaBars, FaCertificate } from 'react-icons/fa';
 
 const navLinks = [
   { name: 'Dashboard', icon: <FaTachometerAlt />, path: '/' },
@@ -8,6 +8,7 @@ const navLinks = [
   { name: 'Projects', icon: <FaProjectDiagram />, path: '/projects' },
   { name: 'Skills', icon: <FaTools />, path: '/skills' },
   { name: 'Media', icon: <FaImages />, path: '/media' },
+  { name: 'Certifications', icon: <FaCertificate />, path: '/certifications' },
   { name: 'Settings', icon: <FaCog />, path: '/settings' },
 ];
 
