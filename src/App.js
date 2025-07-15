@@ -61,7 +61,7 @@ function App() {
           {/* Projects section */}
           <Projects />
           {/* Certifications section */}
-          <Certifications />
+          {/* <Certifications /> */}
           {/* Blog section */}
           <Blog />
           {/* Contact section */}
