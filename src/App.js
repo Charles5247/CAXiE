@@ -13,12 +13,15 @@ import Blog from './components/Blog'; // Blog/updates section
 import Contact from './components/Contact'; // Contact form/section
 import AIChatbot from './components/AIChatbot';
 import { trackVisit } from './services/visitTracking';
+import Preloader from './components/Preloader';
 
 function App() {
   // State to track if the sidebar is collapsed (for responsive layout)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   // State to track sidebar/header visibility (for seamless margin adjustment)
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  // State for preloader
+  const [loading, setLoading] = useState(true);
 
   // Pass a callback to Sidebar to update visibility state
   const handleSidebarVisibility = (visible) => {
@@ -27,7 +30,14 @@ function App() {
 
   React.useEffect(() => {
     trackVisit();
+    // Preloader timeout
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return <Preloader />;
+  }
 
   return (
     <>
