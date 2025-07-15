@@ -11,7 +11,7 @@ function Media() {
     category: 'Photography',
     description: ''
   });
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState([]);
 
   // Fetch ALL media from Supabase (including from blogs, projects, etc.)
   const fetchMedia = async () => {
@@ -133,8 +133,8 @@ function Media() {
   // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'file' && files && files[0]) {
-      setSelectedFile(files[0]);
+    if (name === 'file' && files && files.length > 0) {
+      setSelectedFiles(Array.from(files));
     } else {
       setFormData(prev => ({
         ...prev,
@@ -146,49 +146,42 @@ function Media() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!selectedFile) {
-      setError('Please select a file to upload');
+    if (!selectedFiles.length) {
+      setError('Please select at least one file to upload');
       return;
     }
-
     try {
       setUploading(true);
       setError(null);
-
-      // Upload file to Supabase Storage
-      const fileName = `${formData.category}/${Date.now()}-${selectedFile.name}`;
-      const { error: uploadError } = await supabase.storage
-        .from('media')
-        .upload(fileName, selectedFile);
-
-      if (uploadError) throw uploadError;
-      
-      // Get public URL
-      const { data: urlData } = supabase.storage
-        .from('media')
-        .getPublicUrl(fileName);
-
-      // Save media record to database
-      const { error: dbError } = await supabase
-        .from('media')
-        .insert([{
-          file_name: selectedFile.name,
-          file_url: urlData.publicUrl,
-          category: formData.category,
-          uploaded_at: new Date().toISOString()
-        }]);
-
-      if (dbError) throw dbError;
-
+      let uploadErrors = [];
+      for (const file of selectedFiles) {
+        const fileName = `${formData.category}/${Date.now()}-${file.name}`;
+        const { error: uploadError } = await supabase.storage
+          .from('media')
+          .upload(fileName, file);
+        if (uploadError) {
+          uploadErrors.push(`${file.name}: ${uploadError.message}`);
+          continue;
+        }
+        const { data: urlData } = supabase.storage
+          .from('media')
+          .getPublicUrl(fileName);
+        const { error: dbError } = await supabase
+          .from('media')
+          .insert([{
+            file_name: file.name,
+            file_url: urlData.publicUrl,
+            category: formData.category,
+            uploaded_at: new Date().toISOString()
+          }]);
+        if (dbError) uploadErrors.push(`${file.name}: ${dbError.message}`);
+      }
       // Reset form and refresh data
-      setFormData({
-        category: 'Photography',
-        description: ''
-      });
-      setSelectedFile(null);
+      setFormData({ category: 'Photography', description: '' });
+      setSelectedFiles([]);
       setShowForm(false);
       fetchMedia();
+      if (uploadErrors.length) setError(uploadErrors.join('\n'));
     } catch (err) {
       setError(err.message);
     } finally {
@@ -266,7 +259,7 @@ function Media() {
       category: 'Photography',
       description: ''
     });
-    setSelectedFile(null);
+    setSelectedFiles([]);
     setShowForm(false);
   };
 
@@ -368,13 +361,14 @@ function Media() {
                   type="file"
                   name="file"
                   accept="image/*,video/*"
+                  multiple
                   onChange={handleInputChange}
                   required
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
-                {selectedFile && (
+                {selectedFiles.length > 0 && (
                   <p className="text-sm text-green-600 mt-1">
-                    Selected: {selectedFile.name} ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
+                    Selected: {selectedFiles.map(f => f.name).join(', ')}
                   </p>
                 )}
               </div>
