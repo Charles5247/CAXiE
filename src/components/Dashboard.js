@@ -248,7 +248,7 @@ const Dashboard = () => {
           disabled={refreshing || loading}
           className="px-4 py-2 bg-purple-700 text-white rounded hover:bg-purple-800 disabled:opacity-50"
         >
-          {refreshing || loading ? 'Refreshing...' : 'Refresh'}g
+          {refreshing || loading ? 'Refreshing...' : 'Refresh'}
         </button>
       </div>
       {/* Stat Cards */}
