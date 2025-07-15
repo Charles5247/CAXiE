@@ -8,7 +8,6 @@ import Hero from './components/Hero'; // Hero/landing section
 import About from './components/About'; // About section
 import Skills from './components/Skills'; // Skills section
 import Projects from './components/Projects'; // Projects/portfolio section
-import Certifications from './components/Certifications'; // Certifications section
 import Blog from './components/Blog'; // Blog/updates section
 import Contact from './components/Contact'; // Contact form/section
 import AIChatbot from './components/AIChatbot';
