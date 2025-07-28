@@ -31,22 +31,22 @@ const sendEmailWithEmailJS = async (formData) => {
     throw new Error('EmailJS not configured');
   }
 
-  const templateParams = {
-    from_name: formData.name,
-    from_email: formData.email,
-    from_city: formData.city,
-    from_country: formData.country,
-    subject: formData.subject,
-    message: formData.message,
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      from_city: formData.city,
+      from_country: formData.country,
+      subject: formData.subject,
+      message: formData.message,
     to_email: 'johneme2022@gmail.com',
-  };
+    };
 
   return await emailjs.send(
-    EMAILJS_CONFIG.SERVICE_ID,
-    EMAILJS_CONFIG.TEMPLATE_ID,
-    templateParams,
-    EMAILJS_CONFIG.USER_ID
-  );
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      templateParams,
+      EMAILJS_CONFIG.USER_ID
+    );
 };
 
 // Option 2: Formspree (free form service) - PRIMARY METHOD
@@ -189,7 +189,7 @@ export const sendEmail = async (formData) => {
       fallback: true
     };
   }
-};
+}; 
 
 // Legacy function for backward compatibility
 export const sendEmailFallback = sendEmail; 

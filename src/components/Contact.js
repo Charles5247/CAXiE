@@ -164,8 +164,20 @@ const Contact = () => {
             {errorMessage && (
               <div className="max-w-xl mx-auto mb-4 p-4 bg-red-100 text-red-800 rounded-lg shadow text-center">{errorMessage}</div>
             )}
-            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 transition-transform duration-300 text-gray-800" data-netlify="true" name="contact">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit} 
+              className="w-full flex flex-col gap-5 transition-transform duration-300 text-gray-800"
+            >
+              {/* Netlify Forms hidden input */}
               <input type="hidden" name="form-name" value="contact" />
+              <div hidden>
+                <input name="bot-field" />
+              </div>
+              
               <input
                 type="text"
                 name="name"
