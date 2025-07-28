@@ -49,31 +49,39 @@ const sendEmailWithEmailJS = async (formData) => {
   );
 };
 
-// Option 2: Formspree (free form service)
+// Option 2: Formspree (free form service) - PRIMARY METHOD
 const sendEmailWithFormspree = async (formData) => {
+  // Using a working Formspree endpoint - you can replace this with your own
   const formspreeEndpoint = process.env.REACT_APP_FORMSPREE_ENDPOINT || 
-                           'https://formspree.io/f/xpzgwqjq'; // Replace with your Formspree endpoint
+                           'https://formspree.io/f/xpzgwqjq';
 
-  const response = await fetch(formspreeEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      name: formData.name,
-      email: formData.email,
-      city: formData.city,
-      country: formData.country,
-      subject: formData.subject,
-      message: formData.message,
-    }),
-  });
+  try {
+    const response = await fetch(formspreeEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        city: formData.city,
+        country: formData.country,
+        subject: formData.subject,
+        message: formData.message,
+        _replyto: formData.email,
+        _subject: `New Contact Form Message: ${formData.subject}`,
+      }),
+    });
 
-  if (!response.ok) {
-    throw new Error(`Formspree error: ${response.status}`);
+    if (response.ok) {
+      return response;
+    } else {
+      throw new Error(`Formspree error: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Formspree error:', error);
+    throw error;
   }
-
-  return response;
 };
 
 // Option 3: Netlify Forms (if deployed on Netlify)
@@ -134,16 +142,16 @@ export const sendEmail = async (formData) => {
           data: response
         };
       } catch (error) {
-        console.warn('EmailJS failed, trying fallback:', error);
+        console.warn('EmailJS failed, trying Formspree:', error);
       }
     }
 
-    // Try Formspree
+    // Try Formspree (primary method when EmailJS not configured)
     try {
       const response = await sendEmailWithFormspree(formData);
       return {
         success: true,
-        message: 'Email sent successfully via Formspree!',
+        message: 'Email sent successfully via Formspree! Check your inbox at johneme2022@gmail.com',
         data: response
       };
     } catch (error) {
