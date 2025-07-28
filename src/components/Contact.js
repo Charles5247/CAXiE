@@ -164,7 +164,8 @@ const Contact = () => {
             {errorMessage && (
               <div className="max-w-xl mx-auto mb-4 p-4 bg-red-100 text-red-800 rounded-lg shadow text-center">{errorMessage}</div>
             )}
-            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 transition-transform duration-300 text-gray-800">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 transition-transform duration-300 text-gray-800" data-netlify="true" name="contact">
+              <input type="hidden" name="form-name" value="contact" />
               <input
                 type="text"
                 name="name"
