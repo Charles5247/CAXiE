@@ -86,6 +86,8 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State for scroll-hide logic
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  // State for screen size detection
+  const [isMobile, setIsMobile] = useState(false);
   const scrollTimeout = useRef(null);
 
   // Smooth scroll to section
@@ -97,18 +99,24 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
     setIsMobileMenuOpen(false); // Close mobile menu after click
   };
 
-  // Scroll spy: update active section based on scroll position
+  // Handle screen size changes and scroll spy
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
     const handleScroll = () => {
-      // Hide sidebar/header on scroll
-      setIsSidebarVisible(false);
-      if (onVisibilityChange) onVisibilityChange(false);
-      // Reset timer to show sidebar/header after scrolling stops
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      scrollTimeout.current = setTimeout(() => {
-        setIsSidebarVisible(true);
-        if (onVisibilityChange) onVisibilityChange(true);
-      }, 600); // 600ms after scroll stops
+      // Only hide sidebar on desktop when scrolling
+      if (!isMobile) {
+        setIsSidebarVisible(false);
+        if (onVisibilityChange) onVisibilityChange(false);
+        // Reset timer to show sidebar/header after scrolling stops
+        if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+        scrollTimeout.current = setTimeout(() => {
+          setIsSidebarVisible(true);
+          if (onVisibilityChange) onVisibilityChange(true);
+        }, 600); // 600ms after scroll stops
+      }
 
       // Scroll spy logic
       const sections = ['hero', 'about', 'skills', 'projects', 'certifications', 'blog', 'contact'];
@@ -125,12 +133,18 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
         }
       }
     };
+    
+    // Initial screen size check
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
     return () => {
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-  }, [onVisibilityChange]);
+  }, [onVisibilityChange, isMobile]);
 
   // Navigation items for sidebar
   const navItems = [
@@ -161,7 +175,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
       {/* Mobile menu button (hamburger) */}
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className={`fixed top-2 left-2 z-50 lg:hidden bg-purple-600 text-white p-3 rounded-lg shadow-lg hover:bg-purple-700 transition ${isSidebarVisible ? '' : 'hidden'}`}
+        className={`fixed top-2 left-2 z-50 lg:hidden bg-purple-600 text-white p-3 rounded-lg shadow-lg hover:bg-purple-700 transition ${isMobile ? (isSidebarVisible ? '' : 'hidden') : 'hidden'}`}
         aria-label="Open navigation menu"
       >
         {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -185,8 +199,16 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
       <nav className={`fixed top-0 left-0 h-full bg-gradient-to-b from-purple-900 via-black to-black shadow-2xl flex flex-col z-50 transition-all duration-300 ${
         isCollapsed ? 'w-12 sm:w-16' : 'w-16 sm:w-48 md:w-64'
       } ${
+        // Mobile: only show when menu is open, Desktop: always show (unless hidden by scroll)
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      }`} style={{ display: isSidebarVisible ? 'flex' : 'none' }}>
+      }`} style={{ 
+        // On mobile: only show when menu is open, on desktop: show based on scroll visibility
+        display: isMobile 
+          ? (isMobileMenuOpen ? 'flex' : 'none')
+          : (isSidebarVisible ? 'flex' : 'none'),
+        // Ensure mobile sidebar has proper width
+        width: isMobile && isMobileMenuOpen ? '280px' : undefined
+      }}>
         {/* Logo section */}
         <div className={`flex flex-col items-center border-b border-purple-700/30 ${
           isCollapsed ? 'px-1 sm:px-2' : 'px-2 sm:px-4'
@@ -204,7 +226,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
           )}
         </div>
         {/* Navigation links */}
-        <div className="flex-1 py-3 sm:py-6">
+        <div className="flex-1 py-3 sm:py-6 overflow-y-auto">
           <ul className={`space-y-1 sm:space-y-2 ${
             isCollapsed ? 'px-1 sm:px-2' : 'px-2 sm:px-4'
           }`}>
@@ -216,10 +238,10 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
                     activeSection === item.id
                       ? 'bg-purple-600 text-white shadow-lg'
                       : 'text-gray-300 hover:bg-purple-800/50 hover:text-white'
-                  } text-xs sm:text-base`}
+                  } ${isMobile ? 'text-sm' : 'text-xs sm:text-base'}`}
                   title={isCollapsed ? item.label : ''}
                 >
-                  <span className={`transition-transform duration-300 group-hover:scale-110 ${
+                  <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${
                     activeSection === item.id ? 'text-white' : 'text-purple-400'
                   }`}
                   style={{ fontSize: '1.2rem' }}>
@@ -227,9 +249,9 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
                   </span>
                   {!isCollapsed && (
                     <>
-                      <span className="font-medium">{item.label}</span>
+                      <span className="font-medium truncate flex-1 min-w-0">{item.label}</span>
                       {activeSection === item.id && (
-                        <div className="ml-auto w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse"></div>
+                        <div className="ml-auto w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse flex-shrink-0"></div>
                       )}
                     </>
                   )}
@@ -303,11 +325,11 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
         <div
           className="fixed z-[999] flex items-center justify-center bg-white shadow-lg rounded-full border-2 border-purple-500 transition-all duration-300"
           style={{
-            left: window.innerWidth < 1024 ? '50%' : '1.5rem',
-            top: window.innerWidth < 1024 ? '1rem' : '1.5rem',
+            left: isMobile ? '50%' : '1.5rem',
+            top: isMobile ? '1rem' : '1.5rem',
             width: window.innerWidth < 640 ? 40 : 56,
             height: window.innerWidth < 640 ? 40 : 56,
-            transform: window.innerWidth < 1024 ? 'translateX(-50%)' : 'none',
+            transform: isMobile ? 'translateX(-50%)' : 'none',
           }}
         >
           <span className="text-purple-600 text-2xl sm:text-3xl">
