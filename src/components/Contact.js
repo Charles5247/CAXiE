@@ -130,7 +130,7 @@ const Contact = () => {
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900 text-xl leading-tight">Email</div>
-                  <a href="mailto:johneme2022@gmail.com" className="text-gray-600 text-lg hover:text-purple-700 transition leading-tight" target="_blank" rel="noopener noreferrer">johneme2022@gmail.com</a>
+                  <a href="mailto:joneme2022@gmail.com" className="text-gray-600 text-lg hover:text-purple-700 transition leading-tight" target="_blank" rel="noopener noreferrer">joneme2022@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
