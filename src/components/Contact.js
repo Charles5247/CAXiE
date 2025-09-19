@@ -20,6 +20,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [showSubmissions, setShowSubmissions] = useState(false);
 
   // Validation
   const validate = (field, value) => {
@@ -37,6 +38,16 @@ const Contact = () => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     validate(name, value);
+  };
+
+  // Get stored submissions
+  const getStoredSubmissions = () => {
+    try {
+      return JSON.parse(localStorage.getItem('contact_submissions') || '[]');
+    } catch (error) {
+      console.error('Error reading stored submissions:', error);
+      return [];
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -155,7 +166,16 @@ const Contact = () => {
           <div className="hidden md:block w-px bg-gray-200 self-stretch"></div>
           {/* Right: Contact Form */}
           <div className="flex-[1.2] flex flex-col justify-between p-3 md:p-4 bg-white/90">
-            <h3 className="text-2xl font-bold text-purple-900 mb-6 flex items-center gap-2">Send me a message</h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-purple-900 flex items-center gap-2">Send me a message</h3>
+              <button
+                onClick={() => setShowSubmissions(!showSubmissions)}
+                className="text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-gray-600"
+                title="View form submissions"
+              >
+                {showSubmissions ? 'Hide' : 'View'} Submissions ({getStoredSubmissions().length})
+              </button>
+            </div>
             {success && (
               <div className="max-w-xl mx-auto mb-4 p-4 bg-green-100 text-green-800 rounded-lg shadow text-center">
                 {successMessage}
@@ -163,6 +183,26 @@ const Contact = () => {
             )}
             {errorMessage && (
               <div className="max-w-xl mx-auto mb-4 p-4 bg-red-100 text-red-800 rounded-lg shadow text-center">{errorMessage}</div>
+            )}
+            
+            {/* Submissions Display */}
+            {showSubmissions && (
+              <div className="mb-4 p-4 bg-gray-50 rounded-lg max-h-60 overflow-y-auto">
+                <h4 className="font-semibold text-gray-800 mb-2">Recent Form Submissions:</h4>
+                {getStoredSubmissions().length === 0 ? (
+                  <p className="text-gray-500 text-sm">No submissions yet.</p>
+                ) : (
+                  <div className="space-y-2">
+                    {getStoredSubmissions().slice(-5).reverse().map((submission, index) => (
+                      <div key={submission.id || index} className="text-xs bg-white p-2 rounded border">
+                        <div className="font-medium">{submission.name} ({submission.email})</div>
+                        <div className="text-gray-600">{submission.subject}</div>
+                        <div className="text-gray-500">{new Date(submission.timestamp).toLocaleString()}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             )}
             <form 
               onSubmit={handleSubmit} 
