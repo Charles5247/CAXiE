@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Setup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .step h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .form-preview {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Form Setup Guide</h1>
+        
+        <div class="step">
+            <h3>Step 1: Create a Formspree Account</h3>
+            <p>Go to <a href="https://formspree.io" target="_blank">https://formspree.io</a> and sign up for a free account.</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Create a New Form</h3>
+            <p>After signing up, create a new form and set the email to: <strong>johneme2022@gmail.com</strong></p>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Get Your Form Endpoint</h3>
+            <p>Formspree will give you an endpoint like: <code>https://formspree.io/f/xpzgwqjq</code></p>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Update Your Environment Variables</h3>
+            <p>Create a <code>.env</code> file in your project root and add:</p>
+            <pre><code>REACT_APP_FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID</code></pre>
+            <p>Replace <code>YOUR_FORM_ID</code> with your actual Formspree form ID.</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 5: Test Your Form</h3>
+            <p>Once configured, your contact form will automatically send emails to johneme2022@gmail.com without opening Gmail.</p>
+        </div>
+
+        <div class="form-preview">
+            <h3>Form Preview (What users will see)</h3>
+            <p>Your contact form will collect:</p>
+            <ul>
+                <li>Name</li>
+                <li>Email</li>
+                <li>City</li>
+                <li>Country</li>
+                <li>Subject</li>
+                <li>Message</li>
+            </ul>
+            <p>And send it directly to: <strong>johneme2022@gmail.com</strong></p>
+        </div>
+
+        <div class="step">
+            <h3>Alternative: Quick Setup</h3>
+            <p>If you want to test immediately without setting up Formspree, the form will still work using the mailto fallback (opens Gmail).</p>
+        </div>
+    </div>
+</body>
+</html> 

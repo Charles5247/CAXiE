@@ -2,6 +2,7 @@
 // Allows users to send a message or inquiry
 
 import React, { useState } from 'react';
+import { sendEmail } from '../services/emailService';
 
 const initialForm = {
   name: '',
@@ -16,6 +17,9 @@ const Contact = () => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   // Validation
   const validate = (field, value) => {
@@ -35,8 +39,14 @@ const Contact = () => {
     validate(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Clear previous messages
+    setSuccess(false);
+    setErrorMessage('');
+    setSuccessMessage('');
+    
     // Validate all fields
     const newErrors = {
       name: validate('name', form.name),
@@ -46,11 +56,36 @@ const Contact = () => {
       subject: validate('subject', form.subject),
       message: validate('message', form.message),
     };
+    
     if (Object.values(newErrors).some(Boolean)) return;
-    // TODO: Implement real submission logic
-    setSuccess(true);
-    setForm(initialForm);
-    setTimeout(() => setSuccess(false), 4000);
+    
+    // Set loading state
+    setLoading(true);
+    
+    try {
+      // Send email using the updated service
+      const result = await sendEmail(form);
+      
+      if (result.success) {
+        setSuccess(true);
+        setSuccessMessage(result.message);
+        setForm(initialForm);
+        setErrors({});
+        
+        // Clear success message after 6 seconds
+        setTimeout(() => {
+          setSuccess(false);
+          setSuccessMessage('');
+        }, 6000);
+      } else {
+        setErrorMessage(result.message || 'Failed to send email. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setErrorMessage('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -122,9 +157,18 @@ const Contact = () => {
           <div className="flex-[1.2] flex flex-col justify-between p-3 md:p-4 bg-white/90">
             <h3 className="text-2xl font-bold text-purple-900 mb-6 flex items-center gap-2">Send me a message</h3>
             {success && (
-              <div className="max-w-xl mx-auto mb-4 p-4 bg-green-100 text-green-800 rounded-lg shadow text-center">Thank you! Your message has been sent.</div>
+              <div className="max-w-xl mx-auto mb-4 p-4 bg-green-100 text-green-800 rounded-lg shadow text-center">
+                {successMessage}
+              </div>
             )}
-            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 transition-transform duration-300 text-gray-800">
+            {errorMessage && (
+              <div className="max-w-xl mx-auto mb-4 p-4 bg-red-100 text-red-800 rounded-lg shadow text-center">{errorMessage}</div>
+            )}
+            <form 
+              onSubmit={handleSubmit} 
+              className="w-full flex flex-col gap-5 transition-transform duration-300 text-gray-800"
+            >
+              
               <input
                 type="text"
                 name="name"
@@ -197,9 +241,12 @@ const Contact = () => {
               {errors.message && <span className="text-red-500 text-xs -mt-4 mb-2">{errors.message}</span>}
               <button
                 type="submit"
-                className="bg-purple-700 text-white font-semibold rounded-lg px-6 py-3 shadow-lg hover:bg-purple-800 hover:scale-105 transition-transform duration-300 mt-2 w-full text-lg"
+                disabled={loading}
+                className={`bg-purple-700 text-white font-semibold rounded-lg px-6 py-3 shadow-lg hover:bg-purple-800 hover:scale-105 transition-transform duration-300 mt-2 w-full text-lg ${
+                  loading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
