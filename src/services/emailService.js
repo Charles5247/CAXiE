@@ -40,7 +40,7 @@ This message was sent from your portfolio website at ${new Date().toLocaleString
     `);
     
     // Create mailto link
-    const mailtoLink = `mailto:joneme2022@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:johneme2022@gmail.com?subject=${subject}&body=${body}`;
     
     // Open email client
     window.open(mailtoLink, '_blank');
