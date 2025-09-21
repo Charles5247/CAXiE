@@ -68,9 +68,9 @@ const Hero = () => {
             <span className="animate-pulse">|</span>
           </span>
         </h1>
-        <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-200 mb-4 max-w-2xl leading-relaxed" style={fontFamily}>
+        <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-200 mb-4 max-w-2xl leading-relaxed" style={fontFamily}>
           IT Consultant | Network & Systems Engineer | Project Manager | Full Stack Developer | Data Analyst | Photographer & Media Tech
-        </h3>
+        </h2>
         <div className="mb-3 text-gray-300 space-y-2" style={fontFamily}>
           <div className="flex gap-4 items-center mt-2">
             <div className="flex gap-4 sm:gap-6 mt-4 sm:mt-8">

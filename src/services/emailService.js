@@ -37,14 +37,14 @@ ${formData.message}
 
 ---
 This message was sent from your portfolio website at ${new Date().toLocaleString()}.
-    `);
-    
+  `);
+  
     // Create mailto link
-    const mailtoLink = `mailto:johneme2022@gmail.com?subject=${subject}&body=${body}`;
+  const mailtoLink = `mailto:johneme2022@gmail.com?subject=${subject}&body=${body}`;
     
     // Open email client
-    window.open(mailtoLink, '_blank');
-    
+  window.open(mailtoLink, '_blank');
+  
     // Also copy to clipboard as backup
     try {
       await navigator.clipboard.writeText(`
@@ -62,13 +62,13 @@ Timestamp: ${new Date().toLocaleString()}
     }
     
     // Show success message
-    return {
-      success: true,
+      return {
+        success: true,
       message: 'Email client opened! The message details have been copied to your clipboard as backup. Please send the email manually.',
       method: 'mailto',
       fallback: true
     };
-    
+
   } catch (error) {
     console.error('Email service error:', error);
     

@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CAXiE",
+  "name": "CAXiE Technologies | Smart Digital Solutions",
+  "description": "Smart Solutions for a Digital World — IT consultancy, network engineering, web development, data analysis, and media services.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,11 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#9333ea",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "developer", "photography", "technology"],
+  "lang": "en",
+  "scope": "/",
+  "id": "charles-xavier-portfolio"
 }

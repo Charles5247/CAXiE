@@ -1,3 +1,15 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://caxie.netlify.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin and private directories
+Disallow: /admin/
+Disallow: /temp-uploads/
+Disallow: /.git/
+Disallow: /node_modules/

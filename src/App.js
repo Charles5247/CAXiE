@@ -40,16 +40,25 @@ function App() {
 
   return (
     <>
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-purple-600 text-white px-4 py-2 rounded z-50">
+        Skip to main content
+      </a>
+      
       {/* Main flex container for sidebar + content */}
       <div className="flex min-h-screen bg-gradient-to-b from-purple-800 via-purple-900 to-black">
         {/* Sidebar navigation (collapsible) */}
         <Sidebar onCollapse={setIsSidebarCollapsed} onVisibilityChange={handleSidebarVisibility} />
+        
         {/* Main content area, margin adjusts based on sidebar/header visibility and state */}
-        <div
+        <main
+          id="main-content"
           className={`flex-1 transition-all duration-300
             ${isSidebarVisible ? (isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64') : 'ml-0'}
             ${isSidebarVisible ? 'mt-0' : 'mt-0'}
           `}
+          role="main"
+          aria-label="Main content"
         >
           {/* Hero/landing section */}
           <Hero />
@@ -65,8 +74,9 @@ function App() {
           <Blog />
           {/* Contact section */}
           <Contact />
-        </div>
-    </div>
+        </main>
+      </div>
+      
       {/* Floating AI Assistant Chatbot */}
       <AIChatbot />
     </>
