@@ -111,7 +111,7 @@ const Contact = () => {
           {/* Left: Contact Info */}
           <div className="flex-1 flex flex-col justify-between p-3 md:p-4 text-gray-800 min-w-[180px] sm:min-w-[260px] bg-white font-sans rounded-none md:rounded-l-3xl">
             <h3 className="text-2xl sm:text-3xl font-bold text-purple-700 mb-4 tracking-tight leading-tight">Get in touch</h3>
-            <p className="text-gray-500 text-base sm:text-xl font-normal mb-8 leading-snug">Thank you for looking me up today, trust I could be of help. For more info use any of the links below to connect with me.</p>
+            <p className="text-gray-500 text-base sm:text-xl font-normal mb-8 leading-snug">Thank you for looking us up today, trust we could be of help. For more info use any of the links below to connect with us</p>
             <div className="flex flex-col gap-4 text-xl mb-8">
               <div className="flex items-center gap-4">
                 <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-700">
@@ -120,7 +120,7 @@ const Contact = () => {
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900 text-xl leading-tight">Location</div>
-                  <div className="text-gray-600 text-lg leading-tight">Abuja, Nigeria</div>
+                  <div className="text-gray-600 text-lg leading-tight">Kano, Nigeria</div>
                 </div>
               </div>
               <div className="flex items-center gap-4">
