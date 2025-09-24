@@ -130,7 +130,7 @@ const Contact = () => {
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900 text-xl leading-tight">Email</div>
-                  <a href="mailto:joneme2022@gmail.com" className="text-gray-600 text-lg hover:text-purple-700 transition leading-tight" target="_blank" rel="noopener noreferrer">joneme2022@gmail.com</a>
+                  <a href="mailto:johneme2022@gmail.com" className="text-gray-600 text-lg hover:text-purple-700 transition leading-tight" target="_blank" rel="noopener noreferrer">johneme2022@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -145,7 +145,7 @@ const Contact = () => {
               </div>
             </div>
             <div>
-              <span className="block font-semibold text-purple-700 text-xl mb-4">Follow my social media</span>
+              <span className="block font-semibold text-purple-700 text-xl mb-4">Follow us on social media</span>
               <div className="flex gap-4 mt-1">
                 <a href="https://www.instagram.com/iamxavi_too/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-700 text-white text-2xl hover:bg-purple-800 transition">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" strokeWidth="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
@@ -167,7 +167,7 @@ const Contact = () => {
           {/* Right: Contact Form */}
           <div className="flex-[1.2] flex flex-col justify-between p-3 md:p-4 bg-white/90">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-purple-900 flex items-center gap-2">Send me a message</h3>
+              <h3 className="text-2xl font-bold text-purple-900 flex items-center gap-2">Send us a message</h3>
               <button
                 onClick={() => setShowSubmissions(!showSubmissions)}
                 className="text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-gray-600"
