@@ -214,7 +214,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
           isCollapsed ? 'px-1 sm:px-2' : 'px-2 sm:px-4'
         } mt-8 sm:mt-16 lg:mt-20 py-4 sm:py-8`}>
           <img 
-            src={process.env.PUBLIC_URL + '/IMG_5406.PNG'} 
+            src={process.env.PUBLIC_URL + '/logo.png'} 
             alt="CAXIE Logo" 
             className={`object-contain mb-2 sm:mb-4 transition-all duration-300 ${
               isCollapsed ? 'w-6 h-6 sm:w-8 sm:h-8' : 'w-16 h-auto sm:w-32'
@@ -222,7 +222,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
             style={{ filter: 'invert(1) brightness(2)' }} 
           />
           {!isCollapsed && (
-            <h3 className="text-white font-semibold text-xs sm:text-sm opacity-80">CAXIE</h3>
+            <h3 className="text-white font-semibold text-xs sm:text-sm opacity-80">CAXIE Technologies</h3>
           )}
         </div>
         {/* Navigation links */}
