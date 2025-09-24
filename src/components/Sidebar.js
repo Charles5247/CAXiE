@@ -216,7 +216,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
           <img 
             src={process.env.PUBLIC_URL + '/logo.png'} 
             alt="CAXIE Logo" 
-            className={`object-contain mb-2 sm:mb-4 transition-all duration-300 ${
+            className={`object-contain mb-3 sm:mb-6 transition-all duration-300 ${
               isCollapsed ? 'w-6 h-6 sm:w-8 sm:h-8' : 'w-16 h-auto sm:w-32'
             }`}
             style={{ filter: 'invert(1) brightness(2)' }} 
