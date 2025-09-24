@@ -265,7 +265,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
           isCollapsed ? 'px-1 sm:px-2' : 'px-2 sm:px-4'
         }`}>
           {!isCollapsed && (
-            <h4 className="text-white font-semibold text-xs sm:text-sm mb-2 sm:mb-4 text-center opacity-80">Connect With Me</h4>
+            <h4 className="text-white font-semibold text-xs sm:text-sm mb-2 sm:mb-4 text-center opacity-80">Connect With Us</h4>
           )}
           <div className={`flex ${
             isCollapsed ? 'flex-col space-y-2 sm:space-y-4' : 'justify-center space-x-2 sm:space-x-4'
