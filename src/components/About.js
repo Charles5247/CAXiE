@@ -78,7 +78,7 @@ const About = () => {
         </div>
         {/* Content */}
         <div className="flex-1 flex flex-col justify-center items-start w-full">
-          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">About Us</h2>
           <div className="flex flex-wrap gap-2 sm:gap-4 mb-6">
             {aboutData.quickFacts.map((fact, idx) => (
               <QuickFact key={idx} icon={iconMap[fact.icon]} label={fact.label} />
