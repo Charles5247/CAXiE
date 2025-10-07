@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 const fontFamily = { fontFamily: 'Poppins, Inter, Arial, sans-serif' };
 
-const FULL_NAME = 'EKECHUKWUEMEKA CHARLES XAVIER';
+const FULL_NAME = 'CAXiE Technologies';
 
 const Hero = () => {
   // Improved typewriter effect state
@@ -46,7 +46,7 @@ const Hero = () => {
     >
       <img
         src={process.env.PUBLIC_URL + '/profile.JPG'}
-        alt="Charles Xavier Ekechukwuemeka"
+        alt="CAXiE Technologies"
         className="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-100 max-h-screen"
         style={{ filter: 'brightness(0.85)' }}
       />
@@ -62,14 +62,14 @@ const Hero = () => {
       </a>
       <div className="relative z-20 flex flex-col items-start text-left w-full max-w-2xl">
         <h1 className="text-sm sm:text-base md:text-lg font-extrabold text-gray-100 mb-3" style={fontFamily}>
-          Hi, I'm{' '}
+          Welcome to{' '}
           <span className="text-purple-400">
             {displayedName}
             <span className="animate-pulse">|</span>
           </span>
         </h1>
         <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-200 mb-4 max-w-2xl leading-relaxed" style={fontFamily}>
-          IT Consultant | Network & Systems Engineer | Project Manager | Full Stack Developer | Data Analyst | Photographer & Media Tech
+          IT Consultancy | Network & Systems Engineering | Web Development | Data Analyst | Media Tech
         </h2>
         <div className="mb-3 text-gray-300 space-y-2" style={fontFamily}>
           <div className="flex gap-4 items-center mt-2">
