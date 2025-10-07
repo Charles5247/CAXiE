@@ -84,9 +84,14 @@ const About = () => {
               <QuickFact key={idx} icon={iconMap[fact.icon]} label={fact.label} />
             ))}
           </div>
-          <p className="text-gray-200 text-base sm:text-lg mb-8 max-w-2xl">
-            {aboutData.bio}
-          </p>
+          <div className="text-gray-200 text-base sm:text-lg mb-8 max-w-2xl space-y-4">
+            {String(aboutData.bio)
+              .split('\n\n')
+              .filter(Boolean)
+              .map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+          </div>
           <QuoteBlock>{aboutData.motto}</QuoteBlock>
           <a
             href={aboutData.resume}
