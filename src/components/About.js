@@ -18,6 +18,10 @@ const iconMap = {
     // Experience icon
     <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 7v-6m0 6a9 9 0 110-18 9 9 0 010 18z" /></svg>
   ),
+  clock: (
+    // Clock icon
+    <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" strokeWidth="2"/><path d="M12 7v5l3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  ),
   language: (
     // Language icon
     <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m0 0H3" /></svg>
@@ -93,15 +97,7 @@ const About = () => {
               ))}
           </div>
           <QuoteBlock>{aboutData.motto}</QuoteBlock>
-          <a
-            href={aboutData.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            download
-            className="inline-block px-8 py-4 bg-purple-700 text-white font-semibold rounded-full shadow-lg hover:bg-purple-800 transition text-lg mt-2"
-          >
-            Download Resume
-          </a>
+          {/* Resume button intentionally hidden */}
         </div>
       </div>
     </section>
