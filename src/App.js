@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar'; // Sidebar navigation
 import Hero from './components/Hero'; // Hero/landing section
 import About from './components/About'; // About section
-import Skills from './components/Skills'; // Skills section
+import Services from './components/Services'; // Services section
 import Projects from './components/Projects'; // Projects/portfolio section
 import Blog from './components/Blog'; // Blog/updates section
 import Contact from './components/Contact'; // Contact form/section
@@ -64,8 +64,8 @@ function App() {
           <Hero />
           {/* About section */}
           <About />
-          {/* Skills section */}
-          <Skills />
+          {/* Services section */}
+          <Services />
           {/* Projects section */}
           <Projects />
           {/* Certifications section */}

@@ -8,7 +8,7 @@ const defaultMessages = [
 ];
 
 const exampleAnswers = {
-  'skills': 'Charles is skilled in MERN, Next.js, Tailwind CSS, Python, and more. Check the Skills section for details!',
+  'services': 'CAXiE offers cybersecurity, ICT infrastructure, data & BI, web/branding, and training. See the Services section for details!',
   'projects': 'You can view Charles\'s projects in the Projects section. He has built a portfolio, e-commerce store, and more.',
   'contact': 'You can contact Charles using the form in the Contact section, or via LinkedIn and GitHub links.',
   'certifications': 'Charles has certifications in IT, networking, and analytics. See the Certifications section for more.',
@@ -18,13 +18,13 @@ const exampleAnswers = {
 
 function getBotReply(input) {
   const lower = input.toLowerCase();
-  if (lower.includes('skill')) return exampleAnswers.skills;
+  if (lower.includes('service') || lower.includes('skill')) return exampleAnswers.services;
   if (lower.includes('project')) return exampleAnswers.projects;
   if (lower.includes('contact')) return exampleAnswers.contact;
   if (lower.includes('certif')) return exampleAnswers.certifications;
   if (lower.includes('about')) return exampleAnswers.about;
   if (lower.includes('blog')) return exampleAnswers.blog;
-  return "I'm here to help! Try asking about skills, projects, contact, certifications, about, or blog.";
+  return "I'm here to help! Try asking about services, projects, contact, certifications, about, or blog.";
 }
 
 const AIChatbot = () => {

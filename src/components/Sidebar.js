@@ -118,8 +118,8 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
         }, 600); // 600ms after scroll stops
       }
 
-      // Scroll spy logic
-      const sections = ['hero', 'about', 'skills', 'projects', 'certifications', 'blog', 'contact'];
+  // Scroll spy logic
+      const sections = ['hero', 'about', 'services', 'projects', 'certifications', 'blog', 'contact'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -150,7 +150,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
   const navItems = [
     { id: 'hero', label: 'Home', icon: <HomeIcon /> },
     { id: 'about', label: 'About', icon: <UserIcon /> },
-    { id: 'skills', label: 'Skills', icon: <CodeIcon /> },
+    { id: 'services', label: 'Services', icon: <CodeIcon /> },
     { id: 'projects', label: 'Projects', icon: <FolderIcon /> },
     { id: 'certifications', label: 'Certifications', icon: <CertificateIcon /> },
     { id: 'blog', label: 'Blog', icon: <BlogIcon /> },
