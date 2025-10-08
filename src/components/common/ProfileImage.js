@@ -11,7 +11,7 @@ const ProfileImage = ({ src, alt, size = 160 }) => (
     src={src}
     alt={alt}
     className="rounded-xl object-cover border-4 border-purple-400 shadow-lg"
-    style={{ width: size, height: size * 1.2, objectPosition: 'center top' }}
+    style={{ width: size, height: size * 1.3, objectPosition: 'center top' }}
   />
 );
 
