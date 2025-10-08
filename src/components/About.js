@@ -39,10 +39,10 @@ const About = () => {
     <section id="about" className="w-full py-12 sm:py-16 px-2 sm:px-0 bg-gradient-to-b from-purple-900/80 to-black/80">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-12 px-2 sm:px-4 md:px-12">
         {/* Profile Image */}
-        <div className="relative flex-shrink-0 flex flex-col items-center w-full md:w-auto md:mr-12 mb-8 md:mb-0" style={{ width: 'min(90vw, 360px)' }}>
-          <ProfileImage src={aboutData.profileImage} alt="Profile" size={240} />
+        <div className="relative flex-shrink-0 flex flex-col items-center w-full md:w-auto md:mr-12 mb-8 md:mb-0" style={{ width: 'min(90vw, 420px)' }}>
+          <ProfileImage src={aboutData.profileImage} alt="Profile" size={280} />
           <div className="mt-4 text-center">
-            <div className="text-white text-lg md:text-2xl font-semibold">Ekechukwuemeka Charles Xavier</div>
+            <div className="text-white text-lg md:text-2xl font-medium">Ekechukwuemeka Charles Xavier</div>
             <div className="text-purple-300 text-sm">Founder and Chief Executive Officer</div>
             <div className="mx-auto mt-2 h-px w-20 md:w-24 bg-purple-400/40 rounded"></div>
           </div>

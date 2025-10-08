@@ -5,11 +5,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 const SEO = ({ 
-  title = "Charles Xavier - Full Stack Developer | Network Engineer | Data Analyst | Photographer",
-  description = "Professional portfolio of Charles Xavier Ekechukwuemeka - Full Stack Developer, Network & Systems Engineer, Project Manager, Data Analyst, and Creative Photographer. Based in Abuja, Nigeria.",
-  keywords = "Charles Xavier, Full Stack Developer, Web Developer, Network Engineer, Data Analyst, Photographer, React, JavaScript, Node.js, Python, Abuja, Nigeria, Portfolio, Software Engineer",
+  title = "CAXiE Technologies — Cybersecurity, ICT Infrastructure, Data & Web",
+  description = "CAXiE Technologies delivers integrated ICT solutions: cybersecurity & identity, infrastructure setup & support, data & business intelligence, web development, branding, and professional training. Based in Nigeria.",
+  keywords = "CAXiE Technologies, CAXIE, cybersecurity, identity and access management, ICT infrastructure, network engineering, data analytics, business intelligence, web development, branding, training, Nigeria, Abuja",
   image = "/preview.png",
-  url = "https://charles5247.github.io/CAXiE/",
+  url = "https://caxie.netlify.app/",
   type = "website",
   structuredData = null
 }) => {
@@ -21,7 +21,17 @@ const SEO = ({
     "url": url,
     "image": image,
     "description": description,
-    "jobTitle": ["IT Consultancy", "Network Engineering", "Web Development", "Data Analysis", "Media Tech"],
+    "knowsAbout": [
+      "Cybersecurity",
+      "Identity and Access Management",
+      "ICT Infrastructure",
+      "Network Engineering",
+      "Data Analytics",
+      "Business Intelligence",
+      "Web Development",
+      "Branding and Design",
+      "Professional Training"
+    ],
     "worksFor": {
       "@type": "Organization",
       "name": "CAXiE Technologies"
@@ -38,18 +48,6 @@ const SEO = ({
       "https://www.linkedin.com/in/charles-xavier-ekechukwuemeka-01185a1a5/",
       "https://www.instagram.com/iamxavi_too/"
     ],
-    "knowsAbout": [
-      "Web Development",
-      "IT Consultancy",
-      "Network Engineering",
-      "Data Analysis",
-      "Media Tech",
-      "React",
-      "JavaScript",
-      "Node.js",
-      "Python",
-      "Database Management"
-    ]
   };
 
   return (

@@ -217,7 +217,7 @@ const Sidebar = ({ onCollapse, onVisibilityChange }) => {
             src={process.env.PUBLIC_URL + '/logo.png'} 
             alt="CAXIE Logo" 
             className={`object-contain mb-3 sm:mb-6 transition-all duration-300 ${
-              isCollapsed ? 'w-6 h-6 sm:w-8 sm:h-8' : 'w-16 h-auto sm:w-32'
+              isCollapsed ? 'w-7 h-7 sm:w-9 sm:h-9' : 'w-20 h-auto sm:w-36'
             }`}
             style={{ filter: 'invert(1) brightness(2)' }} 
           />
