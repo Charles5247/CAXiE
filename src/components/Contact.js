@@ -140,7 +140,7 @@ const Contact = () => {
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900 text-lg leading-tight">Phone</div>
-                  <div className="text-gray-600 leading-tight">+234 901 492 1243</div>
+                  <div className="text-gray-600 leading-tight">+234 81 6544 3398</div>
                 </div>
               </div>
             </div>
@@ -164,7 +164,7 @@ const Contact = () => {
               <div className="mt-6 p-4 rounded-xl bg-purple-50 border border-purple-200">
                 <div className="text-purple-800 font-semibold mb-2">Office hours</div>
                 <ul className="text-sm text-purple-900 space-y-1">
-                  <li>Mon – Fri: 9:00am – 5:00pm</li>
+                  <li>Mon – Fri: 8:00am – 5:00pm</li>
                   <li>Sat: 10:00am – 2:00pm</li>
                   <li>Sun & Holidays: By appointment</li>
                 </ul>
