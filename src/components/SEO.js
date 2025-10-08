@@ -8,23 +8,23 @@ const SEO = ({
   title = "Charles Xavier - Full Stack Developer | Network Engineer | Data Analyst | Photographer",
   description = "Professional portfolio of Charles Xavier Ekechukwuemeka - Full Stack Developer, Network & Systems Engineer, Project Manager, Data Analyst, and Creative Photographer. Based in Abuja, Nigeria.",
   keywords = "Charles Xavier, Full Stack Developer, Web Developer, Network Engineer, Data Analyst, Photographer, React, JavaScript, Node.js, Python, Abuja, Nigeria, Portfolio, Software Engineer",
-  image = "/profile.JPG",
+  image = "/preview.png",
   url = "https://charles5247.github.io/CAXiE/",
   type = "website",
   structuredData = null
 }) => {
   const defaultStructuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Charles Xavier Ekechukwuemeka",
-    "alternateName": "CAXIE",
+    "@type": "Organization",
+    "name": "CAXiE Technologies",
+    "alternateName": "CAXIE Tech",
     "url": url,
     "image": image,
     "description": description,
-    "jobTitle": ["Full Stack Developer", "Network Engineer", "Data Analyst", "Project Manager", "Photographer"],
+    "jobTitle": ["IT Consultancy", "Network Engineering", "Web Development", "Data Analysis", "Media Tech"],
     "worksFor": {
       "@type": "Organization",
-      "name": "Freelance"
+      "name": "CAXiE Technologies"
     },
     "address": {
       "@type": "PostalAddress",
@@ -73,7 +73,7 @@ const SEO = ({
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="Charles Xavier Portfolio" />
+      <meta property="og:site_name" content="CAXiE Technologies" />
       <meta property="og:locale" content="en_US" />
       
       {/* Twitter */}
