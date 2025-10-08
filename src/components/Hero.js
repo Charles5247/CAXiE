@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Carousel from './Carousel';
 
 // Add Google Fonts import for 'Poppins' at the top level (index.html or via @import in index.css)
 // For now, apply font-family inline for demonstration
@@ -44,12 +45,7 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 overflow-hidden"
       style={{ position: 'relative', ...fontFamily }}
     >
-      <img
-        src={process.env.PUBLIC_URL + '/profile.JPG'}
-        alt="CAXiE Technologies"
-        className="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-100 max-h-screen"
-        style={{ filter: 'brightness(0.85)' }}
-      />
+      <Carousel />
       <div className="absolute inset-0 bg-black/50 z-10" />
       <a
         href="https://wa.me/2349014921243"
