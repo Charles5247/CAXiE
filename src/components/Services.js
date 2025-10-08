@@ -7,7 +7,7 @@ const Services = () => {
   // Example service categories and items
   const serviceCategories = [
     {
-      title: 'Cybersecurity & Identity',
+      title: 'Cybersecurity & Identity Protection',
       icon: (
         <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.657 0 3-1.343 3-3V6a3 3 0 10-6 0v2c0 1.657 1.343 3 3 3z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 11a7 7 0 0014 0v-1H5v1z"/></svg>
       ),
@@ -15,6 +15,8 @@ const Services = () => {
         'Threat protection & awareness',
         'Digital identity & access management',
         'Security audits and hardening',
+        'Vulnerability scanning & remediation',
+        'Professional training & awareness',
       ],
     },
     {
@@ -47,6 +49,7 @@ const Services = () => {
       services: [
         'Web development & support',
         'Branding and design',
+        'Media support & Social media management',
         'Bootcamps, seminars & upskilling',
       ],
     },
