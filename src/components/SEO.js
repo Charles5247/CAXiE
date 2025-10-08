@@ -40,11 +40,10 @@ const SEO = ({
     ],
     "knowsAbout": [
       "Web Development",
-      "Full Stack Development",
+      "IT Consultancy",
       "Network Engineering",
       "Data Analysis",
-      "Project Management",
-      "Photography",
+      "Media Tech",
       "React",
       "JavaScript",
       "Node.js",
