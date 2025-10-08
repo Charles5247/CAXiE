@@ -10,6 +10,7 @@ import Services from './components/Services'; // Services section
 import Projects from './components/Projects'; // Projects/portfolio section
 import Blog from './components/Blog'; // Blog/updates section
 import Contact from './components/Contact'; // Contact form/section
+import Footer from './components/Footer';
 import AIChatbot from './components/AIChatbot';
 import { trackVisit } from './services/visitTracking';
 import Preloader from './components/Preloader';
@@ -79,6 +80,8 @@ function App() {
       
       {/* Floating AI Assistant Chatbot */}
       <AIChatbot />
+      {/* Global Footer */}
+      <Footer />
     </>
   );
 }
