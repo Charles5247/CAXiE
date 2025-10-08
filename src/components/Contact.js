@@ -103,44 +103,44 @@ const Contact = () => {
     <>
       <section
         id="contact"
-        className="py-8 px-2 sm:px-4 font-sans flex justify-center w-full bg-gradient-to-b from-purple-800 via-purple-900 to-black"
+        className="py-12 px-2 sm:px-6 font-sans flex justify-center w-full bg-gradient-to-b from-purple-800 via-purple-900 to-black"
       >
         <div
-          className="w-full max-w-2xl md:w-[70%] mx-auto rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch bg-white font-sans p-0 md:p-0 overflow-hidden"
+          className="w-full max-w-6xl md:w-[90%] mx-auto rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch bg-white font-sans p-0 md:p-0 overflow-hidden"
         >
           {/* Left: Contact Info */}
-          <div className="flex-1 flex flex-col justify-between p-3 md:p-4 text-gray-800 min-w-[180px] sm:min-w-[260px] bg-white font-sans rounded-none md:rounded-l-3xl">
+          <div className="flex-[1.1] flex flex-col justify-between p-6 md:p-8 text-gray-800 bg-white font-sans rounded-none md:rounded-l-3xl">
             <h3 className="text-2xl sm:text-3xl font-bold text-purple-700 mb-4 tracking-tight leading-tight">Get in touch</h3>
-            <p className="text-gray-500 text-base sm:text-xl font-normal mb-8 leading-snug">Thank you for looking us up today, trust we could be of help. For more info use any of the links below to connect with us</p>
-            <div className="flex flex-col gap-4 text-xl mb-8">
+            <p className="text-gray-600 text-base sm:text-lg font-normal mb-8 leading-relaxed">We are available to discuss your security, infrastructure, data, and product needs. Reach us via any channel below or send a message—we respond promptly.</p>
+            <div className="flex flex-col gap-6 text-lg mb-10">
               <div className="flex items-center gap-4">
-                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-700">
+                <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-purple-100 text-purple-700">
                   {/* Location icon */}
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2z"/><path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"/></svg>
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2z"/><path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"/></svg>
                 </span>
                 <div>
-                  <div className="font-semibold text-gray-900 text-xl leading-tight">Location</div>
-                  <div className="text-gray-600 text-lg leading-tight">Kano, Nigeria</div>
+                  <div className="font-semibold text-gray-900 text-lg leading-tight">Location</div>
+                  <div className="text-gray-600 leading-tight">Kano, Nigeria</div>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-700">
+                <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-purple-100 text-purple-700">
                   {/* Email icon */}
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16 12H8m8 0a4 4 0 11-8 0 4 4 0 018 0zm0 0v4m0-4V8" /></svg>
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 8l8 5 8-5v8a2 2 0 01-2 2H6a2 2 0 01-2-2V8z"/><path strokeLinecap="round" strokeLinejoin="round" d="M20 8l-8 5-8-5 8-4 8 4z"/></svg>
                 </span>
                 <div>
-                  <div className="font-semibold text-gray-900 text-xl leading-tight">Email</div>
-                  <a href="mailto:johneme2022@gmail.com" className="text-gray-600 text-lg hover:text-purple-700 transition leading-tight" target="_blank" rel="noopener noreferrer">johneme2022@gmail.com</a>
+                  <div className="font-semibold text-gray-900 text-lg leading-tight">Email</div>
+                  <a href="mailto:johneme2022@gmail.com" className="text-gray-600 hover:text-purple-700 transition leading-tight" target="_blank" rel="noopener noreferrer">johneme2022@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-700">
+                <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-purple-100 text-purple-700">
                   {/* Phone icon */}
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm10-10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM3 15a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm10-10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
                 </span>
                 <div>
-                  <div className="font-semibold text-gray-900 text-xl leading-tight">Phone</div>
-                  <div className="text-gray-600 text-lg leading-tight">+234 901 492 1243</div>
+                  <div className="font-semibold text-gray-900 text-lg leading-tight">Phone</div>
+                  <div className="text-gray-600 leading-tight">+234 901 492 1243</div>
                 </div>
               </div>
             </div>
@@ -165,7 +165,7 @@ const Contact = () => {
           {/* Divider for desktop */}
           <div className="hidden md:block w-px bg-gray-200 self-stretch"></div>
           {/* Right: Contact Form */}
-          <div className="flex-[1.2] flex flex-col justify-between p-3 md:p-4 bg-white/90">
+          <div className="flex-[1.3] flex flex-col justify-between p-6 md:p-8 bg-white/90">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-2xl font-bold text-purple-900 flex items-center gap-2">Send us a message</h3>
               <button
@@ -294,7 +294,7 @@ const Contact = () => {
       </section>
       {/* Footer Section */}
       <footer className="w-full bg-gray-900 text-gray-300 py-6 flex flex-col items-center mt-0">
-        <div className="flex flex-col md:flex-row justify-between items-center w-full md:w-[70%] mx-auto px-4 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full md:w-[90%] max-w-6xl mx-auto px-4 gap-4">
           <div className="text-center md:text-left text-sm md:text-base font-medium">&copy; {new Date().getFullYear()} Charles Xavier. All rights reserved.</div>
           <div className="flex flex-wrap gap-4 mt-2 md:mt-0 text-sm md:text-base">
             <a href="/terms.html" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">Terms of Use</a>
