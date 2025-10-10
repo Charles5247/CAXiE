@@ -45,7 +45,9 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 overflow-hidden"
       style={{ position: 'relative', ...fontFamily }}
     >
-      <Carousel />
+      <div className="absolute inset-0 z-0">
+        <Carousel />
+      </div>
       <div className="absolute inset-0 bg-black/50 z-10" />
       <a
         href="https://wa.me/2349014921243"

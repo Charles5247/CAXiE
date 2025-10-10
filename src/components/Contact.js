@@ -160,8 +160,8 @@ const Contact = () => {
                   <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24H12.82v-9.294H9.692v-3.622h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0" /></svg>
                 </a>
               </div>
-              {/* Office Hours */}
-              <div className="mt-6 p-4 rounded-xl bg-purple-50 border border-purple-200">
+              {/* Office Hours (hidden on desktop) */}
+              <div className="mt-6 p-4 rounded-xl bg-purple-50 border border-purple-200 md:hidden">
                 <div className="text-purple-800 font-semibold mb-2">Office hours</div>
                 <ul className="text-sm text-purple-900 space-y-1">
                   <li>Mon – Fri: 8:00am – 5:00pm</li>
@@ -169,8 +169,8 @@ const Contact = () => {
                   <li>Sun & Holidays: By appointment</li>
                 </ul>
               </div>
-              {/* Location Map */}
-              <div className="mt-4 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              {/* Location Map (hidden on desktop) */}
+              <div className="mt-4 rounded-xl overflow-hidden border border-gray-200 shadow-sm md:hidden">
                 <iframe
                   title="CAXiE Technologies Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7913.31991396692!2d7.489297!3d9.072264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b0b0b0b0b0b%3A0x0000000000000000!2sAbuja%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000"
