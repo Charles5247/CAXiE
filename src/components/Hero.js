@@ -67,7 +67,7 @@ const Hero = () => {
           </span>
         </h1>
         <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-200 mb-4 max-w-2xl leading-relaxed" style={fontFamily}>
-          IT Consultancy | Network & Systems Engineering | Web Development | Data Analyst | Media Tech
+          Smart Technology Solutions for a Digital World...
         </h2>
         <div className="mb-3 text-gray-300 space-y-2" style={fontFamily}>
           <div className="flex gap-4 items-center mt-2">
@@ -112,7 +112,7 @@ const Hero = () => {
           </div>
         </div>
         <a href="#contact" className="inline-block px-6 py-3 bg-purple-700 text-white font-semibold rounded-full shadow-lg hover:bg-purple-800 transition text-base" style={fontFamily}>
-          Contact Me
+          Contact Us
         </a>
       </div>
     </section>
