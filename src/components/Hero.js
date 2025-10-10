@@ -61,7 +61,7 @@ const Hero = () => {
       <div className="relative z-20 flex flex-col items-start text-left w-full max-w-2xl">
         <h1 className="text-sm sm:text-base md:text-lg font-extrabold text-gray-100 mb-3" style={fontFamily}>
           Welcome to{' '}
-          <span className="text-purple-400">
+          <span className="text-purple-600">
             {displayedName}
             <span className="animate-pulse">|</span>
           </span>
