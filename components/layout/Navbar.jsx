@@ -9,10 +9,11 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
+  { href: '/products', label: 'Products' },
   { href: '/case-studies/dala-orthopedic', label: 'Case Studies' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/blog', label: 'Blog' },
-  { href: '/teaching', label: 'Classes' },
+  { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
 ];
 

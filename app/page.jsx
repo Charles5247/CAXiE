@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import HeroCarousel from '@/components/ui/HeroCarousel';
 
 export const metadata = {
   title: 'CAXiE Technologies | Nigerian IT Consultancy — Cybersecurity, Infrastructure & Digital Transformation',
@@ -85,6 +86,19 @@ const services = [
     href: '/services#cto',
     color: 'text-brand-400',
     bg: 'bg-brand-600/10 border-brand-600/20',
+  },
+  {
+    id: 'software',
+    title: 'Software & App Development',
+    description: 'Custom web applications, iOS/Android mobile apps, and desktop software — built to your spec with security and maintainability built in from day one.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    href: '/services#software',
+    color: 'text-orange-400',
+    bg: 'bg-orange-400/10 border-orange-400/20',
   },
 ];
 
@@ -186,45 +200,38 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right — metrics card */}
-            <div className="lg:flex justify-end hidden">
-              <div className="relative">
-                {/* Main card */}
-                <div className="card bg-white/5 backdrop-blur-lg border border-white/15 p-8 rounded-3xl shadow-brand-lg max-w-sm w-full">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-brand">
-                      <span className="text-white font-display font-bold">CX</span>
-                    </div>
-                    <div>
-                      <p className="font-display font-bold text-white">CAXiE Technologies</p>
-                      <p className="text-brand-400 text-xs">Active client engagements</p>
-                    </div>
+            {/* Right — carousel + floating metrics card */}
+            <div className="lg:flex flex-col gap-4 hidden">
+              {/* Carousel */}
+              <div className="relative w-full h-72 lg:h-80 rounded-2xl overflow-hidden shadow-brand-lg ring-1 ring-white/10">
+                <HeroCarousel />
+              </div>
+              {/* Compact metrics strip below carousel */}
+              <div className="card bg-white/5 backdrop-blur-lg border border-white/15 px-5 py-4 rounded-2xl shadow-brand-lg flex items-center justify-between gap-4 relative">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center shadow-brand flex-shrink-0">
+                    <span className="text-white font-display font-bold text-xs">CX</span>
                   </div>
-
-                  <div className="space-y-4">
-                    <MetricRow label="Fractional CTO engagements" value="Active" positive />
-                    <MetricRow label="Security audits delivered" value="Ongoing" positive />
-                    <MetricRow label="Response time" value="< 24 hrs" positive />
-                    <MetricRow label="Services offered" value="5 core lines" positive />
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-white/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-brand-600/20 rounded-full flex items-center justify-center">
-                        <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-white text-sm font-medium">Ekechukwuemeka Xavier</p>
-                        <p className="text-gray-500 text-xs">Founder & CEO</p>
-                      </div>
-                    </div>
+                  <div>
+                    <p className="font-display font-semibold text-white text-sm">CAXiE Technologies</p>
+                    <p className="text-brand-400 text-xs">Ekechukwuemeka Xavier · Founder & CEO</p>
                   </div>
                 </div>
-
-                {/* Floating badge */}
-                <div className="absolute -top-4 -right-4 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                <div className="flex gap-4 text-center">
+                  <div>
+                    <p className="text-green-400 font-bold text-sm">Active</p>
+                    <p className="text-gray-500 text-xs">CTO Roles</p>
+                  </div>
+                  <div>
+                    <p className="text-green-400 font-bold text-sm">&lt;24h</p>
+                    <p className="text-gray-500 text-xs">Response</p>
+                  </div>
+                  <div>
+                    <p className="text-green-400 font-bold text-sm">6</p>
+                    <p className="text-gray-500 text-xs">Services</p>
+                  </div>
+                </div>
+                <div className="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg whitespace-nowrap">
                   Available for projects
                 </div>
               </div>

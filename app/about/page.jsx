@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import team from '@/data/team.json';
 
 export const metadata = {
   title: 'About & Leadership — CAXiE Technologies',
@@ -254,6 +255,91 @@ export default function AboutPage() {
                 Send a project brief
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ TEAM / LEADERSHIP ══ */}
+      <section className="section bg-[#0f0a1a]" aria-labelledby="team-heading">
+        <div className="container-max px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="badge-brand inline-block mb-4">Leadership</span>
+            <h2 id="team-heading" className="section-title">The people behind CAXiE</h2>
+            <p className="section-subtitle mx-auto text-center">
+              CAXiE is a founder-led firm. Every client engagement has a named, accountable person at the top of it — not an account manager you can never reach.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {team.map((member) => (
+              <div
+                key={member.id}
+                className="card border border-white/10 hover:border-brand-600/30 transition-colors flex flex-col items-center text-center group"
+              >
+                {/* Avatar */}
+                <div className="w-24 h-24 rounded-2xl overflow-hidden mb-4 ring-2 ring-brand-600/20 group-hover:ring-brand-600/40 transition-all flex-shrink-0">
+                  {member.photo ? (
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-brand-600/20 flex items-center justify-center">
+                      <svg className="w-10 h-10 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {/* Info */}
+                <h3 className="font-display font-bold text-white text-lg leading-snug">{member.name}</h3>
+                <p className="text-brand-400 text-sm font-medium mt-1 mb-3">{member.title}</p>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">{member.bio}</p>
+                {/* Specialties */}
+                {member.specialties && member.specialties[0] !== 'Coming Soon' && (
+                  <div className="flex flex-wrap gap-1.5 justify-center mb-4">
+                    {member.specialties.map((s) => (
+                      <span key={s} className="text-xs bg-brand-600/10 text-brand-300 border border-brand-600/20 px-2 py-0.5 rounded-full">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {/* Social links */}
+                {member.social && Object.keys(member.social).length > 0 && (
+                  <div className="flex gap-2 mt-auto pt-3 border-t border-white/5 w-full justify-center">
+                    {member.social.linkedin && (
+                      <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                        className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-400 hover:border-brand-600/40 transition-all">
+                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
+                      </a>
+                    )}
+                    {member.social.twitter && (
+                      <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"
+                        className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-400 hover:border-brand-600/40 transition-all">
+                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      </a>
+                    )}
+                    {member.social.github && (
+                      <a href={member.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                        className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-400 hover:border-brand-600/40 transition-all">
+                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 012.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.77.5 12 .5z"/></svg>
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <p className="text-gray-500 text-sm">
+              Advisory board and additional team member announcements coming Q4 2025.{' '}
+              <Link href="/careers" className="text-brand-400 hover:text-brand-300 transition-colors">
+                See open roles.
+              </Link>
+            </p>
           </div>
         </div>
       </section>

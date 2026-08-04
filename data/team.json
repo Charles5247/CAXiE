@@ -1,0 +1,37 @@
+[
+  {
+    "id": "xavier",
+    "name": "Ekechukwuemeka Charles Xavier",
+    "shortName": "Charles Xavier",
+    "title": "Founder & CEO",
+    "bio": "Cybersecurity practitioner, technology strategist, and fractional CTO. Xavier founded CAXiE Technologies with a mandate to deliver enterprise-grade technology to organisations that had been underserved by generic IT solutions. He leads every major client engagement personally and currently serves as incoming fractional CTO for 3StarData.",
+    "photo": "/profile.JPG",
+    "social": {
+      "twitter": "https://x.com/iamxavi_too",
+      "linkedin": "https://www.linkedin.com/in/charles-xavier-ekechukwuemeka-01185a1a5/",
+      "github": "https://github.com/Charles5247",
+      "instagram": "https://www.instagram.com/iamxavi_too/"
+    },
+    "specialties": ["Cybersecurity", "ICT Infrastructure", "Fractional CTO", "Data Intelligence"]
+  },
+  {
+    "id": "advisor-01",
+    "name": "Advisory Board Member",
+    "shortName": "TBA",
+    "title": "Technical Advisor",
+    "bio": "CAXiE is building an advisory board of experienced practitioners in cybersecurity, enterprise IT, and African tech ecosystems. Announcements coming Q4 2025.",
+    "photo": null,
+    "social": {},
+    "specialties": ["Coming Soon"]
+  },
+  {
+    "id": "advisor-02",
+    "name": "Advisory Board Member",
+    "shortName": "TBA",
+    "title": "Business & Strategy Advisor",
+    "bio": "We are in discussions with seasoned operators in Nigerian business and technology sectors to round out our advisory bench. More details to follow.",
+    "photo": null,
+    "social": {},
+    "specialties": ["Coming Soon"]
+  }
+]

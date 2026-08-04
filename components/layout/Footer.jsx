@@ -4,15 +4,17 @@ const footerLinks = {
   Services: [
     { label: 'Web Development', href: '/services#web' },
     { label: 'Cybersecurity', href: '/services#cyber' },
+    { label: 'Software & Apps', href: '/services#software' },
     { label: 'Data & Analytics', href: '/services#data' },
     { label: 'ICT Infrastructure', href: '/services#ict' },
     { label: 'Fractional CTO', href: '/services#cto' },
   ],
   Company: [
     { label: 'About Us', href: '/about' },
+    { label: 'Our Products', href: '/products' },
+    { label: 'Careers', href: '/careers' },
     { label: 'Case Studies', href: '/case-studies/dala-orthopedic' },
     { label: 'Trust & Security', href: '/trust-security' },
-    { label: 'Tech Classes', href: '/teaching' },
     { label: 'Blog', href: '/blog' },
   ],
   Legal: [

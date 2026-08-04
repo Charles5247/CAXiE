@@ -1,0 +1,62 @@
+[
+  {
+    "id": "caxie-sentinel",
+    "name": "CAXiE Sentinel",
+    "tagline": "Security monitoring dashboard for Nigerian SMEs",
+    "category": "Cybersecurity",
+    "status": "In Development",
+    "description": "A lightweight, cloud-hosted security monitoring dashboard purpose-built for Nigerian small and medium enterprises. Sentinel aggregates alerts from your endpoints, network devices, and cloud services into a single unified view — without the enterprise price tag. Designed for organisations that need visibility but don't have a dedicated SOC.",
+    "features": [
+      "Unified alert dashboard across endpoints, network, and cloud",
+      "NDPR-aligned incident logging and audit trail",
+      "WhatsApp and email alert notifications",
+      "Monthly security posture report — auto-generated",
+      "Onboarding in under 2 hours"
+    ],
+    "targetAudience": "Nigerian SMEs, clinics, schools, and NGOs needing affordable security visibility",
+    "stage": "Private beta — expected Q1 2026",
+    "color": "text-green-400",
+    "bg": "bg-green-400/10 border-green-400/20",
+    "icon": "shield"
+  },
+  {
+    "id": "caxie-databridge",
+    "name": "DataBridge",
+    "tagline": "One-click data pipeline for African business data sources",
+    "category": "Data & Intelligence",
+    "status": "Concept / Design",
+    "description": "DataBridge is a no-code data integration tool designed specifically for the African business environment — connecting paystack transactions, ERP exports, Google Sheets, and local POS systems into a unified analytics layer. Think Zapier for data, built around the realities of Nigerian business operations.",
+    "features": [
+      "Native connectors for Paystack, Flutterwave, and local POS systems",
+      "Google Sheets and Excel import with schema auto-detection",
+      "Automated daily dashboard refresh",
+      "Role-based access — your accountant sees revenue, your ops lead sees logistics",
+      "Export to Power BI, Looker, or CSV"
+    ],
+    "targetAudience": "SMEs and mid-market companies wanting BI without a data team",
+    "stage": "Design phase — gathering beta interest",
+    "color": "text-yellow-400",
+    "bg": "bg-yellow-400/10 border-yellow-400/20",
+    "icon": "chart"
+  },
+  {
+    "id": "caxie-siteguard",
+    "name": "SiteGuard",
+    "tagline": "Automated web security scanner for Nigerian businesses",
+    "category": "Web Security",
+    "status": "Concept",
+    "description": "SiteGuard runs automated weekly scans of your website for known vulnerabilities, SSL issues, exposed credentials, and outdated dependencies — then sends a plain-English report with actionable remediation steps. No security background required to understand the output.",
+    "features": [
+      "Weekly automated scans with plain-English results",
+      "SSL/TLS expiry monitoring and alerts",
+      "Exposed sensitive file detection",
+      "Outdated CMS/plugin alerts (WordPress, Webflow, etc.)",
+      "WhatsApp delivery of weekly security digest"
+    ],
+    "targetAudience": "Any Nigerian business with a web presence that can't afford a full security retainer",
+    "stage": "Research phase",
+    "color": "text-brand-400",
+    "bg": "bg-brand-600/10 border-brand-600/20",
+    "icon": "lock"
+  }
+]

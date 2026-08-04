@@ -178,6 +178,41 @@ const services = [
     caseStudyLink: '/case-studies/3stardata',
     caseStudyLabel: '3StarData — active fractional CTO engagement',
   },
+  {
+    id: 'software',
+    title: 'Software & App Development',
+    tagline: 'Custom software, mobile apps, and desktop applications — built to spec, not off a shelf.',
+    color: 'text-orange-400',
+    bg: 'bg-orange-400/10 border-orange-400/20',
+    accentBorder: 'border-l-orange-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    description:
+      'Off-the-shelf software solves generic problems. Most businesses have specific problems — processes, data flows, and workflows that don\'t fit neatly into what SaaS vendors offer. CAXiE builds bespoke software: web applications, native mobile apps for iOS and Android, and desktop tools — all engineered with security and maintainability as non-negotiables.',
+    offerings: [
+      'Custom web application development (React, Next.js, Node.js)',
+      'Mobile app development — iOS (Swift) and Android (Kotlin/React Native)',
+      'Desktop application development (cross-platform and native)',
+      'API design, development, and third-party integration',
+      'Legacy system modernisation and migration',
+      'Software architecture and technical documentation',
+      'QA testing, performance optimisation, and deployment',
+      'Ongoing maintenance and feature development retainers',
+    ],
+    whoFor: 'Businesses with workflows that existing SaaS tools can\'t handle; organisations needing a mobile app to serve customers or staff; companies wanting to own their technology stack rather than rent it indefinitely.',
+    process: [
+      { step: '01', label: 'Requirements scoping', desc: 'We map your workflow, user journeys, and data requirements before writing a line of code. Skipping this is how projects fail.' },
+      { step: '02', label: 'Architecture design', desc: 'We propose a technical architecture — stack, data model, integrations, security model — and walk you through it before we begin.' },
+      { step: '03', label: 'Iterative development', desc: 'Development in two-week sprints with working software delivered at each sprint. You see real progress, not status updates.' },
+      { step: '04', label: 'Testing & hardening', desc: 'QA, security review, and performance testing before any handover. We don\'t ship software we haven\'t tested under realistic conditions.' },
+      { step: '05', label: 'Deployment & handover', desc: 'We deploy to your environment, document the system, and train your team. Ongoing support available under retainer.' },
+    ],
+    caseStudyLink: null,
+    caseStudyLabel: null,
+  },
 ];
 
 export default function ServicesPage() {
@@ -189,7 +224,7 @@ export default function ServicesPage() {
         <div className="relative container-max px-4 sm:px-6 lg:px-8">
           <span className="badge-brand inline-block mb-4">Services</span>
           <h1 className="font-display font-bold text-4xl sm:text-5xl text-white max-w-3xl leading-tight">
-            Five service lines. One{' '}
+            Six service lines. One{' '}
             <span className="gradient-text">cybersecurity-first</span> foundation.
           </h1>
           <p className="mt-6 text-gray-400 text-lg max-w-2xl leading-relaxed">
@@ -232,7 +267,7 @@ export default function ServicesPage() {
               </div>
               <div>
                 <span className={`text-xs font-semibold uppercase tracking-widest ${svc.color} mb-1 block`}>
-                  {String(idx + 1).padStart(2, '0')} / 05
+                  {String(idx + 1).padStart(2, '0')} / 06
                 </span>
                 <h2 id={`${svc.id}-heading`} className="font-display font-bold text-2xl sm:text-3xl text-white">
                   {svc.title}
