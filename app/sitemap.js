@@ -12,6 +12,8 @@ export default function sitemap() {
     { url: `${base}/trust-security`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${base}/blog`, priority: 0.8, changeFrequency: 'weekly' },
     { url: `${base}/teaching`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${base}/careers`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${base}/products`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${base}/contact`, priority: 0.9, changeFrequency: 'monthly' },
     { url: `${base}/privacy`, priority: 0.3, changeFrequency: 'yearly' },
     { url: `${base}/terms`, priority: 0.3, changeFrequency: 'yearly' },

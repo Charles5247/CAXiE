@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: caxie-technologies
+    runtime: node
+    plan: starter
+    region: frankfurt  # closest to Nigeria / lowest latency from West Africa
+
+    # Build & start
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+
+    # Health check — Next.js returns 200 on / even with errors, use /api/health
+    healthCheckPath: /
+
+    # Environment variable group (set secrets in Render dashboard)
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      # ── Supabase ──────────────────────────────────────────────────────────
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false   # set in Render dashboard
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      # ── Formspree ─────────────────────────────────────────────────────────
+      - key: NEXT_PUBLIC_FORMSPREE_ENDPOINT
+        sync: false
+      # ── Admin CMS ─────────────────────────────────────────────────────────
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

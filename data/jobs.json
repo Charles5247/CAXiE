@@ -1,0 +1,47 @@
+[
+  {
+    "id": "swe-001",
+    "title": "Full-Stack Software Engineer",
+    "type": "Full-Time",
+    "location": "Kano, Nigeria (Remote-friendly)",
+    "department": "Engineering",
+    "summary": "Join CAXiE's engineering team to build and maintain web applications, internal tools, and client-facing digital products. You'll work across the stack — React/Next.js on the frontend, Node.js or Python on the backend — with a security-first mindset baked in from the start.",
+    "requirements": [
+      "3+ years of professional full-stack development experience",
+      "Proficiency in React / Next.js and Node.js or Python",
+      "Experience with relational and/or NoSQL databases",
+      "Familiarity with cloud platforms (AWS, Azure, or GCP)",
+      "Strong understanding of web security fundamentals",
+      "Ability to communicate technical decisions clearly to non-technical stakeholders"
+    ],
+    "niceToHave": [
+      "Experience with Supabase, PostgreSQL, or Firebase",
+      "Background in cybersecurity or secure SDLC practices",
+      "Contributions to open-source projects"
+    ],
+    "applyEmail": "careers@caxietechnologies.com",
+    "postedDate": "2025-08-01"
+  },
+  {
+    "id": "cyber-001",
+    "title": "Cybersecurity Analyst",
+    "type": "Full-Time",
+    "location": "Kano, Nigeria",
+    "department": "Cybersecurity",
+    "summary": "CAXiE is growing its cybersecurity practice and needs a hands-on analyst to support client security assessments, vulnerability scanning, and ongoing monitoring engagements. You'll work directly with Xavier on some of our most critical client accounts.",
+    "requirements": [
+      "2+ years in a cybersecurity role (analyst, SOC, or penetration testing)",
+      "Solid understanding of network security, firewalls, and endpoint protection",
+      "Experience with vulnerability scanning tools (Nessus, OpenVAS, or equivalent)",
+      "Knowledge of frameworks: NIST CSF, ISO 27001 principles",
+      "Strong written communication — you'll be producing client-facing reports"
+    ],
+    "niceToHave": [
+      "CompTIA Security+, CEH, or OSCP certification",
+      "Experience with SIEM platforms",
+      "Understanding of Nigerian data protection regulations (NDPR)"
+    ],
+    "applyEmail": "careers@caxietechnologies.com",
+    "postedDate": "2025-08-01"
+  }
+]
