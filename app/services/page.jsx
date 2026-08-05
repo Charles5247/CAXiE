@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Services — Cybersecurity, ICT Infrastructure, Data Intelligence & Fractional CTO',
+  title: 'Services — AI, Software, Cybersecurity, Infrastructure & Fractional CTO',
   description:
-    'CAXiE Technologies offers cybersecurity & identity protection, ICT infrastructure, data & business intelligence, web development & branding, and fractional CTO engagements. Based in Kano, Nigeria.',
+    'CAXiE Technologies offers AI enablement, software development, cybersecurity, ICT infrastructure, data intelligence, and fractional CTO engagements from Kano, Nigeria.',
   openGraph: {
     title: 'CAXiE Technologies Services',
     description: 'Five core service lines built on a cybersecurity-first foundation — serving Nigerian businesses and international clients.',
@@ -225,10 +225,10 @@ export default function ServicesPage() {
           <span className="badge-brand inline-block mb-4">Services</span>
           <h1 className="font-display font-bold text-4xl sm:text-5xl text-white max-w-3xl leading-tight">
             Six service lines. One{' '}
-            <span className="gradient-text">cybersecurity-first</span> foundation.
+            <span className="gradient-text">practical, resilient</span> foundation.
           </h1>
           <p className="mt-6 text-gray-400 text-lg max-w-2xl leading-relaxed">
-            Whether you need to harden your systems, build your infrastructure, understand your data, launch a credible web presence, or have a senior technology strategist in your corner — each service below is delivered with the same discipline.
+            Whether you need to strengthen your systems, modernise your software, unlock your data, or bring senior technology leadership into your business, each service below is delivered with the same discipline and clarity.
           </p>
         </div>
       </section>

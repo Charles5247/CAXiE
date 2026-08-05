@@ -3,12 +3,12 @@ import Link from 'next/link';
 import team from '@/data/team.json';
 
 export const metadata = {
-  title: 'About & Leadership — CAXiE Technologies',
+  title: 'About CAXiE Technologies — AI, Software & Digital Transformation',
   description:
-    'Meet Ekechukwuemeka Charles Xavier, founder and CEO of CAXiE Technologies. Cybersecurity practitioner, technology strategist, and fractional CTO based in Kano, Nigeria.',
+    'Learn about CAXiE Technologies, a Nigerian technology consultancy focused on AI, software, cybersecurity, infrastructure, and strategic digital growth.',
   openGraph: {
-    title: 'About CAXiE Technologies & Founder Xavier',
-    description: 'The story, people, and values behind CAXiE Technologies — a founder-led Nigerian IT consultancy.',
+    title: 'About CAXiE Technologies',
+    description: 'The story, people, and values behind CAXiE Technologies — a Nigerian consultancy building intelligent products and resilient digital systems.',
     url: 'https://caxietechnologies.com/about',
   },
 };
@@ -17,7 +17,7 @@ const timeline = [
   {
     year: '2020',
     title: 'Foundation',
-    description: 'CAXiE Technologies established in Nigeria with a cybersecurity-first mandate — to deliver enterprise-grade technology to clients who had previously been underserved by generic solutions.',
+    description: 'CAXiE Technologies was established in Nigeria to deliver practical, high-quality technology solutions to ambitious organisations that needed more than generic service providers.',
   },
   {
     year: '2022',
@@ -37,14 +37,14 @@ const timeline = [
   {
     year: '2025',
     title: 'Fractional CTO practice & 3StarData',
-    description: 'Xavier engaged as incoming fractional CTO for 3StarData under a retainer + equity model — formalising CAXiE\'s executive technology leadership offering for growth-stage companies.',
+    description: 'CAXiE formalised its executive technology leadership offering through active fractional CTO engagements for growth-stage companies and digital businesses.',
   },
 ];
 
 const values = [
   {
-    title: 'Cybersecurity-First',
-    description: 'Security is not an add-on. Every system we build, every network we deploy, every application we develop starts with a threat model.',
+    title: 'Security by Design',
+    description: 'Every system we build is designed with resilience, access control, and operational safety in mind from the start.',
     icon: '🛡️',
   },
   {
@@ -53,8 +53,8 @@ const values = [
     icon: '🎯',
   },
   {
-    title: 'Founder Accountability',
-    description: 'Xavier is personally accountable for every delivery. When you work with CAXiE, you have a named, reachable person who owns your outcome.',
+    title: 'Direct Accountability',
+    description: 'When you work with CAXiE, you deal with a team that stays close to the work and owns the outcome.',
     icon: '🤝',
   },
   {
@@ -74,7 +74,7 @@ export default function AboutPage() {
         <div className="relative container-max px-4 sm:px-6 lg:px-8">
           <span className="badge-brand inline-block mb-4">About</span>
           <h1 className="font-display font-bold text-4xl sm:text-5xl text-white max-w-2xl leading-tight">
-            A founder-led firm, not an agency.<br />
+            A focused consultancy, not a generic vendor.<br />
             <span className="gradient-text">That difference matters.</span>
           </h1>
           <p className="mt-6 text-gray-400 text-lg max-w-2xl leading-relaxed">
@@ -83,8 +83,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ FOUNDER BIO ══ */}
-      <section className="section" aria-labelledby="founder-bio-heading">
+      {/* ══ COMPANY BIO ══ */}
+      <section className="section" aria-labelledby="company-bio-heading">
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Photo */}
@@ -92,7 +92,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0 rounded-3xl overflow-hidden shadow-brand-lg">
                 <Image
                   src="/founder.JPG"
-                  alt="Ekechukwuemeka Charles Xavier — Founder & CEO of CAXiE Technologies"
+                  alt="CAXiE Technologies leadership and delivery team"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 80vw, 450px"
@@ -101,8 +101,8 @@ export default function AboutPage() {
               </div>
               {/* Card overlay */}
               <div className="absolute -bottom-6 -right-4 lg:-right-8 bg-[#0f0a1a] border border-white/15 rounded-2xl p-5 shadow-brand max-w-xs">
-                <p className="font-display font-bold text-white">Ekechukwuemeka Charles Xavier</p>
-                <p className="text-brand-400 text-sm">Founder & CEO</p>
+                <p className="font-display font-bold text-white">CAXiE Technologies</p>
+                <p className="text-brand-400 text-sm">Technology consultancy</p>
                 <div className="brand-divider my-3" />
                 <div className="flex gap-4">
                   <a href="https://x.com/iamxavi_too" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-400 transition-colors text-xs">
@@ -117,20 +117,20 @@ export default function AboutPage() {
 
             {/* Bio content */}
             <div className="order-1 lg:order-2 space-y-6">
-              <h2 id="founder-bio-heading" className="font-display font-bold text-3xl text-white">
-                Ekechukwuemeka Charles Xavier
+              <h2 id="company-bio-heading" className="font-display font-bold text-3xl text-white">
+                Building practical technology with purpose
               </h2>
-              <p className="text-brand-400 font-medium">Founder & CEO · CAXiE Technologies</p>
+              <p className="text-brand-400 font-medium">CAXiE Technologies · AI, software, infrastructure & strategy</p>
 
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  Xavier founded CAXiE Technologies to bring enterprise-grade technical capability to clients — Nigerian businesses, institutions, and international companies — who had been forced to choose between generic local providers and expensive international firms.
+                  CAXiE Technologies was built to bring enterprise-grade technical capability to organisations that need robust delivery without the overhead of large global firms. Our work spans AI enablement, software engineering, cybersecurity, infrastructure, data intelligence, and executive technology leadership.
                 </p>
                 <p>
-                  His practice spans cybersecurity and identity protection, ICT infrastructure deployment, data analytics and business intelligence, and full-stack web development. He holds a cybersecurity-first philosophy: any system built or deployed by CAXiE begins with a threat model, not an assumption of safety.
+                  We combine practical delivery with long-term thinking: whether we are building a digital platform, strengthening a systems environment, or advising on technology strategy, we approach each engagement with security, clarity, and accountability from the beginning.
                 </p>
                 <p>
-                  As the incoming fractional CTO for 3StarData — a Nigerian VTU/digital services platform — Xavier is engaged under a retainer + equity model with a defined transition clause to full-time CTO. This is what CAXiE means by commitment: not a consulting report, but shared ownership of outcomes.
+                  Our fractional CTO engagements and advisory work are designed to help growth-stage companies move faster with better technical decisions, stronger governance, and clearer execution paths.
                 </p>
               </div>
 
@@ -143,7 +143,7 @@ export default function AboutPage() {
                   <div>
                     <p className="text-white font-semibold text-sm mb-1">Available for fractional CTO engagements</p>
                     <p className="text-gray-400 text-sm">
-                      Xavier is available for fractional and consulting CTO engagements with growth-stage companies and SMEs that need senior technical leadership without a full-time commitment. Engagements are structured around your roadmap, not a generic retainer.
+                      CAXiE supports growth-stage companies and SMEs that need senior technical leadership without the cost of a full-time executive hire. Engagements are structured around real delivery milestones and business priorities.
                     </p>
                     <Link href="/services#cto" className="text-brand-400 text-sm hover:underline mt-2 inline-block">
                       Learn about the Fractional CTO model →
@@ -160,7 +160,7 @@ export default function AboutPage() {
                   className="btn-whatsapp text-sm"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
-                  Contact Xavier directly
+                  Contact the team directly
                 </a>
                 <Link href="/contact" className="btn-secondary text-sm">
                   Send a project brief
@@ -227,9 +227,9 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 id="mission-heading" className="font-display font-bold text-2xl text-brand-400 mb-6">Our mission</h2>
             <blockquote className="font-display text-2xl sm:text-3xl text-white font-medium leading-relaxed italic">
-              &ldquo;To prove strength one uses knowledge to destroy his enemies, but a great man, a wise man uses knowledge to create wealth and make impact that lives for generations.&rdquo;
+              &ldquo;We believe technology should be practical, resilient, and useful — not just impressive on paper. The best solutions are the ones that help organisations move forward with confidence.&rdquo;
             </blockquote>
-            <p className="mt-6 text-gray-400">— Ekechukwuemeka Charles Xavier, Founder</p>
+            <p className="mt-6 text-gray-400">— CAXiE Technologies</p>
           </div>
         </div>
       </section>
@@ -266,7 +266,7 @@ export default function AboutPage() {
             <span className="badge-brand inline-block mb-4">Leadership</span>
             <h2 id="team-heading" className="section-title">The people behind CAXiE</h2>
             <p className="section-subtitle mx-auto text-center">
-              CAXiE is a founder-led firm. Every client engagement has a named, accountable person at the top of it — not an account manager you can never reach.
+              CAXiE is a disciplined consultancy with direct ownership of delivery. Every engagement has a clear point of accountability and a practical path to execution.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">

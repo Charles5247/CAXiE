@@ -9,6 +9,8 @@ export default function AdminBlogPanel() {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState({ title: '', content: '', excerpt: '', image_url: '', published: false });
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
   const [saving, setSaving] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -31,12 +33,16 @@ export default function AdminBlogPanel() {
   const openNew = () => {
     setEditing(null);
     setForm({ title: '', content: '', excerpt: '', image_url: '', published: false });
+    setImageFile(null);
+    setImagePreview('');
     setShowForm(true);
   };
 
   const openEdit = (post) => {
     setEditing(post);
     setForm({ title: post.title || '', content: post.content || '', excerpt: post.excerpt || '', image_url: post.image_url || '', published: !!post.published });
+    setImageFile(null);
+    setImagePreview(post.image_url || '');
     setShowForm(true);
   };
 
@@ -44,15 +50,28 @@ export default function AdminBlogPanel() {
     e.preventDefault();
     setSaving(true);
     try {
+      const payload = { ...form };
+      if (imageFile) {
+        const reader = new FileReader();
+        const base64 = await new Promise((resolve, reject) => {
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(imageFile);
+        });
+        payload.image_url = base64;
+      }
+
       const url = editing ? `/api/admin/blog/${editing.id}` : '/api/admin/blog';
       const method = editing ? 'PUT' : 'POST';
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('Save failed');
       setShowForm(false);
+      setImageFile(null);
+      setImagePreview('');
       fetchPosts();
     } catch (e) {
       setError(e.message);
@@ -110,9 +129,25 @@ export default function AdminBlogPanel() {
               <label className="block text-xs text-gray-400 mb-1">Content *</label>
               <textarea required rows={8} value={form.content} onChange={e => setForm(f => ({ ...f, content: e.target.value }))} className="admin-input w-full resize-y" placeholder="Post content (Markdown supported)" />
             </div>
-            <div>
-              <label className="block text-xs text-gray-400 mb-1">Cover image URL</label>
-              <input value={form.image_url} onChange={e => setForm(f => ({ ...f, image_url: e.target.value }))} className="admin-input w-full" placeholder="https://…" />
+            <div className="sm:col-span-2">
+              <label className="block text-xs text-gray-400 mb-1">Cover image</label>
+              <input type="file" accept="image/*" onChange={(e) => {
+                const file = e.target.files?.[0] || null;
+                setImageFile(file);
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = () => setImagePreview(reader.result);
+                  reader.readAsDataURL(file);
+                } else {
+                  setImagePreview(form.image_url || '');
+                }
+              }} className="admin-input w-full" />
+              <p className="text-[11px] text-gray-500 mt-2">Upload a local image. The file is saved as a data URL in the post record.</p>
+              {imagePreview && (
+                <div className="mt-3 overflow-hidden rounded-xl border border-white/10 bg-black/20">
+                  <img src={imagePreview} alt="Preview" className="h-40 w-full object-cover" />
+                </div>
+              )}
             </div>
             <div className="flex items-center gap-3 pt-4">
               <input type="checkbox" id="published" checked={form.published} onChange={e => setForm(f => ({ ...f, published: e.target.checked }))} className="w-4 h-4 accent-brand-600" />

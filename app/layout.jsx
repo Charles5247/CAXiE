@@ -10,20 +10,20 @@ export const metadata = {
     template: '%s | CAXiE Technologies',
   },
   description:
-    'CAXiE Technologies is a Nigerian IT consultancy specialising in cybersecurity, ICT infrastructure, data intelligence, web development, and fractional CTO engagements. Based in Kano, serving clients worldwide.',
+    'CAXiE Technologies is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.',
   keywords: [
     'CAXiE Technologies',
-    'IT consultancy Nigeria',
-    'cybersecurity Nigeria',
-    'web development Kano',
+    'technology consultancy Nigeria',
+    'AI consultancy Nigeria',
+    'software development Kano',
     'fractional CTO Nigeria',
     'data analytics Nigeria',
     'ICT infrastructure Nigeria',
     'digital transformation Nigeria',
     'tech company Kano',
-    'Ekechukwuemeka Charles Xavier',
+    'CAXiE Technologies Ltd',
   ],
-  authors: [{ name: 'Ekechukwuemeka Charles Xavier', url: 'https://caxietechnologies.com/about' }],
+  authors: [{ name: 'CAXiE Technologies', url: 'https://caxietechnologies.com/about' }],
   creator: 'CAXiE Technologies',
   publisher: 'CAXiE Technologies',
   robots: {
@@ -107,7 +107,7 @@ export default function RootLayout({ children }) {
                   },
                   image: 'https://caxietechnologies.com/preview.png',
                   description:
-                    'Nigerian IT consultancy specialising in cybersecurity, ICT infrastructure, data intelligence, web development, and fractional CTO engagements.',
+                    'Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services.',
                   address: {
                     '@type': 'PostalAddress',
                     addressLocality: 'Kano',
@@ -129,9 +129,9 @@ export default function RootLayout({ children }) {
                   ],
                   founder: {
                     '@type': 'Person',
-                    '@id': 'https://caxietechnologies.com/about#xavier',
-                    name: 'Ekechukwuemeka Charles Xavier',
-                    jobTitle: 'Founder & CEO',
+                    '@id': 'https://caxietechnologies.com/about#team',
+                    name: 'CAXiE Technologies Leadership',
+                    jobTitle: 'Technology Leadership',
                     sameAs: ['https://x.com/iamxavi_too', 'https://www.instagram.com/iamxavi_too/'],
                   },
                   areaServed: ['NG', 'Worldwide'],
@@ -147,9 +147,9 @@ export default function RootLayout({ children }) {
                 },
                 {
                   '@type': 'Person',
-                  '@id': 'https://caxietechnologies.com/about#xavier',
-                  name: 'Ekechukwuemeka Charles Xavier',
-                  jobTitle: 'Founder & CEO',
+                  '@id': 'https://caxietechnologies.com/about#team',
+                  name: 'CAXiE Technologies Leadership',
+                  jobTitle: 'Technology Leadership',
                   worksFor: { '@id': 'https://caxietechnologies.com/#organization' },
                   url: 'https://caxietechnologies.com/about',
                   sameAs: [
@@ -178,7 +178,7 @@ export default function RootLayout({ children }) {
           Skip to main content
         </a>
         <Navbar />
-        <main id="main-content" className="min-h-screen" tabIndex={-1}>
+        <main id="main-content" className="min-h-screen pt-20 lg:pt-8 lg:pl-72" tabIndex={-1}>
           {children}
         </main>
         <Footer />

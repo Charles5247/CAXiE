@@ -1,0 +1,22 @@
+[
+  {
+    "id": "dala-orthopedic",
+    "title": "Dala Orthopedic Hospital",
+    "slug": "dala-orthopedic",
+    "category": "Healthcare Digital Transformation",
+    "summary": "A digital transformation and web presence engagement for a leading orthopedic hospital.",
+    "description": "CAXiE supported the hospital with digital infrastructure, a secure web presence, and operational workflow improvements.",
+    "status": "Published",
+    "href": "/case-studies/dala-orthopedic"
+  },
+  {
+    "id": "3stardata",
+    "title": "3StarData",
+    "slug": "3stardata",
+    "category": "Fractional CTO Engagement",
+    "summary": "An active technology leadership engagement for a growth-stage digital services platform.",
+    "description": "CAXiE provides technical leadership, roadmap planning, and platform oversight under a fractional CTO model.",
+    "status": "Published",
+    "href": "/case-studies/3stardata"
+  }
+]

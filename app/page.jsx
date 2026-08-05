@@ -3,9 +3,9 @@ import Image from 'next/image';
 import HeroCarousel from '@/components/ui/HeroCarousel';
 
 export const metadata = {
-  title: 'CAXiE Technologies | Nigerian IT Consultancy, Cybersecurity, Infrastructure & Digital Transformation',
+  title: 'CAXiE Technologies | AI, Software, Cybersecurity & Digital Transformation',
   description:
-    'CAXiE Technologies delivers cybersecurity, ICT infrastructure, data intelligence, and web development for Nigerian SMEs and international enterprises. Based in Kano, Nigeria.',
+    'CAXiE Technologies is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.',
   openGraph: {
     title: 'CAXiE Technologies | Building Technologies for the Future',
     description: 'Nigerian IT consultancy delivering cybersecurity, data intelligence, web development, and fractional CTO services from Kano to the world.',
@@ -15,9 +15,9 @@ export const metadata = {
 
 // Trust indicators
 const trustBadges = [
-  { label: 'Cybersecurity-first delivery', icon: '🛡️' },
-  { label: 'Active fractional CTO engagement', icon: '⚡' },
-  { label: 'Real case studies with measurable results', icon: '📊' },
+  { label: 'Security by design', icon: '🛡️' },
+  { label: 'Fractional CTO and advisory support', icon: '⚡' },
+  { label: 'Practical delivery for real business outcomes', icon: '📊' },
   { label: 'Kano, Nigeria — serving clients worldwide', icon: '🌍' },
 ];
 
@@ -119,7 +119,7 @@ const ctoPreview = {
   name: '3StarData',
   category: 'Fractional CTO Engagement',
   description:
-    'CAXiE founder Xavier engaged as incoming fractional CTO under a retainer + equity model — providing technical leadership, roadmap strategy, and vendor oversight for this Nigerian VTU/digital services platform.',
+    'CAXiE provided fractional CTO support and technical leadership for a growth-stage digital services platform, helping shape roadmap strategy and delivery oversight.',
   engagement: 'Active retainer + equity — ongoing',
   href: '/case-studies/3stardata',
 };
@@ -170,7 +170,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-lg">
-                CAXiE Technologies delivers cybersecurity, infrastructure, data intelligence, and web systems for Nigerian SMEs and international enterprises led by a founder who treats your technology as seriously as his own.
+                CAXiE Technologies helps ambitious organisations move faster with AI, software, cybersecurity, infrastructure, and smart digital systems that support real growth.
               </p>
 
               {/* Trust strip */}
@@ -212,7 +212,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-display font-semibold text-white text-sm">CAXiE Technologies</p>
-                    <p className="text-brand-400 text-xs">Ekechukwuemeka Xavier · Founder & CEO</p>
+                    <p className="text-brand-400 text-xs">Technology consultancy · Kano, Nigeria</p>
                   </div>
                 </div>
                 <div className="flex gap-4 text-center">
@@ -252,7 +252,7 @@ export default function HomePage() {
             <span className="badge-brand mb-4 inline-block">What We Do</span>
             <h2 id="services-heading" className="section-title">Five service lines. One team you can trust.</h2>
             <p className="section-subtitle mx-auto text-center">
-              Each service is delivered with the same cybersecurity-first discipline — whether we&apos;re building your website, deploying your network, or leading your technology function.
+              Each service is delivered with the same practical discipline — whether we&apos;re building software, strengthening infrastructure, or guiding your technology roadmap.
             </p>
           </div>
 
@@ -298,7 +298,7 @@ export default function HomePage() {
                 className="btn-whatsapp text-sm"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                Talk to Xavier
+                Talk to the team
               </a>
             </div>
           </div>
@@ -385,21 +385,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════ FOUNDER SECTION */}
-      <section className="section bg-[#1a0f2e]" aria-labelledby="founder-heading">
+      {/* ═══════════════════════════════════════════ COMPANY SECTION */}
+      <section className="section bg-[#1a0f2e]" aria-labelledby="company-heading">
         <div className="container-max">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Text */}
             <div className="space-y-6">
               <span className="badge-brand inline-block">The Person Behind CAXiE</span>
               <h2 id="founder-heading" className="font-display font-bold text-3xl sm:text-4xl text-white leading-tight">
-                This is a founder-led firm. Every engagement comes with that commitment.
+                We build with intention. Every engagement is shaped around your goals, your systems, and your growth plan.
               </h2>
               <p className="text-gray-400 leading-relaxed text-lg">
-                Ekechukwuemeka Charles Xavier founded CAXiE Technologies to prove that world-class technical delivery doesn&apos;t require a Western address. He brings cybersecurity, infrastructure, and strategic technology expertise to every client — with a cybersecurity-first philosophy that protects as it builds.
+                CAXiE Technologies brings together software engineering, AI enablement, infrastructure expertise, and technology leadership for organisations that need dependable delivery and clear strategic guidance.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                His current fractional CTO engagement with 3StarData — a retainer + equity model — demonstrates the level of commitment CAXiE brings to every partnership.
+                Our fractional CTO and advisory engagements reflect the same commitment: practical leadership, close collaboration, and measurable progress.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="/about" className="btn-primary">
@@ -411,7 +411,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="btn-ghost"
                 >
-                  Follow @iamxavi_too
+                  Follow the company updates
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -425,7 +425,7 @@ export default function HomePage() {
                 <div className="aspect-[4/5] bg-gradient-to-br from-brand-800 to-brand-950 rounded-3xl overflow-hidden shadow-brand-lg">
                   <Image
                     src="/founder.JPG"
-                    alt="Ekechukwuemeka Charles Xavier — Founder & CEO, CAXiE Technologies"
+                    alt="CAXiE Technologies team delivering technology services"
                     fill
                     className="object-cover"
                     priority={false}
@@ -434,8 +434,8 @@ export default function HomePage() {
                 </div>
                 {/* Overlay card */}
                 <div className="absolute -bottom-6 -left-6 bg-[#0f0a1a] border border-white/15 rounded-2xl p-4 shadow-brand max-w-[220px]">
-                  <p className="font-display font-bold text-white text-sm">Ekechukwuemeka Charles Xavier</p>
-                  <p className="text-brand-400 text-xs mt-0.5">Founder & CEO · CAXiE Technologies</p>
+                  <p className="font-display font-bold text-white text-sm">CAXiE Technologies</p>
+                  <p className="text-brand-400 text-xs mt-0.5">AI, software, infrastructure & strategy</p>
                   <div className="flex items-center gap-1 mt-2 text-xs text-gray-500">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
                     Available for fractional engagements
@@ -503,7 +503,7 @@ export default function HomePage() {
               {
                 icon: '🛡️',
                 title: 'Cybersecurity-First',
-                desc: 'Every engagement — from a website to an infrastructure project — is designed with security built in, not bolted on.',
+                desc: 'Every engagement — from a web platform to an infrastructure project — is designed with resilience built in from the start.',
               },
               {
                 icon: '📋',
@@ -512,8 +512,8 @@ export default function HomePage() {
               },
               {
                 icon: '🎯',
-                title: 'Founder Accountability',
-                desc: 'Xavier is personally accountable for every client delivery. This is not an agency where your project gets handed to a junior.',
+                title: 'Direct Accountability',
+                desc: 'We stay close to the work and take ownership of outcomes rather than handing projects off and disappearing into layers.',
               },
               {
                 icon: '📈',
