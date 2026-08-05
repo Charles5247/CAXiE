@@ -34,7 +34,7 @@ const caseStudySchema = {
 
 export default function DalaOrthopedicCaseStudy() {
   return (
-    <div className="bg-[#0f0a1a] pt-16">
+    <div className="bg-[#0f0a1a]">
       {/* JSON-LD */}
       <script
         type="application/ld+json"
