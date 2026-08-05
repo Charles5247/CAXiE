@@ -3,7 +3,7 @@ import Image from 'next/image';
 import HeroCarousel from '@/components/ui/HeroCarousel';
 
 export const metadata = {
-  title: 'CAXiE Technologies | Nigerian IT Consultancy — Cybersecurity, Infrastructure & Digital Transformation',
+  title: 'CAXiE Technologies | Nigerian IT Consultancy, Cybersecurity, Infrastructure & Digital Transformation',
   description:
     'CAXiE Technologies delivers cybersecurity, ICT infrastructure, data intelligence, and web development for Nigerian SMEs and international enterprises. Based in Kano, Nigeria.',
   openGraph: {
@@ -132,11 +132,14 @@ export default function HomePage() {
         className="relative min-h-screen flex items-center overflow-hidden"
         aria-labelledby="hero-heading"
       >
+        <div className="absolute inset-0 z-0" aria-hidden="true">
+          <HeroCarousel className="rounded-none" />
+        </div>
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-hero-gradient" aria-hidden="true" />
+        <div className="absolute inset-0 z-10 bg-hero-gradient" aria-hidden="true" />
         {/* Grid overlay */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 z-10 opacity-20"
           style={{
             backgroundImage:
               'radial-gradient(circle at 1px 1px, rgba(147,51,234,0.4) 1px, transparent 0)',
@@ -145,10 +148,10 @@ export default function HomePage() {
           aria-hidden="true"
         />
         {/* Glow orbs */}
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl" aria-hidden="true" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-900/30 rounded-full blur-2xl" aria-hidden="true" />
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl z-10" aria-hidden="true" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-900/30 rounded-full blur-2xl z-10" aria-hidden="true" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — headline & CTAs */}
             <div className="space-y-8">
@@ -167,7 +170,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-lg">
-                CAXiE Technologies delivers cybersecurity, infrastructure, data intelligence, and web systems for Nigerian SMEs and international enterprises — led by a founder who treats your technology as seriously as his own.
+                CAXiE Technologies delivers cybersecurity, infrastructure, data intelligence, and web systems for Nigerian SMEs and international enterprises led by a founder who treats your technology as seriously as his own.
               </p>
 
               {/* Trust strip */}
@@ -200,14 +203,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right — carousel + floating metrics card */}
-            <div className="lg:flex flex-col gap-4 hidden">
-              {/* Carousel */}
-              <div className="relative w-full h-72 lg:h-80 rounded-2xl overflow-hidden shadow-brand-lg ring-1 ring-white/10">
-                <HeroCarousel />
-              </div>
-              {/* Compact metrics strip below carousel */}
-              <div className="card bg-white/5 backdrop-blur-lg border border-white/15 px-5 py-4 rounded-2xl shadow-brand-lg flex items-center justify-between gap-4 relative">
+            {/* Right — floating metrics card */}
+            <div className="lg:flex flex-col gap-4 hidden lg:items-end">
+              <div className="card bg-white/5 backdrop-blur-lg border border-white/15 px-5 py-4 rounded-2xl shadow-brand-lg flex items-center justify-between gap-4 relative max-w-xl w-full">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center shadow-brand flex-shrink-0">
                     <span className="text-white font-display font-bold text-xs">CX</span>

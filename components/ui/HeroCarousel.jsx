@@ -20,7 +20,7 @@ const carouselImages = [
 
 const AUTOPLAY_INTERVAL = 4500;
 
-export default function HeroCarousel() {
+export default function HeroCarousel({ className = '' }) {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
@@ -52,7 +52,7 @@ export default function HeroCarousel() {
 
   return (
     <div
-      className="relative w-full h-full overflow-hidden rounded-2xl"
+      className={`relative w-full h-full overflow-hidden ${className}`.trim()}
       role="region"
       aria-label="CAXiE Technologies image carousel"
       onMouseEnter={() => setPaused(true)}

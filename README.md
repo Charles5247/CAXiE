@@ -1,89 +1,59 @@
 # CAXiE Technologies
 
-A modern, professional company website for CAXiE Technologies built with React.js and Tailwind CSS. CAXiE Technologies delivers integrated ICT solutions including cybersecurity, infrastructure setup, data analytics, web development, and professional training.
+CAXiE Technologies is a modern consultancy website for digital transformation, cybersecurity, infrastructure, and product delivery. The repository now contains a Next.js marketing site plus a separate React admin dashboard that can be started independently.
 
-## Features
-- **Company Branding** - Professional presentation of CAXiE Technologies services and team
-- **Responsive Design** - Mobile-first approach with responsive sidebar navigation
-- **Service Showcase** - Comprehensive display of cybersecurity, ICT infrastructure, data analytics, and web development services
-- **Interactive Elements** - Animated hero section with image carousel and typewriter effect
-- **AI Assistant** - Floating AI chatbot for customer inquiries and support
-- **Contact Integration** - Professional contact form with email service integration
-- **Modern UI/UX** - Glassmorphism effects and contemporary design patterns
-- **Organized Codebase** - Well-structured CSS architecture for maintainability
+## What changed
+- Fixed the admin app’s broken Supabase fallback client so the build compiles again.
+- Reworked the landing hero so the carousel behaves as a full-bleed background behind the hero content.
+- Added a repo-root admin launcher script for easier local development.
+- Removed noisy debug logging and simplified a few placeholder/stub components to make the codebase easier to navigate.
+- Updated the CSS and config files to remove the main editor warnings that were surfacing during development.
 
-## Tech Stack
-- **Frontend**: React.js (Create React App)
-- **Styling**: Tailwind CSS with organized CSS architecture
-- **Email Service**: Formspree integration for contact forms
-- **Database**: Supabase for dynamic content management
-- **Deployment**: Netlify-ready with optimized build process
-- **PostCSS & Autoprefixer** for CSS optimization
+## Current stack
+- Main site: Next.js 16 + React 18 + Tailwind CSS
+- Admin app: Create React App + React Router + Supabase
+- Styling: Tailwind with shared global styles
+- Data: Supabase-backed content and media management
 
-## Getting Started
+## Run locally
 
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/Charles5247/Caxie.git
-   cd Caxie
-   ```
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Start the development server:**
-   ```bash
-   npm start
-   ```
-4. **Open in your browser:**
-   Visit [http://localhost:3000](http://localhost:3000)
+### Main website
+```bash
+npm install
+npm run dev
+```
+Open http://localhost:3000
 
-## Project Structure
+### Admin dashboard
+```bash
+cd admin
+npm install --legacy-peer-deps
+npm start
+```
+Or from the repo root:
+```bash
+npm run admin
+```
+Open http://localhost:3001
 
-### Components
-- `src/components/` - React components for different sections
-- `src/data/` - Centralized data files for content management
-- `src/services/` - Email service and API integrations
+## Verified status
+The following checks were run successfully:
+- Main app production build: `npm run build`
+- Admin app production build: `cd admin && npm run build`
+- Admin app HTTP check: http://127.0.0.1:3001 returned HTTP 200
 
-### CSS Organization
-- `public/css/base.css` - Base styles and CSS variables
-- `public/css/layout.css` - Layout-specific styles
-- `public/css/typography.css` - Typography styles
-- `public/css/components.css` - Reusable component styles
-- `public/css/policy-pages.css` - Policy page styles
-- `public/css/contact-form.css` - Contact form specific styles
+## Project layout
+- `app/` — Next.js marketing site pages and route components
+- `components/` — shared UI components such as the hero carousel and footer
+- `src/` — older React entry points and page components kept for compatibility
+- `admin/` — standalone admin dashboard app
+- `public/` — static assets and policy pages
 
-### Static Pages
-- `public/privacy.html` - Privacy policy
-- `public/terms.html` - Terms of use
-- `public/cookies.html` - Cookie policy
-- `public/do-not-sell.html` - Data privacy notice
+## Notes
+- The admin app expects Supabase environment variables when full database access is required.
+- If those variables are not set, the app will still start in a safe fallback mode.
 
-## Usage
-- Update company content in `src/components/` and `src/data/` folders
-- Modify styles using the organized CSS files in `public/css/`
-- Customize theme variables in `public/css/base.css`
-- Deploy easily to Netlify, Vercel, or your preferred platform
-
-## Services Offered
-- **Cybersecurity & Identity Protection** - Threat protection, security audits, training
-- **ICT Infrastructure** - Network installation, systems setup, cloud integration
-- **Data & Intelligence** - Analytics, business intelligence, decision support
-- **Web, Brand & Marketing** - Web development, branding, SEO, media support
-
-## Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-## Contact CAXiE Technologies
-- **Email**: johneme2022@gmail.com
-- **Phone**: +234 81 6544 3398
-- **Location**: Kano, Nigeria
-- **GitHub**: [Charles5247](https://github.com/Charles5247)
-- **LinkedIn**: [charles-xavier-ekechukwuemeka-01185a1a5](https://www.linkedin.com/in/charles-xavier-ekechukwuemeka-01185a1a5)
-- **Instagram**: [iamxavi_too](https://instagram.com/iamxavi_too)
-
-## Founder
-**Ekechukwuemeka Charles Xavier** - Founder and Chief Executive Officer
+## Contact
+- Email: johneme2022@gmail.com
+- Phone: +234 81 6544 3398
+- Location: Kano, Nigeria
