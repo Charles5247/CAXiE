@@ -2,7 +2,7 @@ import Link from 'next/link';
 export const metadata = { title: 'Do Not Sell My Personal Information — CAXiE Technologies' };
 export default function DoNotSellPage() {
   return (
-    <div className="bg-[#0f0a1a] pt-16">
+    <div className="bg-[#0f0a1a]">
       <section className="relative py-20">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-950 to-[#0f0a1a]" />
         <div className="relative container-max px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">

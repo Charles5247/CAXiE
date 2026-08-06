@@ -5,6 +5,7 @@ import AdminBlogPanel from './panels/AdminBlogPanel';
 import AdminJobsPanel from './panels/AdminJobsPanel';
 import AdminProductsPanel from './panels/AdminProductsPanel';
 import AdminCaseStudiesPanel from './panels/AdminCaseStudiesPanel';
+import AdminTeamPanel from './panels/AdminTeamPanel';
 
 const navItems = [
   {
@@ -22,6 +23,15 @@ const navItems = [
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'team',
+    label: 'Team Members',
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     ),
   },
@@ -68,6 +78,7 @@ export default function AdminDashboard({ onLogout, session }) {
   const renderPanel = () => {
     switch (activePanel) {
       case 'blog': return <AdminBlogPanel />;
+      case 'team': return <AdminTeamPanel />;
       case 'jobs': return <AdminJobsPanel />;
       case 'products': return <AdminProductsPanel />;
       case 'casestudies': return <AdminCaseStudiesPanel />;
@@ -81,8 +92,9 @@ export default function AdminDashboard({ onLogout, session }) {
       <aside className={`fixed inset-y-0 left-0 z-50 w-56 bg-[#0f0a1a] border-r border-white/10 flex flex-col transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:flex`}>
         {/* Logo */}
         <div className="p-5 border-b border-white/10 flex items-center gap-3">
-          <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center flex-shrink-0">
-            <span className="text-white font-bold text-xs">CX</span>
+          <div className="w-8 h-8 flex-shrink-0 rounded-lg overflow-hidden bg-white flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="CAXiE Technologies" className="w-full h-full object-contain" />
           </div>
           <div>
             <p className="font-display font-bold text-white text-sm">CAXiE Admin</p>
@@ -177,6 +189,7 @@ export default function AdminDashboard({ onLogout, session }) {
 function OverviewPanel() {
   const contentTypes = [
     { label: 'Blog Posts', desc: 'Create and manage blog articles', panel: 'blog', icon: '✍️', color: 'border-blue-400/20 hover:border-blue-400/40' },
+    { label: 'Team Members', desc: 'Add, edit, or remove team members on /about', panel: 'team', icon: '👥', color: 'border-purple-400/20 hover:border-purple-400/40' },
     { label: 'Job Listings', desc: 'Add, edit, or remove open roles', panel: 'jobs', icon: '💼', color: 'border-green-400/20 hover:border-green-400/40' },
     { label: 'Products', desc: 'Manage product listings and statuses', panel: 'products', icon: '📦', color: 'border-yellow-400/20 hover:border-yellow-400/40' },
     { label: 'Case Studies', desc: 'Update project case study details', panel: 'casestudies', icon: '📄', color: 'border-brand-600/20 hover:border-brand-600/40' },

@@ -46,7 +46,7 @@ const curriculum = [
 
 export default function TeachingPage() {
   return (
-    <div className="bg-[#0f0a1a] pt-16">
+    <div className="bg-[#0f0a1a]">
       {/* HEADER */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-[#0f0a1a] to-[#1a0f2e]" />

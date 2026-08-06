@@ -41,8 +41,9 @@ export default function AdminLogin({ onLogin }) {
       <div className="relative w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 bg-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-brand">
-            <span className="text-white font-display font-bold text-xl">CX</span>
+          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-brand overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="CAXiE Technologies" className="w-full h-full object-contain p-1" />
           </div>
           <h1 className="font-display font-bold text-white text-2xl">Admin CMS</h1>
           <p className="text-gray-500 text-sm mt-1">CAXiE Technologies — Restricted Access</p>
