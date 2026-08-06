@@ -154,7 +154,7 @@ export default function AboutPage() {
 
               <div className="flex gap-4 flex-wrap pt-2">
                 <a
-                  href="https://wa.me/2348165443398?text=Hi%20Xavier%2C%20I%27d%20like%20to%20discuss%20a%20fractional%20CTO%20engagement."
+                  href="https://wa.me/2348165443398?text=Hi%20CAXiE%20Technologies%2C%20I%27d%20like%20to%20discuss%20a%20fractional%20CTO%20engagement."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-whatsapp text-sm"

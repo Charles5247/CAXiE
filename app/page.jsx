@@ -391,9 +391,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Text */}
             <div className="space-y-6">
-              <span className="badge-brand inline-block">The Person Behind CAXiE</span>
+              <span className="badge-brand inline-block">About CAXiE Technologies</span>
               <h2 id="founder-heading" className="font-display font-bold text-3xl sm:text-4xl text-white leading-tight">
-                We build with intention. Every engagement is shaped around your goals, your systems, and your growth plan.
+                Built on one conviction: world-class delivery is a matter of discipline, not geography.
               </h2>
               <p className="text-gray-400 leading-relaxed text-lg">
                 CAXiE Technologies brings together software engineering, AI enablement, infrastructure expertise, and technology leadership for organisations that need dependable delivery and clear strategic guidance.
@@ -403,7 +403,7 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="/about" className="btn-primary">
-                  Read Full Bio
+                  About CAXiE
                 </Link>
                 <a
                   href="https://x.com/iamxavi_too"
@@ -411,7 +411,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="btn-ghost"
                 >
-                  Follow the company updates
+                  Follow us on X
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>

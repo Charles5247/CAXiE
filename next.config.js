@@ -3,15 +3,23 @@ const nextConfig = {
   reactStrictMode: true,
 
   // Image optimisation — works correctly on Render's Node runtime.
-  // Add remote hostname patterns as the site grows.
+  // .jfif carousel images are served with unoptimized={true} per-image in
+  // HeroCarousel.jsx which bypasses the optimizer for those files. The
+  // remotePatterns below cover external Supabase and CDN images.
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'caxietechnologies.com' },
       { protocol: 'https', hostname: 'caxie-technologies.netlify.app' },
       { protocol: 'https', hostname: '*.supabase.co' },
     ],
-    // Keep unoptimized: false — next/image optimisation works fine on Render
+    // Keep unoptimized: false — next/image optimisation works fine on Render.
+    // Carousel jfif images use the per-image unoptimized prop instead.
     unoptimized: false,
+    // Declare allowed dangerouslyAllowSVG and supported image formats
+    dangerouslyAllowSVG: false,
+    // Allow serving static .jfif files directly (they bypass the optimizer via
+    // the unoptimized prop on each <Image> but this makes the intent explicit)
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Security headers — applied to every route including admin
