@@ -1,18 +1,17 @@
 services:
+  # ── PUBLIC SITE ────────────────────────────────────────────────────────────
+  # Serves caxietechnologies.com and www.caxietechnologies.com
+  # APP_MODE=public  → middleware returns 404 on any /admin path
   - type: web
-    name: caxie-technologies
+    name: caxie-public
     runtime: node
     plan: starter
     region: frankfurt  # closest to Nigeria / lowest latency from West Africa
 
-    # Build & start
     buildCommand: npm ci && npm run build
     startCommand: npm run start
-
-    # Health check — Next.js returns 200 on / even with errors, use /api/health
     healthCheckPath: /
 
-    # Environment variable group (set secrets in Render dashboard)
     envVars:
       - key: NODE_ENV
         value: production
@@ -20,6 +19,9 @@ services:
         value: 20.18.0
       - key: NEXT_TELEMETRY_DISABLED
         value: "1"
+      # ── Deployment mode (controls middleware route isolation) ───────────────
+      - key: APP_MODE
+        value: public
       # ── Supabase ──────────────────────────────────────────────────────────
       - key: NEXT_PUBLIC_SUPABASE_URL
         sync: false   # set in Render dashboard
@@ -28,7 +30,43 @@ services:
       # ── Formspree ─────────────────────────────────────────────────────────
       - key: NEXT_PUBLIC_FORMSPREE_ENDPOINT
         sync: false
-      # ── Admin CMS ─────────────────────────────────────────────────────────
+      # ── Admin CMS credentials (kept on public service for API proxy auth) ─
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+
+  # ── ADMIN SITE ─────────────────────────────────────────────────────────────
+  # Serves admin.caxietechnologies.com (DNS CNAME → this service's .onrender.com URL)
+  # APP_MODE=admin   → middleware returns 404 on any non-/admin path
+  # Owner action required: add DNS CNAME record for admin.caxietechnologies.com
+  #   once this service is deployed and its .onrender.com URL is known.
+  - type: web
+    name: caxie-admin
+    runtime: node
+    plan: starter
+    region: frankfurt
+
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /admin
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      # ── Deployment mode ────────────────────────────────────────────────────
+      - key: APP_MODE
+        value: admin
+      # ── Supabase ──────────────────────────────────────────────────────────
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      # ── Admin CMS credentials ──────────────────────────────────────────────
       - key: ADMIN_EMAIL
         sync: false
       - key: ADMIN_PASSWORD

@@ -2,6 +2,8 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import AIChatbot from '@/components/ui/AIChatbot';
+import MainContent from '@/components/layout/MainContent';
+import { SidebarProvider } from '@/lib/SidebarContext';
 
 export const metadata = {
   metadataBase: new URL('https://caxietechnologies.com'),
@@ -171,18 +173,18 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-600 text-white px-4 py-2 rounded z-[9999]"
-        >
-          Skip to main content
-        </a>
-        <Navbar />
-        <main id="main-content" className="min-h-screen pt-20 lg:pt-8 lg:pl-72" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <AIChatbot />
+        <SidebarProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand-600 text-white px-4 py-2 rounded z-[9999]"
+          >
+            Skip to main content
+          </a>
+          <Navbar />
+          <MainContent footer={<Footer />} chatbot={<AIChatbot />}>
+            {children}
+          </MainContent>
+        </SidebarProvider>
       </body>
     </html>
   );
