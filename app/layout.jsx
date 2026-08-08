@@ -9,13 +9,14 @@ import { SidebarProvider } from "@/lib/SidebarContext";
 export const metadata = {
   metadataBase: new URL("https://caxietechnologies.com"),
   title: {
-    default: "CAXiE Technologies | Nigerian IT Consultancy — Kano, Nigeria",
-    template: "%s | CAXiE Technologies",
+    default:
+      "CAXiE Technologies Ltd Ltd | Nigerian IT Consultancy — Kano, Nigeria",
+    template: "%s | CAXiE Technologies Ltd Ltd",
   },
   description:
-    "CAXiE Technologies is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
+    "CAXiE Technologies Ltd Ltd is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
   keywords: [
-    "CAXiE Technologies",
+    "CAXiE Technologies Ltd",
     "technology consultancy Nigeria",
     "AI consultancy Nigeria",
     "software development Kano",
@@ -24,13 +25,16 @@ export const metadata = {
     "ICT infrastructure Nigeria",
     "digital transformation Nigeria",
     "tech company Kano",
-    "CAXiE Technologies Ltd",
+    "CAXiE Technologies Ltd Ltd",
   ],
   authors: [
-    { name: "CAXiE Technologies", url: "https://caxietechnologies.com/about" },
+    {
+      name: "CAXiE Technologies Ltd Ltd",
+      url: "https://caxietechnologies.com/about",
+    },
   ],
-  creator: "CAXiE Technologies",
-  publisher: "CAXiE Technologies",
+  creator: "CAXiE Technologies Ltd Ltd",
+  publisher: "CAXiE Technologies Ltd Ltd",
   robots: {
     index: true,
     follow: true,
@@ -46,13 +50,13 @@ export const metadata = {
     type: "website",
     locale: "en_NG",
     alternateLocale: ["en_GB", "en_US"],
-    siteName: "CAXiE Technologies",
+    siteName: "CAXiE Technologies Ltd Ltd",
     images: [
       {
         url: "/preview.png",
         width: 1200,
         height: 630,
-        alt: "CAXiE Technologies — Nigerian IT Consultancy",
+        alt: "CAXiE Technologies Ltd Ltd — Nigerian IT Consultancy",
       },
     ],
   },
@@ -144,7 +148,7 @@ export default async function RootLayout({ children }) {
                     "ProfessionalService",
                   ],
                   "@id": "https://caxietechnologies.com/#organization",
-                  name: "CAXiE Technologies",
+                  name: "CAXiE Technologies Ltd",
                   alternateName: ["CAXiE", "Caxie Tech"],
                   url: "https://caxietechnologies.com",
                   logo: {
@@ -176,7 +180,7 @@ export default async function RootLayout({ children }) {
                   founder: {
                     "@type": "Person",
                     "@id": "https://caxietechnologies.com/about#team",
-                    name: "CAXiE Technologies Leadership",
+                    name: "CAXiE Technologies Ltd Leadership",
                     jobTitle: "Technology Leadership",
                     sameAs: [
                       "https://x.com/iamxavi_too",
@@ -197,7 +201,7 @@ export default async function RootLayout({ children }) {
                 {
                   "@type": "Person",
                   "@id": "https://caxietechnologies.com/about#team",
-                  name: "CAXiE Technologies Leadership",
+                  name: "CAXiE Technologies Ltd Leadership",
                   jobTitle: "Technology Leadership",
                   worksFor: {
                     "@id": "https://caxietechnologies.com/#organization",
@@ -213,7 +217,7 @@ export default async function RootLayout({ children }) {
                   "@type": "WebSite",
                   "@id": "https://caxietechnologies.com/#website",
                   url: "https://caxietechnologies.com",
-                  name: "CAXiE Technologies",
+                  name: "CAXiE Technologies Ltd",
                   publisher: {
                     "@id": "https://caxietechnologies.com/#organization",
                   },

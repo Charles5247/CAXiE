@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import HeroCarousel from "@/app/HeroCarousel";
+import HeroCarousel from "@/components/ui/HeroCarousel";
 
 export const metadata = {
   title:
-    "CAXiE Technologies | AI, Software, Cybersecurity & Digital Transformation",
+    "CAXiE Technologies Ltd | AI, Software, Cybersecurity & Digital Transformation",
   description:
-    "CAXiE Technologies is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
+    "CAXiE Technologies Ltd is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
   openGraph: {
-    title: "CAXiE Technologies | Building Technologies for the Future",
+    title: "CAXiE Technologies Ltd | Building Technologies for the Future",
     description:
       "Nigerian IT consultancy delivering cybersecurity, data intelligence, web development, and fractional CTO services from Kano to the world.",
     url: "https://caxietechnologies.com",
@@ -232,8 +232,8 @@ export default function HomePage() {
           aria-hidden="true"
         />
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="relative z-20 w-[90%] mx-auto h-screen flex items-center px-[10px] sm:px-[15px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
             {/* Left — headline & CTAs */}
             <div className="space-y-8">
               {/* Badge */}
@@ -253,7 +253,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-lg">
-                CAXiE Technologies helps ambitious organisations move faster
+                CAXiE Technologies Ltd aids ambitious organisations move faster
                 with AI, software, cybersecurity, infrastructure, and smart
                 digital systems that support real growth.
               </p>
@@ -312,7 +312,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-display font-semibold text-white text-sm">
-                      CAXiE Technologies
+                      CAXiE Technologies Ltd
                     </p>
                     <p className="text-brand-400 text-xs">
                       Technology consultancy · Kano, Nigeria
@@ -603,7 +603,7 @@ export default function HomePage() {
             {/* Text */}
             <div className="space-y-6">
               <span className="badge-brand inline-block">
-                About CAXiE Technologies
+                About CAXiE Technologies Ltd
               </span>
               <h2
                 id="founder-heading"
@@ -613,7 +613,7 @@ export default function HomePage() {
                 discipline, not geography.
               </h2>
               <p className="text-gray-400 leading-relaxed text-lg">
-                CAXiE Technologies brings together software engineering, AI
+                CAXiE Technologies Ltd brings together software engineering, AI
                 enablement, infrastructure expertise, and technology leadership
                 for organisations that need dependable delivery and clear
                 strategic guidance.
@@ -657,7 +657,7 @@ export default function HomePage() {
                 <div className="aspect-[4/5] bg-gradient-to-br from-brand-800 to-brand-950 rounded-3xl overflow-hidden shadow-brand-lg">
                   <Image
                     src="/founder.JPG"
-                    alt="CAXiE Technologies team delivering technology services"
+                    alt="CAXiE Technologies Ltd team delivering technology services"
                     fill
                     className="object-cover"
                     priority={false}
@@ -667,7 +667,7 @@ export default function HomePage() {
                 {/* Overlay card */}
                 <div className="absolute -bottom-6 -left-6 bg-[#0f0a1a] border border-white/15 rounded-2xl p-4 shadow-brand max-w-[220px]">
                   <p className="font-display font-bold text-white text-sm">
-                    CAXiE Technologies
+                    CAXiE Technologies Ltd
                   </p>
                   <p className="text-brand-400 text-xs mt-0.5">
                     AI, software, infrastructure & strategy

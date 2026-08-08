@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Admin — CAXiE Technologies CMS',
-  description: 'Content management system for CAXiE Technologies.',
+  title: "Admin — CAXiE Technologies Ltd CMS",
+  description: "Content management system for CAXiE Technologies Ltd.",
   robots: {
     index: false,
     follow: false,
@@ -11,9 +11,5 @@ export const metadata = {
 };
 
 export default function AdminLayout({ children }) {
-  return (
-    <div className="min-h-screen bg-[#080510]">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen bg-[#080510]">{children}</div>;
 }

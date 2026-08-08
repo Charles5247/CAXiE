@@ -4,7 +4,7 @@
     "name": "Ekechukwuemeka Charles Xavier",
     "shortName": "Charles Xavier",
     "title": "Founder & CEO",
-    "bio": "Cybersecurity practitioner, technology strategist, and fractional CTO. Xavier founded CAXiE Technologies with a mandate to deliver enterprise-grade technology to organisations that had been underserved by generic IT solutions. He leads every major client engagement personally and currently serves as incoming fractional CTO for 3StarData.",
+    "bio": "Cybersecurity practitioner, technology strategist, and fractional CTO. Xavier founded CAXiE Technologies Ltd with a mandate to deliver enterprise-grade technology to organisations that had been underserved by generic IT solutions. He leads every major client engagement personally and currently serves as incoming fractional CTO for 3StarData.",
     "photo": "/profile.JPG",
     "social": {
       "twitter": "https://x.com/iamxavi_too",
@@ -12,7 +12,12 @@
       "github": "https://github.com/Charles5247",
       "instagram": "https://www.instagram.com/iamxavi_too/"
     },
-    "specialties": ["Cybersecurity", "ICT Infrastructure", "Fractional CTO", "Data Intelligence"]
+    "specialties": [
+      "Cybersecurity",
+      "ICT Infrastructure",
+      "Fractional CTO",
+      "Data Intelligence"
+    ]
   },
   {
     "id": "advisor-01",

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /**
  * MainContent — wraps the page content and the footer, dynamically adjusting
@@ -11,7 +11,7 @@
  * stays a server component.
  */
 
-import { useSidebar } from '@/lib/SidebarContext';
+import { useSidebar } from "@/lib/SidebarContext";
 
 export default function MainContent({ children, footer, chatbot }) {
   const { collapsed } = useSidebar();
@@ -19,13 +19,13 @@ export default function MainContent({ children, footer, chatbot }) {
   return (
     <div
       className={`flex flex-col transition-all duration-250 ease-in-out lg:pt-0 ${
-        collapsed ? 'lg:ml-16' : 'lg:ml-72'
+        collapsed ? "lg:ml-16" : "lg:ml-72"
       }`}
     >
       <main
         id="main-content"
         tabIndex={-1}
-        className="min-h-screen pt-20 lg:pt-8 flex-1"
+        className="min-h-screen pt-0 lg:pt-0 flex-1"
       >
         {children}
       </main>

@@ -1,6 +1,6 @@
-# CAXiE Technologies
+c# CAXiE Technologies Ltd
 
-CAXiE Technologies is a modern consultancy website for digital transformation, cybersecurity, infrastructure, and product delivery. The repository now contains a Next.js marketing site plus a separate React admin dashboard that can be started independently.
+CAXiE Technologies Ltd is a modern consultancy website for digital transformation, cybersecurity, infrastructure, and product delivery. The repository now contains a Next.js marketing site plus a separate React admin dashboard that can be started independently.
 
 ## What changed
 

@@ -1,7 +1,7 @@
 import "../globals.css";
 
 export const metadata = {
-  title: "Admin | CAXiE Technologies",
+  title: "Admin | CAXiE Technologies Ltd",
   robots: {
     index: false,
     follow: false,

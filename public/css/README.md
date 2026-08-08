@@ -1,29 +1,35 @@
 # CSS Organization Structure
 
-This directory contains organized CSS files for the CAXiE Technologies website.
+This directory contains organized CSS files for the CAXiE Technologies Ltd website.
 
 ## File Structure
 
 ### Core Files
+
 - **`base.css`** - Base styles, CSS variables, and global resets
 - **`layout.css`** - Layout-specific styles for containers and page structure
 - **`typography.css`** - Typography styles for headings, paragraphs, and text elements
 - **`components.css`** - Reusable component styles (logos, buttons, cards, etc.)
 
 ### Specialized Files
+
 - **`policy-pages.css`** - Combined styles for all policy pages (privacy, terms, cookies, do-not-sell)
 - **`contact-form.css`** - Styles specifically for contact form setup page
 
 ## Usage
 
 ### Policy Pages
+
 All policy pages (privacy.html, terms.html, cookies.html, do-not-sell.html) use:
+
 ```html
 <link rel="stylesheet" href="/css/policy-pages.css" />
 ```
 
 ### Contact Form Page
+
 The contact form setup page uses:
+
 ```html
 <link rel="stylesheet" href="/css/contact-form.css" />
 ```
@@ -31,6 +37,7 @@ The contact form setup page uses:
 ## CSS Variables
 
 The following CSS custom properties are defined in `base.css`:
+
 - `--primary-purple: #7c3aed`
 - `--secondary-purple: #4c1d95`
 - `--dark-purple: #1e1b4b`
