@@ -31,12 +31,12 @@ export default function Footer() {
       className="bg-gray-950 border-t border-white/10"
       aria-label="Site footer"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Top section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-3">
               <div className="w-9 h-9 bg-brand-600 rounded-xl flex items-center justify-center shadow-brand">
                 <span className="text-white font-display font-bold">CX</span>
               </div>
@@ -44,14 +44,14 @@ export default function Footer() {
                 CAXiE <span className="text-brand-400">Technologies</span>
               </span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-xs">
               Nigerian IT consultancy delivering cybersecurity, infrastructure,
               data intelligence, and digital transformation — from Kano to the
               world.
             </p>
 
             {/* NAP — for local SEO */}
-            <address className="not-italic text-sm text-gray-500 space-y-1 mb-6">
+            <address className="not-italic text-sm text-gray-500 space-y-1 mb-4">
               <div className="flex items-center gap-2">
                 <svg
                   className="w-4 h-4 text-brand-500 flex-shrink-0"
@@ -137,10 +137,10 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <h3 className="font-display font-semibold text-white mb-4 text-sm uppercase tracking-wider">
+              <h3 className="font-display font-semibold text-white mb-3 text-sm uppercase tracking-wider">
                 {group}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -157,7 +157,7 @@ export default function Footer() {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-brand-600/10 border border-brand-600/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+        <div className="bg-brand-600/10 border border-brand-600/20 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
           <div>
             <p className="font-display font-semibold text-white text-lg">
               Ready to build something that works?
@@ -179,7 +179,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="brand-divider" />
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 text-sm text-gray-500">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 text-sm text-gray-500">
           <p>
             &copy; {new Date().getFullYear()} CAXiE Technologies Ltd Limited.
             All rights reserved.

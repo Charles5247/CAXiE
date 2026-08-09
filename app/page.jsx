@@ -13,6 +13,14 @@ export const metadata = {
     description:
       "Nigerian IT consultancy delivering cybersecurity, data intelligence, web development, and fractional CTO services from Kano to the world.",
     url: "https://caxietechnologies.com",
+    images: [
+      {
+        url: "/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "CAXiE Technologies — Nigerian IT Consultancy",
+      },
+    ],
   },
 };
 
