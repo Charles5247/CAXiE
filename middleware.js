@@ -13,6 +13,14 @@ import { NextResponse } from "next/server";
  *
  * IMPORTANT: A 404 (not a 302) is returned when a route is blocked, because a
  * redirect confirms the route exists. A 404 does not.
+ *
+ * This middleware also stamps the current pathname onto an `x-pathname`
+ * request header on every allowed request. RootLayout (a Server Component)
+ * has no built-in way to read the current URL path, so it reads this header
+ * instead to detect /admin routes and suppress the public Navbar/Footer —
+ * this matters in local dev, where APP_MODE/host-based detection doesn't
+ * apply (both are always localhost:3000) but the double-sidebar problem
+ * still needs fixing.
  */
 
 const PUBLIC_HOSTS = ["caxietechnologies.com", "www.caxietechnologies.com"];
@@ -23,6 +31,18 @@ const ADMIN_HOSTS = ["admin.caxietechnologies.com"];
 // We detect the Render public service by APP_MODE rather than hostname so
 // the .onrender.com preview URL also enforces the correct policy.
 const APP_MODE = process.env.APP_MODE; // 'public' | 'admin' | undefined
+
+/** Builds a NextResponse.next() that carries the current pathname forward
+ * on a custom request header, so downstream Server Components can read it. */
+function nextWithPathname(request) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", request.nextUrl.pathname);
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
+}
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
@@ -37,7 +57,7 @@ export function middleware(request) {
     if (isAdminPath) {
       return new NextResponse(null, { status: 404 });
     }
-    return NextResponse.next();
+    return nextWithPathname(request);
   }
 
   if (APP_MODE === "admin") {
@@ -45,7 +65,7 @@ export function middleware(request) {
     if (!isAdminPath && !pathname.startsWith("/api/admin")) {
       return new NextResponse(null, { status: 404 });
     }
-    return NextResponse.next();
+    return nextWithPathname(request);
   }
 
   // ── Host-based enforcement (custom domain fallback) ─────────────────────
@@ -63,7 +83,7 @@ export function middleware(request) {
     }
   }
 
-  return NextResponse.next();
+  return nextWithPathname(request);
 }
 
 export const config = {

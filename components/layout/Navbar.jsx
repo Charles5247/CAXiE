@@ -292,13 +292,13 @@ export default function Navbar() {
       {/* ── DESKTOP sidebar (hidden on mobile) ───────────────────────── */}
       <aside
         className={`fixed left-0 top-0 bottom-0 z-40 hidden lg:flex flex-col border-r border-white/10 bg-[#0f0a1a]/95 backdrop-blur-xl shadow-2xl transition-all duration-250 ease-in-out ${
-          collapsed ? "w-16" : "w-72"
+          collapsed ? "w-14" : "w-70"
         }`}
         aria-label="Site navigation"
       >
         {/* Logo row + collapse toggle */}
         <div
-          className={`flex items-center border-b border-white/10 transition-all duration-250 ${collapsed ? "px-2 py-4 justify-center gap-2" : "px-3 py-4 justify-center gap-3"}`}
+          className={`flex items-center border-b border-white/10 transition-all duration-250 ${collapsed ? "px-2 py-4 justify-between gap-3" : "px-8 py-4 justify-between"}`}
         >
           {/* Logo — full when expanded, mark-only when collapsed */}
           <Link
@@ -310,8 +310,8 @@ export default function Navbar() {
               <Image
                 src={logoMark}
                 alt="CAXiE Technologies Ltd"
-                width={40}
-                height={40}
+                width={50}
+                height={50}
                 className="rounded-lg object-contain"
                 priority
               />
@@ -319,9 +319,9 @@ export default function Navbar() {
               <Image
                 src={logoImage}
                 alt="CAXiE Technologies Ltd logo"
-                width={240}
-                height={84}
-                className="h-16 w-auto object-contain"
+                width={120}
+                height={50}
+                className="h-50 w-auto object-contain"
                 priority
               />
             )}

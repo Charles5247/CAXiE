@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import logoMark from "@/components/ui/logo192.png";
 import HeroCarousel from "@/components/ui/HeroCarousel";
 
 export const metadata = {
@@ -20,7 +21,7 @@ const trustBadges = [
   { label: "Security by design", icon: "🛡️" },
   { label: "Fractional CTO and advisory support", icon: "⚡" },
   { label: "Practical delivery for real business outcomes", icon: "📊" },
-  { label: "Kano, Nigeria — serving clients worldwide", icon: "🌍" },
+  { label: "Kano, Nigeria. Serving clients worldwide", icon: "🌍" },
 ];
 
 const services = [
@@ -148,7 +149,7 @@ const services = [
     id: "software",
     title: "Software & App Development",
     description:
-      "Custom web applications, iOS/Android mobile apps, and desktop software — built to your spec with security and maintainability built in from day one.",
+      "Custom web applications, iOS/Android mobile apps, and desktop software built to your spec with security and maintainability built in from day one.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -174,7 +175,7 @@ const caseStudyPreview = {
   name: "Dala Orthopedic Hospital",
   category: "Healthcare Digital Transformation",
   description:
-    "CAXiE led the digital infrastructure and web presence build for Dala Orthopedic — delivering a secure, patient-accessible system that replaced manual workflows.",
+    "CAXiE led the digital infrastructure and web presence build for Dala Orthopedic, delivering a secure patient-accessible system that replaced manual workflows.",
   metrics: [
     {
       label: "Patient digital touchpoints",
@@ -305,11 +306,14 @@ export default function HomePage() {
             <div className="lg:flex flex-col gap-4 hidden lg:items-end">
               <div className="card bg-white/5 backdrop-blur-lg border border-white/15 px-5 py-4 rounded-2xl shadow-brand-lg flex items-center justify-between gap-4 relative max-w-xl w-full">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center shadow-brand flex-shrink-0">
-                    <span className="text-white font-display font-bold text-xs">
-                      CX
-                    </span>
-                  </div>
+                  <Image
+                    src={logoMark}
+                    alt="CAXiE Technologies Ltd"
+                    width={70}
+                    height={70}
+                    className="rounded-lg object-contain"
+                    priority
+                  />
                   <div>
                     <p className="font-display font-semibold text-white text-sm">
                       CAXiE Technologies Ltd
@@ -625,7 +629,7 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="/about" className="btn-primary">
-                  About CAXiE
+                  About CAXiE Technologies Ltd
                 </Link>
                 <a
                   href="https://x.com/iamxavi_too"
@@ -657,7 +661,7 @@ export default function HomePage() {
                 <div className="aspect-[4/5] bg-gradient-to-br from-brand-800 to-brand-950 rounded-3xl overflow-hidden shadow-brand-lg">
                   <Image
                     src="/founder.JPG"
-                    alt="CAXiE Technologies Ltd team delivering technology services"
+                    alt="Founder|CEO CAXiE Technologies Ltd"
                     fill
                     className="object-cover"
                     priority={false}
@@ -667,10 +671,11 @@ export default function HomePage() {
                 {/* Overlay card */}
                 <div className="absolute -bottom-6 -left-6 bg-[#0f0a1a] border border-white/15 rounded-2xl p-4 shadow-brand max-w-[220px]">
                   <p className="font-display font-bold text-white text-sm">
-                    CAXiE Technologies Ltd
+                    Ekechukwuemeka Charles Xavier
                   </p>
                   <p className="text-brand-400 text-xs mt-0.5">
-                    AI, software, infrastructure & strategy
+                    Founder, CEO, Lead Tech consultant, Tutor, Network &
+                    Software Engineer
                   </p>
                   <div className="flex items-center gap-1 mt-2 text-xs text-gray-500">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />

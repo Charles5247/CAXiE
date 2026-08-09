@@ -9,14 +9,13 @@ import { SidebarProvider } from "@/lib/SidebarContext";
 export const metadata = {
   metadataBase: new URL("https://caxietechnologies.com"),
   title: {
-    default:
-      "CAXiE Technologies Ltd Ltd | Nigerian IT Consultancy — Kano, Nigeria",
-    template: "%s | CAXiE Technologies Ltd Ltd",
+    default: "CAXiE Technologies | Nigerian IT Consultancy — Kano, Nigeria",
+    template: "%s | CAXiE Technologies",
   },
   description:
-    "CAXiE Technologies Ltd Ltd is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
+    "CAXiE Technologies is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
   keywords: [
-    "CAXiE Technologies Ltd",
+    "CAXiE Technologies",
     "technology consultancy Nigeria",
     "AI consultancy Nigeria",
     "software development Kano",
@@ -25,16 +24,13 @@ export const metadata = {
     "ICT infrastructure Nigeria",
     "digital transformation Nigeria",
     "tech company Kano",
-    "CAXiE Technologies Ltd Ltd",
+    "CAXiE Technologies Ltd",
   ],
   authors: [
-    {
-      name: "CAXiE Technologies Ltd Ltd",
-      url: "https://caxietechnologies.com/about",
-    },
+    { name: "CAXiE Technologies", url: "https://caxietechnologies.com/about" },
   ],
-  creator: "CAXiE Technologies Ltd Ltd",
-  publisher: "CAXiE Technologies Ltd Ltd",
+  creator: "CAXiE Technologies",
+  publisher: "CAXiE Technologies",
   robots: {
     index: true,
     follow: true,
@@ -50,13 +46,13 @@ export const metadata = {
     type: "website",
     locale: "en_NG",
     alternateLocale: ["en_GB", "en_US"],
-    siteName: "CAXiE Technologies Ltd Ltd",
+    siteName: "CAXiE Technologies",
     images: [
       {
         url: "/preview.png",
         width: 1200,
         height: 630,
-        alt: "CAXiE Technologies Ltd Ltd — Nigerian IT Consultancy",
+        alt: "CAXiE Technologies — Nigerian IT Consultancy",
       },
     ],
   },
@@ -88,10 +84,12 @@ export default async function RootLayout({ children }) {
     headerList.get("host") ||
     ""
   ).toLowerCase();
+  const pathname = headerList.get("x-pathname") || "";
   const isAdminApp =
     process.env.APP_MODE === "admin" ||
     host.startsWith("admin.") ||
-    host === "admin";
+    host === "admin" ||
+    pathname.startsWith("/admin");
   const showPublicChrome = !isAdminApp;
 
   return (
@@ -148,7 +146,7 @@ export default async function RootLayout({ children }) {
                     "ProfessionalService",
                   ],
                   "@id": "https://caxietechnologies.com/#organization",
-                  name: "CAXiE Technologies Ltd",
+                  name: "CAXiE Technologies",
                   alternateName: ["CAXiE", "Caxie Tech"],
                   url: "https://caxietechnologies.com",
                   logo: {
@@ -180,7 +178,7 @@ export default async function RootLayout({ children }) {
                   founder: {
                     "@type": "Person",
                     "@id": "https://caxietechnologies.com/about#team",
-                    name: "CAXiE Technologies Ltd Leadership",
+                    name: "CAXiE Technologies Leadership",
                     jobTitle: "Technology Leadership",
                     sameAs: [
                       "https://x.com/iamxavi_too",
@@ -201,7 +199,7 @@ export default async function RootLayout({ children }) {
                 {
                   "@type": "Person",
                   "@id": "https://caxietechnologies.com/about#team",
-                  name: "CAXiE Technologies Ltd Leadership",
+                  name: "CAXiE Technologies Leadership",
                   jobTitle: "Technology Leadership",
                   worksFor: {
                     "@id": "https://caxietechnologies.com/#organization",
@@ -217,7 +215,7 @@ export default async function RootLayout({ children }) {
                   "@type": "WebSite",
                   "@id": "https://caxietechnologies.com/#website",
                   url: "https://caxietechnologies.com",
-                  name: "CAXiE Technologies Ltd",
+                  name: "CAXiE Technologies",
                   publisher: {
                     "@id": "https://caxietechnologies.com/#organization",
                   },

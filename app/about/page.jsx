@@ -118,7 +118,8 @@ export default function AboutPage() {
                   Ekechukwuemeka Charles Xavier
                 </p>
                 <p className="text-brand-400 text-sm">
-                  Technology consultant & Software Engineer
+                  Founder, CEO, Lead Tech consultant, Tutor, Network & Software
+                  Engineer
                 </p>
                 <div className="brand-divider my-3" />
                 <div className="flex gap-4">
