@@ -4,23 +4,26 @@ import logoMark from "@/components/ui/logo192.png";
 import HeroCarousel from "@/components/ui/HeroCarousel";
 
 export const metadata = {
-  title:
-    "CAXiE Technologies Ltd | AI, Software, Cybersecurity & Digital Transformation",
-  description:
-    "CAXiE Technologies Ltd is a Nigerian technology consultancy delivering AI, software, cybersecurity, data intelligence, infrastructure, and fractional CTO services from Kano to the world.",
+  title: {
+    default:
+      "CAXiE Technologies — Cybersecurity, ICT Infrastructure, Data & Web",
+    template: "%s | CAXiE Technologies",
+  },
+  description: "CAXiE Technologies delivers integrated ICT solutions...",
+  metadataBase: new URL("https://caxietechnologies.com"),
   openGraph: {
-    title: "CAXiE Technologies Ltd | Building Technologies for the Future",
-    description:
-      "Nigerian IT consultancy delivering cybersecurity, data intelligence, web development, and fractional CTO services from Kano to the world.",
+    title: "CAXiE Technologies",
+    description: "...",
     url: "https://caxietechnologies.com",
-    images: [
-      {
-        url: "/preview.png",
-        width: 1200,
-        height: 630,
-        alt: "CAXiE Technologies — Nigerian IT Consultancy",
-      },
-    ],
+    siteName: "CAXiE Technologies",
+    images: [{ url: "/preview.png", width: 1200, height: 630 }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CAXiE Technologies",
+    images: ["/preview.png"],
   },
 };
 
