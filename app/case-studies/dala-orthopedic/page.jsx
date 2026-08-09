@@ -1,16 +1,20 @@
 import Link from "next/link";
 
-export const metadata = {
-  title: "Dala Orthopedic Hospital — Case Study | CAXiE Technologies Ltd",
-  description:
-    "How CAXiE Technologies Ltd led the digital transformation of Dala Orthopedic Hospital — delivering a secure, patient-accessible system and establishing a credible web presence.",
-  openGraph: {
-    title: "Case Study: Dala Orthopedic Hospital Digital Transformation",
+export async function generateMetadata(props, parent) {
+  const parentMeta = await parent;
+  return {
+    title: "Dala Orthopedic Hospital — Case Study | CAXiE Technologies Ltd",
     description:
-      "Challenge → Approach → Results: CAXiE's flagship healthcare digital transformation project.",
-    url: "https://caxietechnologies.com/case-studies/dala-orthopedic",
-  },
-};
+      "How CAXiE Technologies Ltd led the digital transformation of Dala Orthopedic Hospital — delivering a secure, patient-accessible system and establishing a credible web presence.",
+    openGraph: {
+      ...parentMeta.openGraph,
+      title: "Case Study: Dala Orthopedic Hospital Digital Transformation",
+      description:
+        "Challenge → Approach → Results: CAXiE's flagship healthcare digital transformation project.",
+      url: "https://caxietechnologies.com/case-studies/dala-orthopedic",
+    },
+  };
+}
 
 // JSON-LD for this case study page
 const caseStudySchema = {

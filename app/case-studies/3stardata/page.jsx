@@ -1,16 +1,20 @@
 import Link from "next/link";
 
-export const metadata = {
-  title: "3StarData — Fractional CTO Engagement | CAXiE Technologies Ltd",
-  description:
-    "How CAXiE Technologies Ltd founder Xavier serves as incoming fractional CTO for 3StarData — a Nigerian VTU/digital services platform — under a retainer + equity model.",
-  openGraph: {
-    title: "Case Study: 3StarData — Fractional CTO Engagement",
+export async function generateMetadata(props, parent) {
+  const parentMeta = await parent;
+  return {
+    title: "3StarData — Fractional CTO Engagement | CAXiE Technologies Ltd",
     description:
-      "An active fractional CTO engagement: Xavier at 3StarData — retainer + equity model, technology roadmap, and strategic leadership.",
-    url: "https://caxietechnologies.com/case-studies/3stardata",
-  },
-};
+      "How CAXiE Technologies Ltd founder Xavier serves as incoming fractional CTO for 3StarData — a Nigerian VTU/digital services platform — under a retainer + equity model.",
+    openGraph: {
+      ...parentMeta.openGraph,
+      title: "Case Study: 3StarData — Fractional CTO Engagement",
+      description:
+        "An active fractional CTO engagement: Xavier at 3StarData — retainer + equity model, technology roadmap, and strategic leadership.",
+      url: "https://caxietechnologies.com/case-studies/3stardata",
+    },
+  };
+}
 
 export default function ThreeStarDataCaseStudy() {
   return (
