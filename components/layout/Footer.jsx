@@ -42,8 +42,8 @@ export default function Footer() {
               <Image
                 src={logoMark}
                 alt="CAXiE Technologies Ltd"
-                width={70}
-                height={70}
+                width={100}
+                height={100}
                 className="rounded-lg object-contain"
                 priority
               />
