@@ -17,7 +17,7 @@ export const metadata = {
     url: "https://caxietechnologies.com",
     siteName: "CAXiE Technologies",
     images: [{ url: "/preview.png", width: 1200, height: 630 }],
-    locale: "en_US",
+    locale: "en_UK",
     type: "website",
   },
   twitter: {
