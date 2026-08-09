@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import logoMark from "@/components/ui/preview.png";
 
 const footerLinks = {
   Services: [
@@ -37,11 +39,16 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-3">
-              <div className="w-9 h-9 bg-brand-600 rounded-xl flex items-center justify-center shadow-brand">
-                <span className="text-white font-display font-bold">CX</span>
-              </div>
+              <Image
+                src={logoMark}
+                alt="CAXiE Technologies Ltd"
+                width={70}
+                height={70}
+                className="rounded-lg object-contain"
+                priority
+              />
               <span className="font-display font-bold text-white text-xl">
-                CAXiE <span className="text-brand-400">Technologies</span>
+                CAXiE <span className="text-brand-400">Technologies Ltd</span>
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-xs">
