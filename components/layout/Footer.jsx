@@ -53,7 +53,7 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-xs">
               Nigerian IT consultancy delivering cybersecurity, infrastructure,
-              data intelligence, and digital transformation — from Kano to the
+              data intelligence, and digital transformation from Kano to the
               world.
             </p>
 
@@ -111,7 +111,7 @@ export default function Footer() {
                   href="mailto:contact@caxietechnologies.com"
                   className="hover:text-brand-400"
                 >
-                  contact@caxietechnologies.com
+                  caxietechnologies@gmail.com
                 </a>
               </div>
             </address>
@@ -170,7 +170,7 @@ export default function Footer() {
               Ready to build something that works?
             </p>
             <p className="text-gray-400 text-sm mt-1">
-              Let&apos;s talk about your project — response within 24 hours.
+              Let&apos;s talk about your project ... response within 24 hours.
             </p>
           </div>
           <a
@@ -188,8 +188,8 @@ export default function Footer() {
         <div className="brand-divider" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 text-sm text-gray-500">
           <p>
-            &copy; {new Date().getFullYear()} CAXiE Technologies Ltd Limited.
-            All rights reserved.
+            &copy; {new Date().getFullYear()} CAXiE Technologies Limited. All
+            rights reserved.
           </p>
           <p className="flex items-center gap-1">
             Built in Kano, Nigeria

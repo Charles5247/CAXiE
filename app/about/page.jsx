@@ -3,7 +3,7 @@ import Link from "next/link";
 import team from "@/data/team.json";
 
 export const metadata = {
-  title: "About CAXiE Technologies Ltd — AI, Software & Digital Transformation",
+  title: "About CAXiE Technologies Ltd | AI, Software & Digital Transformation",
   description:
     "Learn about CAXiE Technologies Ltd, a Nigerian technology consultancy focused on AI, software, cybersecurity, infrastructure, and strategic digital growth.",
   openGraph: {
@@ -25,7 +25,7 @@ const timeline = [
     year: "2022",
     title: "Infrastructure expansion",
     description:
-      "Expanded service delivery to include full ICT infrastructure deployment — networks, cloud integration, and systems support — for Nigerian businesses of all sizes.",
+      "Expanded service delivery to include full ICT infrastructure deployment networks, cloud integration, and systems support for Nigerian businesses of all sizes.",
   },
   {
     year: "2023",
@@ -37,7 +37,7 @@ const timeline = [
     year: "2024",
     title: "Dala Orthopedic engagement",
     description:
-      "Delivered the flagship Dala Orthopedic digital transformation project — building a secure, patient-accessible system that replaced manual workflows across the organisation.",
+      "Delivered the flagship Dala Orthopedic digital transformation project building a secure, patient-accessible system that replaced manual workflows across the organisation.",
   },
   {
     year: "2025",
@@ -325,7 +325,7 @@ export default function AboutPage() {
             </h2>
             <blockquote className="font-display text-2xl sm:text-3xl text-white font-medium leading-relaxed italic">
               &ldquo;We believe technology should be practical, resilient, and
-              useful — not just impressive on paper. The best solutions are the
+              useful not just impressive on paper. The best solutions are the
               ones that help organisations move forward with confidence.&rdquo;
             </blockquote>
             <p className="mt-6 text-gray-400">— CAXiE Technologies Ltd</p>

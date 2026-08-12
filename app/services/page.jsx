@@ -4,19 +4,18 @@ import Link from "next/link";
 export async function generateMetadata(props, parent) {
   const parentMeta = await parent;
   return {
-    title: "Services — AI, Software, Cybersecurity, Infrastructure & Fractional CTO",
-    description: "CAXiE Technologies Ltd offers AI enablement, software development, cybersecurity, ICT infrastructure, data intelligence, and fractional CTO engagements from Kano, Nigeria.",
+    title:
+      "Services — AI, Software, Cybersecurity, Infrastructure & Fractional CTO",
+    description:
+      "CAXiE Technologies Ltd offers AI enablement, software development, cybersecurity, ICT infrastructure, data intelligence, and fractional CTO engagements from Kano, Nigeria.",
     openGraph: {
       ...parentMeta.openGraph,
       title: "CAXiE Technologies Ltd Services",
-      description: "Five core service lines built on a cybersecurity-first foundation — serving Nigerian businesses and international clients.",
+      description:
+        "Five core service lines built on a cybersecurity-first foundation — serving Nigerian businesses and international clients.",
       url: "https://caxietechnologies.com/services",
     },
   };
-}
-
-export default function ServicesPage() {
-  // ... unchanged
 }
 
 const services = [

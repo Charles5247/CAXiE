@@ -6,7 +6,7 @@ import HeroCarousel from "@/components/ui/HeroCarousel";
 export const metadata = {
   title: {
     default:
-      "CAXiE Technologies — Cybersecurity, ICT Infrastructure, Data & Web",
+      "CAXiE Technologies Ltd | AI, Software, Cybersecurity & Digital Transformation",
     template: "%s | CAXiE Technologies",
   },
   description: "CAXiE Technologies delivers integrated ICT solutions...",
@@ -40,7 +40,7 @@ const services = [
     id: "cyber",
     title: "Cybersecurity & Identity Protection",
     description:
-      "Threat assessments, security audits, identity management, and hardening — for organisations that cannot afford a breach.",
+      "Threat assessments, security audits, identity management, and hardening for organisations that cannot afford a breach.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -64,7 +64,7 @@ const services = [
     id: "ict",
     title: "ICT Infrastructure",
     description:
-      "Network design, deployment, cloud integration, and enterprise systems — built to scale with your organisation.",
+      "Network design, deployment, cloud integration, and enterprise systems built to scale with your organisation.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -112,7 +112,7 @@ const services = [
     id: "web",
     title: "Web & Digital Brand",
     description:
-      "Full-stack web development, SEO, branding, and digital marketing — systems that are visible to search engines and convert visitors.",
+      "Full-stack web development, SEO, branding, and digital marketing systems that are visible to search engines and convert visitors.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -136,7 +136,7 @@ const services = [
     id: "cto",
     title: "Fractional CTO",
     description:
-      "Enterprise-level technical leadership on retainer — strategy, vendor management, team oversight, and architecture guidance without a full-time hire.",
+      "Enterprise-level technical leadership on retainer strategy, vendor management, team oversight, and architecture guidance without a full-time hire.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -204,7 +204,7 @@ const ctoPreview = {
   category: "Fractional CTO Engagement",
   description:
     "CAXiE provided fractional CTO support and technical leadership for a growth-stage digital services platform, helping shape roadmap strategy and delivery oversight.",
-  engagement: "Active retainer + equity — ongoing",
+  engagement: "Active retainer + equity: ongoing",
   href: "/case-studies/3stardata",
 };
 
@@ -386,7 +386,7 @@ export default function HomePage() {
               Five service lines. One team you can trust.
             </h2>
             <p className="section-subtitle mx-auto text-center">
-              Each service is delivered with the same practical discipline —
+              Each service is delivered with the same practical discipline
               whether we&apos;re building software, strengthening
               infrastructure, or guiding your technology roadmap.
             </p>
@@ -454,7 +454,7 @@ export default function HomePage() {
                   Not sure what you need?
                 </p>
                 <p className="text-gray-400 text-sm">
-                  Tell us about your business challenge — we&apos;ll recommend
+                  Tell us about your business challenge .. we&apos;ll recommend
                   the right solution.
                 </p>
               </div>
@@ -757,7 +757,7 @@ export default function HomePage() {
               </h2>
               <p className="text-gray-400 leading-relaxed">
                 CAXiE runs beginner web development classes and mentorship
-                programs — not as a side project, but as a core part of how we
+                programs not as a side project, but as a core part of how we
                 invest in the Nigerian tech ecosystem. Teaching is how we build
                 trust, reputation, and community.
               </p>
@@ -795,12 +795,12 @@ export default function HomePage() {
               {
                 icon: "🛡️",
                 title: "Cybersecurity-First",
-                desc: "Every engagement — from a web platform to an infrastructure project — is designed with resilience built in from the start.",
+                desc: "Every engagement from a web platform to an infrastructure project is designed with resilience built in from the start.",
               },
               {
                 icon: "📋",
                 title: "Transparent Process",
-                desc: "You know what we're building, when we're building it, and what it costs — at every stage.",
+                desc: "You know what we're building, when we're building it, and what it costs at every stage.",
               },
               {
                 icon: "🎯",
@@ -810,7 +810,7 @@ export default function HomePage() {
               {
                 icon: "📈",
                 title: "Results, Not Hours",
-                desc: "We scope projects around outcomes — not time-tracked deliverables that obscure what you're actually paying for.",
+                desc: "We scope projects around outcomes not time-tracked deliverables that obscure what you're actually paying for.",
               },
             ].map((item) => (
               <div key={item.title} className="card text-center">
@@ -864,8 +864,8 @@ export default function HomePage() {
             </h2>
             <p className="text-gray-300 text-lg">
               Tell us about your project. Response within 24 hours. No hard sell
-              — just a straight conversation about what you need and whether
-              CAXiE is the right fit.
+              just a straight conversation about what you need and whether CAXiE
+              is the right fit.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
