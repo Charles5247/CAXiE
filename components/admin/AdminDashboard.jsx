@@ -291,7 +291,7 @@ export default function AdminDashboard({ onLogout, session }) {
             {navItems.find((n) => n.id === activePanel)?.label || "Overview"}
           </h1>
           <a
-            href="/"
+            href="https://caxietechnologies.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs text-gray-500 hover:text-brand-400 flex items-center gap-1 transition-colors"
@@ -420,10 +420,10 @@ function OverviewPanel() {
       {/* Quick links */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: "Homepage", href: "/" },
-          { label: "Blog", href: "/blog" },
-          { label: "Careers", href: "/careers" },
-          { label: "Products", href: "/products" },
+          { label: "Homepage", href: "https://caxietechnologies.com" },
+          { label: "Blog", href: "https://caxietechnologies.com/blog" },
+          { label: "Careers", href: "https://caxietechnologies.com/careers" },
+          { label: "Products", href: "https://caxietechnologies.com/products" },
         ].map((link) => (
           <a
             key={link.href}
