@@ -5,7 +5,9 @@ import { NextResponse } from "next/server";
  *
  * Two Render services share this same codebase, differentiated by APP_MODE:
  *   APP_MODE=public  → serves caxietechnologies.com  (blocks /admin)
- *   APP_MODE=admin   → serves admin.caxietechnologies.com (only /admin)
+ *   APP_MODE=admin   → serves https://admin-caxie.onrender.com
+ *                      (redirects / → /admin; only serves /admin,
+ *                       /api/admin, and static assets)
  *
  * The Host-header check is a belt-and-braces guard for the deployed services.
  * In local dev (no APP_MODE set) both public and admin routes are accessible,
@@ -28,7 +30,10 @@ import { NextResponse } from "next/server";
 
 const PUBLIC_HOSTS = ["caxietechnologies.com", "www.caxietechnologies.com"];
 
-const ADMIN_HOSTS = ["admin.caxietechnologies.com"];
+const ADMIN_HOSTS = [
+  "admin-caxie.onrender.com",
+  "admin.caxietechnologies.com",
+];
 
 // Render auto-generates a hostname like <service-name>.onrender.com
 // We detect the Render public service by APP_MODE rather than hostname so
@@ -72,6 +77,11 @@ export function proxy(request) {
   }
 
   if (APP_MODE === "admin") {
+    // Visiting the bare admin domain (https://admin-caxie.onrender.com)
+    // redirects to /admin so the root URL shows the admin console.
+    if (pathname === "/") {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
     // Admin service only serves /admin, /api/admin, and static assets
     if (!isAdminPath && !pathname.startsWith("/api/admin") && !isStaticFile) {
       return new NextResponse(null, { status: 404 });
@@ -89,6 +99,9 @@ export function proxy(request) {
   }
 
   if (ADMIN_HOSTS.includes(bareHost)) {
+    if (pathname === "/") {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
     if (!isAdminPath && !pathname.startsWith("/api/admin") && !isStaticFile) {
       return new NextResponse(null, { status: 404 });
     }

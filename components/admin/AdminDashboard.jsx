@@ -7,6 +7,11 @@ import AdminProductsPanel from "./panels/AdminProductsPanel";
 import AdminCaseStudiesPanel from "./panels/AdminCaseStudiesPanel";
 import AdminTeamPanel from "./panels/AdminTeamPanel";
 
+// Public site URL — rendered in the admin "View site" links. Falls back to the
+// live domain if NEXT_PUBLIC_SITE_URL isn't set (e.g. local dev).
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://caxietechnologies.com";
+
 const navItems = [
   {
     id: "overview",
@@ -291,7 +296,7 @@ export default function AdminDashboard({ onLogout, session }) {
             {navItems.find((n) => n.id === activePanel)?.label || "Overview"}
           </h1>
           <a
-            href="https://caxietechnologies.com"
+            href={SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs text-gray-500 hover:text-brand-400 flex items-center gap-1 transition-colors"
@@ -420,10 +425,10 @@ function OverviewPanel() {
       {/* Quick links */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: "Homepage", href: "https://caxietechnologies.com" },
-          { label: "Blog", href: "https://caxietechnologies.com/blog" },
-          { label: "Careers", href: "https://caxietechnologies.com/careers" },
-          { label: "Products", href: "https://caxietechnologies.com/products" },
+          { label: "Homepage", href: `${SITE_URL}` },
+          { label: "Blog", href: `${SITE_URL}/blog` },
+          { label: "Careers", href: `${SITE_URL}/careers` },
+          { label: "Products", href: `${SITE_URL}/products` },
         ].map((link) => (
           <a
             key={link.href}

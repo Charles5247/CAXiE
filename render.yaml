@@ -37,12 +37,12 @@ services:
         sync: false
 
   # ── ADMIN SITE ─────────────────────────────────────────────────────────────
-  # Serves admin.caxietechnologies.com (DNS CNAME → this service's .onrender.com URL)
+  # Serves https://admin-caxie.onrender.com (service name → .onrender.com URL)
   # APP_MODE=admin   → proxy returns 404 on any non-/admin path
-  # Owner action required: add DNS CNAME record for admin.caxietechnologies.com
-  #   once this service is deployed and its .onrender.com URL is known.
+  # Optional: add a DNS CNAME record for admin.caxietechnologies.com later
+  #   pointing to admin-caxie.onrender.com if a custom admin domain is desired.
   - type: web
-    name: caxie-admin
+    name: admin-caxie
     runtime: node
     plan: starter
     region: frankfurt
@@ -61,6 +61,9 @@ services:
       # ── Deployment mode ────────────────────────────────────────────────────
       - key: APP_MODE
         value: admin
+      # ── Public site URL (used for "View site" links from the admin console) ─
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://caxietechnologies.com
       # ── Supabase ──────────────────────────────────────────────────────────
       - key: NEXT_PUBLIC_SUPABASE_URL
         sync: false

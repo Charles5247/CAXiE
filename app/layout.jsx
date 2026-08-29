@@ -87,6 +87,7 @@ export default async function RootLayout({ children }) {
   const pathname = headerList.get("x-pathname") || "";
   const isAdminApp =
     process.env.APP_MODE === "admin" ||
+    host === "admin-caxie.onrender.com" ||
     host.startsWith("admin.") ||
     host === "admin" ||
     pathname.startsWith("/admin");
